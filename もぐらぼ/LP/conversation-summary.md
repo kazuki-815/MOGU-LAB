@@ -57,3 +57,13 @@ last_updated: 2026-04-07
 
 - 各セクションのライティング（文章案）
 - VSL動画の台本（セリフベース）
+
+---
+
+## 追記（2026-04）LP実装〜公開のコンパクト
+
+**詳細は `LP-HANDOFF.md` のセクション8〜9に集約。** ここは索引のみ。
+
+- **GitHub**: `kazuki-815/MOGU-LAB` / ローカルは `c:\Users\kazuk\.cursor\tesuto` で `git push` で反映
+- **Netlify**: 連携デプロイ済み。LPは必要なら **`/もぐらぼ/LP/`** 。ルートを LP にするなら Netlify の Base directory = `もぐらぼ/LP`
+- **LP続き**: `@LP-HANDOFF.md` + `@index.html` で詰める
