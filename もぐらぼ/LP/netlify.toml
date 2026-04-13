@@ -1,0 +1,13 @@
+# もぐラボ LP — Netlify 静的ホスト（このフォルダをサイトルートにする）
+[build]
+  publish = "."
+  command = "echo Static LP"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# オプション: すべてキャッシュなし（HTML更新をすぐ反映したいとき）
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -1,0 +1,22 @@
+# Secrets & local env
+.env
+.env.*
+!.env.example
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs & temp
+*.log
+npm-debug.log*
+.npm
+~$*
+
+# Node (if you add tooling later)
+node_modules/
+
+# Editor (optional — remove these lines if you want to commit IDE settings)
+# .vscode/
+# .idea/

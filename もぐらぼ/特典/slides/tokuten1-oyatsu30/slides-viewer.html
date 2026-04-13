@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>特別公開 食べても太らない究極のおやつ30選</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background: #1a1a1e;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    #frame {
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      overflow: hidden;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 4.5% 6%;
+      flex-direction: column;
+      justify-content: center;
+      overflow: auto;
+    }
+    .slide.active { display: flex; }
+    .slide.cover {
+      text-align: center;
+      background: linear-gradient(145deg, #f8f6f2 0%, #e8f0ea 100%);
+    }
+    .slide.cover h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); margin: 0 0 0.4em; }
+    .slide.cover .sub { font-size: clamp(1.1rem, 2.8vw, 1.65rem); font-weight: 700; margin: 0; }
+    .slide.cover .brand { margin-top: 1.5em; font-size: 0.95rem; color: #555; }
+    .slide.lead h2, .slide.disclaimer h2, .slide.cta h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); margin-top: 0; }
+    .slide.lead p, .slide.disclaimer p, .slide.cta p {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      line-height: 1.65;
+    }
+    .slide.block h1 { font-size: clamp(1.35rem, 3.2vw, 2rem); margin: 0 0 0.35em; }
+    .slide.block h2 { font-size: clamp(1.05rem, 2.4vw, 1.35rem); margin: 0 0 0.5em; font-weight: 700; }
+    .slide.block p { font-size: clamp(0.95rem, 2vw, 1.12rem); line-height: 1.6; margin: 0; }
+    .slide.item img {
+      display: block;
+      margin: 0 auto 10px;
+      max-height: 38%;
+      max-width: 58%;
+      object-fit: contain;
+    }
+    .slide.item h2 {
+      font-size: clamp(0.95rem, 2.1vw, 1.25rem);
+      line-height: 1.35;
+      margin: 0 0 6px;
+      text-align: center;
+    }
+    .slide.item .when {
+      color: #1a6b3a;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      margin: 8px 0 4px;
+      text-align: center;
+    }
+    .slide.item .tip {
+      font-size: clamp(0.88rem, 1.9vw, 1.02rem);
+      line-height: 1.55;
+      margin: 0;
+    }
+    #controls {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    #controls button {
+      background: #333;
+      color: #fff;
+      border: 1px solid #555;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    #controls button:hover { background: #444; }
+    #controls button:disabled { opacity: 0.4; cursor: not-allowed; }
+    #hint { font-size: 0.8rem; color: #888; max-width: 960px; text-align: center; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div id="frame">
+    <section class="slide cover active" data-i="0">
+      <h1>特別公開</h1>
+      <p class="sub">食べても太らない究極のおやつ30選</p>
+      <p class="brand">モグラボ（MOGU LAB）</p>
+    </section>
+
+    <section class="slide lead" data-i="1">
+      <h2>まずお伝えしたいこと</h2>
+      <p><strong>カロリーや脂質を毎回チェックしなくて大丈夫です。</strong></p>
+      <p>「今の自分がどんな気分か」だけ見て、<strong>この場面ならこれ</strong>と選べるようにしました。<br />痩せたいけれど手間はかけたくない、という方のためのリストです。</p>
+    </section>
+
+    <section class="slide disclaimer" data-i="2">
+      <h2>大事なお約束（ひとこと）</h2>
+      <p>「食べても太らない」は<strong>絶対</strong>の話ではありません。<strong>食べすぎないこと</strong>と、<strong>その日のごはん全体のバランス</strong>がいちばん大切です。<br />妊娠中・授乳中の方は、医師の指示を優先してください。</p>
+    </section>
+
+    <section class="slide block" data-i="3">
+      <h1>ブロック①</h1>
+      <h2>甘いものが食べたいときにおすすめのおやつ</h2>
+      <p>「我慢」より先に、<strong>甘さは満たしつつ、量が区切りやすいもの</strong>を集めました。</p>
+    </section>
+
+    <section class="slide item" data-i="4">
+      <img src="images/placeholder.svg" alt="01 明治 チョコレート効果" />
+      <h2>明治 チョコレート効果 ビターマイスター カカオ86％</h2>
+      <p class="when">甘いものが食べたいとき</p>
+      <p class="tip">板チョコより<strong>枚数で区切りやすい</strong>ので、「今日はこれで止める」がしやすいです。</p>
+    </section>
+    <section class="slide item" data-i="5">
+      <img src="images/placeholder.svg" alt="02 たらみ" />
+      <h2>たらみ おいしい蒟蒻ゼリー PREMIアム＋（クラッシュタイプ）</h2>
+      <p class="when">甘いものが食べたいとき</p>
+      <p class="tip">噛むとジュレが広がるタイプは、<strong>口の中で時間をかせげる</strong>ので、つい次を探しがちなときに。</p>
+    </section>
+    <section class="slide item" data-i="6">
+      <img src="images/placeholder.svg" alt="03 マンナンライフ" />
+      <h2>マンナンライフ かんでおいしい蒟蒻ゼリー</h2>
+      <p class="when">甘いものが食べたいとき</p>
+      <p class="tip"><strong>かむほど味が出る</strong>ので、デザート欲が急に来たときの「つなぎ」向きです。</p>
+    </section>
+    <section class="slide item" data-i="7">
+      <img src="images/placeholder.svg" alt="04 RIZAPプリン" />
+      <h2>ファミリーマート RIZAP 濃厚キャラメルプリン（糖質コントロール系）</h2>
+      <p class="when">甘いものが食べたいとき</p>
+      <p class="tip">「プリン食べたい日」に。<strong>普通のプリンより糖質を抑えた系</strong>を選ぶと迷いが減ります。</p>
+    </section>
+    <section class="slide item" data-i="8">
+      <img src="images/placeholder.svg" alt="05 寒天ゼリー" />
+      <h2>セブンイレブン 0カロリーの寒天ゼリー</h2>
+      <p class="when">甘いものが食べたいとき</p>
+      <p class="tip"><strong>冷蔵でひんやり</strong>なので、夕方のだるさ＋甘いもの欲が重なった日に手が伸びやすいです。</p>
+    </section>
+    <section class="slide item" data-i="9">
+      <img src="images/placeholder.svg" alt="06 ブルガリア" />
+      <h2>明治 ブルガリアヨーグルト LB81 脂肪0 プレーン</h2>
+      <p class="when">甘いものが食べたいとき</p>
+      <p class="tip">無糖でも甘いもの欲が強い日は、<strong>ジャムをひとさじ</strong>足すと「ケーキほどではない満足」になりやすいです。</p>
+    </section>
+
+    <section class="slide block" data-i="10">
+      <h1>ブロック②</h1>
+      <h2>小腹が空いたときにおすすめのおやつ</h2>
+      <p>「お腹はすいたけど、<strong>ごはん一食はまだ…</strong>」というとき向けです。</p>
+    </section>
+    <section class="slide item" data-i="11">
+      <img src="images/placeholder.svg" alt="07 サラダチキン" />
+      <h2>セブンイレブン サラダチキン プレーン</h2>
+      <p class="when">小腹が空いたとき</p>
+      <p class="tip">コンビニに寄ったら<strong>まずここを見る</strong>、と決めておくと迷い時間が減ります。</p>
+    </section>
+    <section class="slide item" data-i="12">
+      <img src="images/placeholder.svg" alt="08 さけるチーズ" />
+      <h2>雪印メグミルク 6Pチーズ さけるチーズ</h2>
+      <p class="when">小腹が空いたとき</p>
+      <p class="tip"><strong>1本で区切りがつく</strong>ので、子どものお迎え前など「手早く栄養を足したい」場面に。</p>
+    </section>
+    <section class="slide item" data-i="13">
+      <img src="images/placeholder.svg" alt="09 半熟卵" />
+      <h2>セブンイレブン 半熟味付ゆでたまご</h2>
+      <p class="when">小腹が空いたとき</p>
+      <p class="tip">片手で食べられるので、<strong>仕事の合間の小腹</strong>に向きます。味がしっかりしている分、満足感も出やすいです。</p>
+    </section>
+    <section class="slide item" data-i="14">
+      <img src="images/placeholder.svg" alt="10 ベビーチーズ" />
+      <h2>Q・B・B ベビーチーズ</h2>
+      <p class="when">小腹が空いたとき</p>
+      <p class="tip">冷蔵庫にストックしやすいサイズ。<strong>お子さんと分けて食べる</strong>のも手です。</p>
+    </section>
+    <section class="slide item" data-i="15">
+      <img src="images/placeholder.svg" alt="11 ささみ" />
+      <h2>丸善 PROFIT ささみスティック（ブラックペッパーなど）</h2>
+      <p class="when">小腹が空いたとき</p>
+      <p class="tip">「甘いものはいらないけど何か食べたい」→<strong>しょっぱいたんぱく質</strong>に寄せると、夜のドカ食い予防になりやすいです。</p>
+    </section>
+    <section class="slide item" data-i="16">
+      <img src="images/placeholder.svg" alt="12 茶碗蒸し" />
+      <h2>セブンイレブン たんぱく質がしっかり摂れる茶碗蒸し</h2>
+      <p class="when">小腹が空いたとき</p>
+      <p class="tip"><strong>温かい＋だし</strong>で満足感が出るので、冷えた日の夕方のつかみ食いに。</p>
+    </section>
+
+    <section class="slide block" data-i="17">
+      <h1>ブロック③</h1>
+      <h2>口寂しい・噛みたいときにおすすめのおやつ</h2>
+      <p><strong>ストレスで手が止まらない</strong>、<strong>集中したいのにお口がさみしい</strong>、というとき向けです。</p>
+    </section>
+    <section class="slide item" data-i="18">
+      <img src="images/placeholder.svg" alt="13 昆布" />
+      <h2>くらこん おしゃぶり昆布</h2>
+      <p class="when">口寂しい・噛みたいとき</p>
+      <p class="tip">会議の前後など、<strong>噛む動作で気持ちを落ち着けたい</strong>ときに。だしの香りもプラスです。</p>
+    </section>
+    <section class="slide item" data-i="19">
+      <img src="images/placeholder.svg" alt="14 あたりめ" />
+      <h2>なとり あたりめ（いか製品）</h2>
+      <p class="when">口寂しい・噛みたいとき</p>
+      <p class="tip"><strong>噛むほど味が出る</strong>タイプなので、テレビを見ながらの無心食べに入りにくいです。</p>
+    </section>
+    <section class="slide item" data-i="20">
+      <img src="images/placeholder.svg" alt="15 蒸し大豆" />
+      <h2>国産蒸し大豆（冷凍・各社）</h2>
+      <p class="when">口寂しい・噛みたいとき</p>
+      <p class="tip">自然な甘みと食感。<strong>レンジで温めるだけ</strong>のものを選ぶと続きやすいです。</p>
+    </section>
+    <section class="slide item" data-i="21">
+      <img src="images/placeholder.svg" alt="16 いかそうめん" />
+      <h2>いかそうめん（惣菜・各社）</h2>
+      <p class="when">口寂しい・噛みたいとき</p>
+      <p class="tip">細く長く食べられるので、<strong>だらだら食べたい衝動を時間で分散</strong>しやすいです。</p>
+    </section>
+    <section class="slide item" data-i="22">
+      <img src="images/placeholder.svg" alt="17 ガム" />
+      <h2>ロッテ キシリトールガム（ボトルタイプ）</h2>
+      <p class="when">口寂しい・噛みたいとき</p>
+      <p class="tip">「何か口にしたい」が<strong>甘いものではない</strong>ときの逃げ道。噛みすぎはほどほどに。</p>
+    </section>
+    <section class="slide item" data-i="23">
+      <img src="images/placeholder.svg" alt="18 プチ" />
+      <h2>亀田製菓 ハッピーターン プチ</h2>
+      <p class="when">口寂しい・噛みたいとき</p>
+      <p class="tip">スナック全般は食べ過ぎ注意ですが、<strong>小袋・ひとくちサイズ</strong>なら「今日はここまで」と決めやすいです。</p>
+    </section>
+
+    <section class="slide block" data-i="24">
+      <h1>ブロック④</h1>
+      <h2>夜遅い時間でも、なるべく軽く済ませたいときのおやつ</h2>
+      <p>「もう寝るのに<strong>何か入れたい</strong>」「明日の自分に後悔したくない」という日向けです。</p>
+    </section>
+    <section class="slide item" data-i="25">
+      <img src="images/placeholder.svg" alt="19 あずきバー" />
+      <h2>井村屋 あずきバー</h2>
+      <p class="when">夜遅いのに何か食べたいとき</p>
+      <p class="tip">アイスより<strong>サイズが区切りやすい</strong>定番。冷凍庫に1箱あると安心感が違います。</p>
+    </section>
+    <section class="slide item" data-i="26">
+      <img src="images/placeholder.svg" alt="20 ところてん" />
+      <h2>ところてん（カップ・各社）</h2>
+      <p class="when">夜遅いのに何か食べたいとき</p>
+      <p class="tip">たれは<strong>少なめ</strong>にすると塩分が気になりにくいです。さっぱり食べたい夜に。</p>
+    </section>
+    <section class="slide item" data-i="27">
+      <img src="images/placeholder.svg" alt="21 ゼリー" />
+      <h2>たらみ カロリ0ゼリー シリーズ</h2>
+      <p class="when">夜遅いのに何か食べたいとき</p>
+      <p class="tip">「とりあえず甘みだけ欲しい」夜の<strong>保険枠</strong>として常備しやすいです。</p>
+    </section>
+    <section class="slide item" data-i="28">
+      <img src="images/placeholder.svg" alt="22 蒟蒻" />
+      <h2>オリヒロ ぷるんと蒟蒻ゼリー スタンディングパウチ</h2>
+      <p class="when">夜遅いのに何か食べたいとき</p>
+      <p class="tip">冷やしておくと<strong>食感の満足</strong>が増します。食べ過ぎないよう、袋の本数は決めておくと安心です。</p>
+    </section>
+    <section class="slide item" data-i="29">
+      <img src="images/placeholder.svg" alt="23 枝豆" />
+      <h2>枝豆（冷凍・各社）</h2>
+      <p class="when">夜遅いのに何か食べたいとき</p>
+      <p class="tip">ビールのつまみ感覚で、<strong>豆で満足感</strong>を取りにいく日。塩が強い商品は量を少なめに。</p>
+    </section>
+    <section class="slide item" data-i="30">
+      <img src="images/placeholder.svg" alt="24 豆腐バー" />
+      <h2>相模屋 たんぱく質がしっかり摂れる豆腐バー 燻製だし味</h2>
+      <p class="when">夜遅いのに何か食べたいとき</p>
+      <p class="tip">片手で食べられるので、<strong>シャワー後の「何か」</strong>に刺さりやすいです。</p>
+    </section>
+
+    <section class="slide block" data-i="31">
+      <h1>ブロック⑤</h1>
+      <h2>生理前など、食欲が止まらない日の「とりあえず」</h2>
+      <p>ホルモンの波で<strong>気持ちと食欲がズレる日</strong>は誰にでもあります。<br />「完全正解」より先に、<strong>とりあえずこれで一度落ち着く</strong>を用意しました。</p>
+    </section>
+    <section class="slide item" data-i="32">
+      <img src="images/placeholder.svg" alt="25 inバー" />
+      <h2>森永製菓 inバー プロテイン（各フレーバー）</h2>
+      <p class="when">食欲が止まらない日</p>
+      <p class="tip">一本まるごとより、<strong>半分に切っておく</strong>と「続き」へのブレーキがかかりやすいです。</p>
+    </section>
+    <section class="slide item" data-i="33">
+      <img src="images/placeholder.svg" alt="26 小枝" />
+      <h2>森永製菓 小枝（1本包装）</h2>
+      <p class="when">食欲が止まらない日</p>
+      <p class="tip">チョコ欲が強い日は、<strong>板より本数が決まっている</strong>ものの方がコントロールしやすいことがあります。</p>
+    </section>
+    <section class="slide item" data-i="34">
+      <img src="images/placeholder.svg" alt="27 ようかん" />
+      <h2>井村屋 ようかん小倉（一口サイズ）</h2>
+      <p class="when">食欲が止まらない日</p>
+      <p class="tip">和菓子系は<strong>「ひとくちで一区切り」</strong>にしやすいので、ドカ食い前のクッションに。</p>
+    </section>
+    <section class="slide item" data-i="35">
+      <img src="images/placeholder.svg" alt="28 おから" />
+      <h2>ブルボン プロテインおからクッキー</h2>
+      <p class="when">食欲が止まらない日</p>
+      <p class="tip">クッキー欲が強い日の<strong>置き換え候補</strong>。袋ごと開けると止まらないので、小袋を選ぶのがコツです。</p>
+    </section>
+    <section class="slide item" data-i="36">
+      <img src="images/placeholder.svg" alt="29 ナッツ" />
+      <h2>小袋ナッツ（ミックス・アーモンド各社）</h2>
+      <p class="when">食欲が止まらない日</p>
+      <p class="tip">大袋は危険。<strong>1食分が袋に書いてあるもの</strong>だけ買うと、自己嫌悪ループに入りにくいです。</p>
+    </section>
+    <section class="slide item" data-i="37">
+      <img src="images/placeholder.svg" alt="30 チョコパイ" />
+      <h2>ロッテ プチチョコパイ（個包装）</h2>
+      <p class="when">食欲が止まらない日</p>
+      <p class="tip">「何か甘いもので気持ちを切り替えたい」→<strong>個包装の数で区切る</strong>と戻りやすいです。</p>
+    </section>
+
+    <section class="slide cta" data-i="38">
+      <h2>次の一歩（差し替え用）</h2>
+      <p><strong>無料パーソナルカウンセリング</strong>のご案内文や、<strong>予約URL・LINEの導線</strong>をここに入れてください。</p>
+      <p>（例）「あなたのタイプに合った間食の組み方も、カウンセリングで一緒に整理できます」など</p>
+    </section>
+
+    <section class="slide lead" data-i="39">
+      <h2>おわりに</h2>
+      <p><strong>自分で数字を追わなくても、場面さえわかれば選べる</strong>ように並べました。<br />無理のない範囲で、まずは<strong>ひとつだけ試す</strong>ところからで大丈夫です。</p>
+    </section>
+  </div>
+
+  <div id="controls">
+    <button type="button" id="prev" aria-label="前へ">← 前へ</button>
+    <span id="counter">1 / 40</span>
+    <button type="button" id="next" aria-label="次へ">次へ →</button>
+  </div>
+  <p id="hint">キーボードの ← → でも切り替えできます。画像は <code>images/placeholder.svg</code> を差し替えてください。</p>
+
+  <script>
+    (function () {
+      var slides = Array.prototype.slice.call(document.querySelectorAll("#frame .slide"));
+      var n = slides.length;
+      var i = 0;
+      var counter = document.getElementById("counter");
+      var prev = document.getElementById("prev");
+      var next = document.getElementById("next");
+
+      function show(idx) {
+        i = Math.max(0, Math.min(n - 1, idx));
+        slides.forEach(function (s, j) {
+          s.classList.toggle("active", j === i);
+        });
+        counter.textContent = i + 1 + " / " + n;
+        prev.disabled = i === 0;
+        next.disabled = i === n - 1;
+      }
+
+      prev.addEventListener("click", function () { show(i - 1); });
+      next.addEventListener("click", function () { show(i + 1); });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === " ") {
+          e.preventDefault();
+          show(i + 1);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          show(i - 1);
+        }
+      });
+      show(0);
+    })();
+  </script>
+</body>
+</html>

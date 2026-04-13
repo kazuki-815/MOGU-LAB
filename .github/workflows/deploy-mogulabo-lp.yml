@@ -1,0 +1,30 @@
+# もぐラボ LP を Netlify に自動デプロイ（main へ push したとき）
+# 使い方:
+# 1. このリポジトリを GitHub に push
+# 2. Netlify でサイトを1つ作成（空でよい）
+# 3. GitHub リポジトリ Settings → Secrets and variables → Actions に追加:
+#    NETLIFY_AUTH_TOKEN  （Netlify User settings → Applications → Personal access tokens）
+#    NETLIFY_SITE_ID      （Site settings → Site details → Site ID）
+name: Deploy Mogulabo LP (Netlify)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'もぐらぼ/LP/**'
+      - '.github/workflows/deploy-mogulabo-lp.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=もぐらぼ/LP
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

@@ -1,0 +1,17 @@
+---
+description: モグラボ・VLS台本・レベラー関連の依頼時に leveler-mogulabo のナレッジを読む
+alwaysApply: true
+---
+
+# レベラー／モグラボ ナレッジの使い方
+
+`leveler-mogulabo/` 配下のファイルを編集する、または **モグラボ・株式会社レベラー・ダイエット事業・VLS・動画台本** に関する作成・整理を頼まれたときは、次を順に参照する。
+
+1. **`leveler-mogulabo/KNOWLEDGE_INDEX.md`** — カタログで該当ドキュメントを特定する。
+2. **`leveler-mogulabo/knowledge/00-overview/mogulabo-overview.md`** — 前提・定義の整合。
+3. **動画台本・VLS** のときは **`leveler-mogulabo/knowledge/playbooks/video-script-howto.md`** と、索引に載っている **`knowledge/vls-scripts/`** の過去台本を読み、文体・構成を合わせる。
+4. トーン統一が必要なら **`leveler-mogulabo/knowledge/brand-voice/tone-and-language.md`**。
+
+新しい台本や確定ナレッジを出したら、ユーザーに **`KNOWLEDGE_INDEX.md` の表を更新する** よう促す（またはエージェント側で更新する）。
+
+タスクが `leveler-mogulabo` と無関係なら、このルールは無視してよい。

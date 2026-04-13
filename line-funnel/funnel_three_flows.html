@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ぽんLINEファネル — 媒体別の流れ（図解）</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="funnel_chart_data.js"></script>
+  <style>
+    :root { font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif; color: #1a1a1a; }
+    body { max-width: 960px; margin: 0 auto; padding: 1.5rem; background: #f6f7f9; }
+    h1 { font-size: 1.35rem; margin-bottom: 0.25rem; }
+    .sub { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5; }
+    .flow {
+      background: #fff; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+      border: 1px solid #e2e4e8; font-size: 0.92rem; line-height: 1.65;
+    }
+    .flow strong { color: #0d47a1; }
+    section.chart-card {
+      background: #fff; border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem;
+      border: 1px solid #e2e4e8;
+    }
+    section.chart-card h2 { font-size: 1rem; margin: 0 0 0.75rem; }
+    .chart-wrap { position: relative; height: 280px; }
+    footer { font-size: 0.8rem; color: #666; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <h1>ぽんLINEファネル — 媒体別の可視化</h1>
+  <p class="sub">
+    横軸は<strong>1月・2月・3月のまとまり</strong>で、その中に<strong>Instagram / YouTube / stand.fm / note</strong>の4本が並びます（グループ化した縦棒）。
+    縦軸は<strong>流入数（人）</strong>です（③の面談予約は件数）。データは <code>funnel_raw.csv</code> と同じです。
+  </p>
+
+  <div class="flow">
+    <strong>流れの図解（概念）</strong><br />
+    各媒体（Instagram / YouTube / stand.fm / note）から
+    <strong>ぽん通常LINE</strong>に人が入る → その後
+    <strong>ぽんイベントLINE</strong>に移行 → イベントLINE側の導線で
+    <strong>個別（面談予約）</strong>に至った件数が、下段グラフの月ごとの4媒体の棒で見えます。
+  </div>
+
+  <section class="chart-card">
+    <h2>① ぽん通常LINE — 各媒体からの流入（人数）</h2>
+    <div class="chart-wrap"><canvas id="cNormal"></canvas></div>
+  </section>
+  <section class="chart-card">
+    <h2>② ぽんイベントLINE — 各媒体からの流入（人数）</h2>
+    <div class="chart-wrap"><canvas id="cEvent"></canvas></div>
+  </section>
+  <section class="chart-card">
+    <h2>③ 個別（面談予約）— 媒体別の件数</h2>
+    <div class="chart-wrap"><canvas id="cMeet"></canvas></div>
+  </section>
+
+  <footer>
+    数値は <code>funnel_raw.csv</code> を編集したうえで、<code>build_dashboard.ps1</code> を実行すると
+    <code>LINE_funnel_dashboard.xlsx</code> と <code>funnel_chart_data.js</code> の両方が更新されます（この HTML は <code>funnel_chart_data.js</code> を読み込みます）。
+  </footer>
+
+  <script>
+    const DATA = window.FUNNEL_DATA;
+    if (!DATA) {
+      document.body.insertAdjacentHTML("afterbegin", "<p style=\"color:#b00020\">funnel_chart_data.js が見つかりません。build_dashboard.ps1 を実行するか、同じフォルダに置いてください。</p>");
+      throw new Error("FUNNEL_DATA missing");
+    }
+
+    function groupedBarConfig(rows, yTitle) {
+      const datasets = DATA.sources.map((name, i) => ({
+        label: name,
+        data: rows.map((monthRow) => monthRow[i]),
+        backgroundColor: DATA.colors[i],
+        borderWidth: 1,
+        borderColor: "#e0e0e0",
+      }));
+      return {
+        type: "bar",
+        data: { labels: DATA.labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: "bottom" },
+            tooltip: {
+              callbacks: {
+                footer: (items) => {
+                  const sum = items.reduce((a, it) => a + (it.parsed.y || 0), 0);
+                  return "月合計: " + sum;
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              stacked: false,
+              title: { display: true, text: "月（その中に4媒体）" },
+            },
+            y: {
+              stacked: false,
+              beginAtZero: true,
+              ticks: { stepSize: 1 },
+              title: { display: true, text: yTitle },
+            },
+          },
+        },
+      };
+    }
+
+    new Chart(document.getElementById("cNormal"), groupedBarConfig(DATA.normalLine, "流入数（人）"));
+    new Chart(document.getElementById("cEvent"), groupedBarConfig(DATA.eventLine, "流入数（人）"));
+    new Chart(document.getElementById("cMeet"), groupedBarConfig(DATA.meetings, "予約数（件）"));
+  </script>
+</body>
+</html>
