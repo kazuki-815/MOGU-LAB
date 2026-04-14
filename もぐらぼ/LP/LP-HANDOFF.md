@@ -2,7 +2,7 @@
 
 > **目的**: 新しいチャットでこのファイルを `@LP-HANDOFF.md` で参照し、「この続きをお願いします」と伝えれば、同じ精度で作業を再開できます。
 >
-> **最終更新**: 2026-04-11
+> **最終更新**: 2026-04-14
 
 ---
 
@@ -14,25 +14,18 @@
 ├── LP-HANDOFF.md       ← 本ファイル（引き継ぎ用）
 ├── mogulabo-lp-copy.md ← コピーライティング原稿
 └── images/
-    ├── case01.png ~ case06.png    ← ビフォーアフター写真（ユーザー提供）
-    ├── feature-counseling.jpg      ← 特徴01 画像
-    ├── feature-food.jpg            ← 特徴02 画像
-    ├── feature-coaching.jpg        ← 特徴03 画像
-    ├── future-mirror.jpg           ← 未来シーン：鏡
-    ├── future-fashion.jpg          ← 未来シーン：ファッション
-    ├── future-meal.jpg             ← 未来シーン：食事
-    ├── future-smile.jpg            ← 未来シーン：友人と会話
-    ├── type-appetite.jpg           ← 食欲過剰タイプ（タイプカード用）
-    ├── type-metabolism.jpg         ← 低代謝タイプ（タイプカード用）
-    ├── type-nutrition.jpg          ← 栄養不足タイプ（タイプカード用）
-    ├── type-lifestyle.jpg          ← 生活乱れタイプ（タイプカード用）
-    ├── edu-type-appetite.jpg       ← 食欲（教育セクション図解用）
-    ├── edu-type-metabolism.jpg     ← 代謝（教育セクション図解用）
-    ├── edu-type-nutrition.jpg      ← 栄養（教育セクション図解用）
-    ├── edu-type-lifestyle.jpg      ← 生活リズム（教育セクション図解用）
-    ├── belief-smile.jpg            ← 信念セクション用（現在未使用・削除済み）
-    ├── story-team.jpg              ← 想いセクション：チーム写真
-    └── story-counseling.jpg        ← 想いセクション：カウンセリング風景
+    ├── mogulab-icon.png        ★新規 お椀＋箸アイコン（FVで使用）
+    ├── mogulab-logo.png        ★新規 もぐラボ横長ロゴ（未使用・予備）
+    ├── worry-woman.png         ★新規 悩む女性写真（お悩みセクション背景透かし）
+    ├── case01.png ~ case06.png ← ビフォーアフター写真（ユーザー提供）
+    ├── future-mirror.png       ← 未来シーン：鏡
+    ├── future-fashion.png      ← 未来シーン：ファッション
+    ├── future-meal.png         ← 未来シーン：食事
+    ├── worry-illust.png        ← お悩みイラスト（現在は非表示）
+    ├── feature-counseling.jpg  ← 特徴01 画像（実ファイル未配置・ブロークン）
+    ├── feature-coaching.jpg    ← 特徴03 画像（実ファイル未配置・ブロークン）
+    ├── story-team.jpg          ← 想いセクション（実ファイル未配置・ブロークン）
+    └── story-counseling.jpg    ← 想いセクション（実ファイル未配置・ブロークン）
 ```
 
 ---
@@ -41,24 +34,24 @@
 
 | # | セクション名 | CSS クラス/背景 | 概要 |
 |---|---|---|---|
-| ① | ファーストビュー | `.fv` `.fv-hero` | ヘッドライン + VSL動画枠 + CTA① |
-| - | お悩み | `.sec--cream` | 6つの吹き出し + SVG女性イラスト |
-| - | 3つの特徴 | `.sec--beige` | ビジュアルカード3枚（写真 + 説明） |
-| - | CTA② | `.sec--white` | キャンペーン帯 |
+| ① | ファーストビュー | `.fv` `.fv-hero` | お椀アイコン＋もぐラボ＋タイトル＋VSL＋CTA① |
+| - | お悩み | `.sec--dark` | ★ダーク背景＋女性透かし画像＋6つの悩みリスト |
+| - | 3つの特徴 | `.sec--beige` | ビジュアルカード3枚（写真01・03はブロークン） |
+| - | CTA② | `.sec--white` | 装飾フレームCTA |
 | ② | 特典 | `.sec--cream` | プロテイン無料プレゼント（詳細未確定） |
-| ③ | 理想の未来 | `.sec--white` | 4シーン写真グリッド + 情景描写 |
-| ④ | 共感＋教育 | `.sec--beige` | なぜうまくいかなかったのか + 4タイプ図解 |
+| ③ | 理想の未来 | `.sec--white` | 4シーン写真グリッド＋情景描写 |
+| ④ | 共感＋教育 | `.sec--beige` | なぜうまくいかなかったのか＋4タイプ図解 |
 | ⑤ | 橋渡し | `.sec--accent` | 「本当に変われるの？」→ 証言へ橋渡し |
-| ⑥ | 卒業生の声 | `.sec--cream` | Case 01〜06（写真+数値+コメント）+ CTA③ |
-| ⑦ | 4タイプ詳細 | `.sec--white` | タイプ別カード4枚（丸写真アイコン80px）+ CTA④ |
-| ⑧ | 信念 | `.sec--beige` | 「私たちが大切にしていること」※丸写真は削除済み（ユーザーが自分で入れる） |
+| ⑥ | 卒業生の声 | `.sec--cream` | Case 01〜06（写真＋数値＋コメント）＋CTA③ |
+| ⑦ | 4タイプ詳細 | `.sec--white` | タイプ別カード4枚＋CTA④ |
+| ⑧ | 信念 | `.sec--beige` | 「私たちが大切にしていること」 |
 | ⑨ | ターゲット選別 | `.sec--white` | おすすめの人 / おすすめしない人 |
-| ⑩ | オファー | `.sec--cream` | 価格比較 + オファーテーブル + CTA⑤ |
-| ⑪ | 講師 | `.sec--beige` | 講師①②のカード（写真プレースホルダー、名前未記入） |
-| ⑫ | 想い | `.sec--white` | もぐラボが生まれた理由 + 丸型2枚写真 |
-| ⑬ | STEP + FAQ | `.sec--cream` | カウンセリングの流れ4ステップ + FAQ5問 |
-| ⑭ | 最終CTA | `.sec--beige` | 「この60分で手に入ること」+ 最終CTA⑥ |
-| - | フッター | `footer` | ロゴ + リンク + Copyright |
+| ⑩ | オファー | `.sec--cream` | 価格比較＋オファーテーブル＋CTA⑤ |
+| ⑪ | 講師 | `.sec--beige` | 講師①②のカード（写真・名前はプレースホルダー） |
+| ⑫ | 想い | `.sec--white` | もぐラボが生まれた理由＋丸型2枚写真（ブロークン） |
+| ⑬ | STEP + FAQ | `.sec--cream` | カウンセリングの流れ4ステップ＋FAQ5問 |
+| ⑭ | 最終CTA | `.sec--beige` | 「この60分で手に入ること」＋最終CTA⑥ |
+| - | フッター | `footer` | ロゴ＋リンク＋Copyright |
 
 ---
 
@@ -68,207 +61,173 @@
 - **見出し**: `Noto Serif JP`（明朝体・高級感）
 - **英語ラベル**: `Cormorant Garamond`（セリフ・欧文）
 - **UI / 補足**: `Noto Sans JP`（ゴシック・可読性重視）
-- **ベースサイズ**: `17px`
+- **ベースサイズ**: `19px`（2026-04-14に17px→19pxへ変更）
 
 ### 3.2 カラーパレット
 ```css
 :root {
-  --cream:       #faf8f5;    /* 背景ベース */
-  --beige:       #f2ece3;    /* セクション背景 */
-  --beige-mid:   #e8ddd0;    /* ボーダー */
-  --beige-dark:  #c4b09a;
-  --brown:       #4a3425;    /* 強調テキスト */
-  --text:        #221810;    /* 本文（濃いめに調整済み） */
-  --text-mid:    #453020;    /* サブテキスト */
-  --text-light:  #6a5545;    /* 補足テキスト */
-  --gold:        #c9a96e;    /* アクセント（ゴールド系） */
+  --cream:       #faf8f5;
+  --beige:       #f2ece3;
+  --beige-mid:   #e8ddd0;
+  --brown:       #4a3425;
+  --text:        #221810;
+  --text-mid:    #453020;
+  --text-light:  #6a5545;
+  --gold:        #c9a96e;
   --gold-light:  #f0e4cc;
-  --green:       #4aab6d;    /* CTAボタン */
-  --green-dark:  #3c9058;
-  --pink-soft:   #f5e6e0;    /* 装飾（フェミニン） */
-  --accent:      #7badc4;    /* アクセント（ソフトブルー） ← 新規追加 */
+  --green:       #3ecf74;   ← 2026-04-14変更（旧#4aab6d より明るく）
+  --green-dark:  #2ebf64;
+  --accent:      #7badc4;
   --accent-dark: #5a92ab;
   --accent-light:#e4f0f6;
-  --accent-pale: #f0f7fb;    /* 橋渡しセクション背景 */
+  --accent-pale: #f0f7fb;
 }
 ```
 
-### 3.3 アクセントカラー（ソフトブルー）の適用箇所
-- セクション英語ラベル（en-label）
-- 特徴カード番号（01, 02, 03）の丸内数字
-- お悩み吹き出しのチェックマーク
-- FAQ Q番号・開閉アイコン
-- Case番号（Case 01 etc.）
-- STEPのドット番号
-- 区切りルール線（gold→accentグラデーション）
-- 未来シーンのラベル帯
-- 実績バッジの背景
-- 橋渡しセクション全体（`.sec--accent`）
-- 「こんな方におすすめ」の上線
-
-### 3.4 アニメーション
-- CTAボタン: `pulse-soft`（脈動）
-- ヘッドライン em: `shimmer`（グラデーション流れ）
-- 特徴カード: `fadeInUp`（順次表示）
-- 吹き出し: `fadeInUp`（順次表示）
-- 橋渡し円: `float`（浮遊）
-- 特典アイコン: `float`（浮遊）
-- カード類: ホバー時に `translateY(-3px)` + shadow
-
-### 3.5 レイアウト
+### 3.3 レイアウト
 - **モバイルファースト**（max-width: 720px）
-- 固定ヘッダー + スマホ固定CTA（768px以下）
+- 全体中央揃え（`.container { text-align: center }`）。リスト・カード内は左揃え維持
+- 固定ヘッダー＋スマホ固定CTA（768px以下）
 - セクション間にSVGウェーブ区切り
-- 装飾ドットパターン（`.deco-dots`）各所に配置
 
 ---
 
-## 4. 確定済み事項（変更しないでください）
-
-1. **ブランド名**: 表示は「もぐラボ」（日本語）
-2. **ファーストビューのアイキャッチ**: `MOGU LAB × Consulting Community`（英語表記、ユーザー指定）
-3. **サービス形態**: 「コンサルコミュニティ」（1対1のコンサルではない。伴走はするが、コミュニティ形式）
-4. **特徴03**: 「コンサルコミュニティで徹底伴走」（旧: 実績ある講師が1対1で伴走）
-5. **CTAボタン**: 緑色（`--green: #4aab6d`）
-6. **フォント**: 明朝体ベース（`Noto Serif JP`）
-7. **対象の人 / そうでない人**: 縦並びレイアウト
-8. **信念セクションの丸写真**: 削除済み（ユーザーが自分で挿入する予定）
-
----
-
-## 5. 前回のフィードバックで残っている課題
-
-### 5.1 画像関連（2026-04-10 更新）
-
-#### 対応済み
-| 画像 | 対応内容 | ソース |
-|---|---|---|
-| 特徴02 画像 | SVGイラスト（右肩上がり習慣化グラフ）に変更 | SVG埋め込み |
-| `future-mirror.png` | ジムで体型チェックする女性 → ローカル画像に差替 | `images/future-mirror.png` |
-| `future-fashion.png` | 黒ニットワンピのミラーセルフィー → ローカル画像に差替 | `images/future-fashion.png` |
-| `future-meal.png` | 日本人女性3人が楽しく食事 → ローカル画像に差替 | `images/future-meal.png` |
-| `future-smile.jpg` | 女性同士の会話シーン → Pexels URL | Pexels 6669928 |
-| `edu-type-appetite` / `type-appetite` | ジャンクフード（バーガー＆フライ）→ Pexels URL | Pexels 4109272 |
-| `edu-type-metabolism` / `type-metabolism` | お腹を気にする女性 → Pexels URL | Pexels 6551127 |
-| お悩みイラスト | お腹を気にして悩む女性イラスト → ローカル画像に差替 | `images/worry-illust.png` |
-
-#### 未対応（引き続き要対応）
-| 画像 | 備考 |
-|---|---|
-| `edu-type-nutrition.jpg` / `type-nutrition.jpg` | ローカル参照のまま（ユーザーは現行画像でOKと判断、四角・大サイズに変更済み）。`images/` に実ファイルを配置する必要あり |
-| `edu-type-lifestyle.jpg` / `type-lifestyle.jpg` | ローカル参照のまま（変更不要とのこと）。`images/` に実ファイルを配置する必要あり |
-| `case01~06.png` | 画質が荒い。ユーザーに高解像度版を依頼する必要あり |
-| `future-smile.jpg` | 「きれいになったね」シーンはまだPexels URL。最終的にローカル画像に差し替え推奨 |
-
-> **重要**: フリー素材はできるだけ日本人の画像を使用すること。
-> **重要**: 4タイプ図解（教育セクション）とタイプ詳細セクションで同じタイプの画像が統一されていること（対応済み）。
-
-### 5.2 デザイン変更（2026-04-10 実施済み）
-- **全体テキスト中央揃え**: `.container` に `text-align: center` を追加。リスト・カード内部は左揃え維持
-- **`rule--left` → 中央**: margin を `20px auto` に変更
-- **理想の未来テキスト強調**: シーンアイコン（絵文字）追加、キーフレーズにゴールドのアンダーラインハイライト（`.highlight-line`）、プルクォート内のフォントサイズ拡大
-- **4タイプ図解リデザイン**: 丸型76pxアイコン → 角丸8px・幅100%・アスペクト比4:3の四角画像。テキストを1行（`<br>` 削除）
-- **テキスト色**: 調整済み（`--text: #221810`, `--text-mid: #453020`, `--text-light: #6a5545`）
-- **アクセントカラー**: ソフトブルー `#7badc4` 追加済み
-
-### 5.3 まだ入っていないコンテンツ
-- **講師セクション**: 講師①②の名前・写真がプレースホルダーのまま
-- **最終CTAのリンク**: `href="YOUR_LINE_URL"` が未設定
-- **特典（プロテイン）**: 商品名・内容量・受取条件が未確定
-- **VSL動画**: 埋め込みコードが未設定
-
-### 5.4 ユーザーが「ワクワク感」を求めている
-- 「このLPを見ただけでワクワクして楽しくなるような感じ」を望んでいる
-- CSSアニメーション追加済み。理想の未来セクションに視覚強調を追加済み
-
----
-
-## 6. ユーザーの好み・方針まとめ
-
-- **女性向け**（20〜40代主婦・ワーママがメイン）
-- **高級感 + 可愛さ**のバランス（白×ベージュ×ゴールドベースに、ソフトブルーのアクセント）
-- **参考LP**: https://pilates.azure-collaboration.co.jp/lineshortlp-meta/（配色・構成参考）
-- **テキストだけだと離脱する** → 各ブロックに画像・図解を入れること
-- **CTAは頻繁に**配置（現在6箇所 + 固定CTA）
-- **明朝体**ベースで高級感
-- **CTAは緑色**ボタン
-
----
-
-## 7. 次のチャットで最初にやること
-
-新しいチャットを開いたら、以下のように伝えてください：
+## 4. ファーストビュー（FV）仕様 ★2026-04-14 全面リデザイン
 
 ```
-@LP-HANDOFF.md を読んで、もぐラボLPの続きをお願いします。
-@index.html が現在のLP本体です。
+[ お椀アイコン（mogulab-icon.png）120px丸・中央 ]
+   MOGU LAB  /  もぐラボ
+
+運動や糖質カットを試しても痩せなかったあなたに
+3食たべて無理なく痩せる           ← 小サイズ (fv-lead-small)
+
+タイプ別
+痩せ方メソッド                    ← 最大サイズ (fv-main-title / 最大4.2rem)
+
+[ 特別公開 ]                      ← ゴールドバッジ (fv-release-badge)
+Type-based Method                 ← スクリプト体・薄め (fv-script)
 ```
 
-上記の残課題（セクション5）と、**直近の要点（セクション9）** を伝えて、修正を進めてもらってください。
+**背景**: ウォームゴールドのグラデーション＋CSSボケ光彩（`radial-gradient` 多重）  
+**パディング**: 上下64px/60px
 
 ---
 
-## 8. 一般公開（デプロイの自動化）
+## 5. CTAデザイン仕様 ★2026-04-14 全面刷新（全6箇所統一）
 
-### ステップ0（済・このリポジトリで実施済み）
+### 旧デザイン（削除）
+`.cta-glam-wrap` / `.price-impact.cta-glam` — 価格「0円」・ピンクリボン・ピンクドット背景
 
-- `c:\Users\kazuk\.cursor\tesuto` で **`git init`（ブランチ `main`）** と **初回コミット** を作成済み
-- **`.gitignore`** を追加（`.env`、Excel の一時ファイル `~$*` などを除外）
-- 以降のコミット用に、必要ならこのフォルダで次を実行して **自分の名前・メール** に差し替えてください:  
-  `git config user.name "あなたの名前"`  
-  `git config user.email "あなたのGitHub用メール"`
+### 新デザイン（現行）
+`.deco-cta-wrap` / `.deco-cta-frame` — ゴールド装飾フレーム
 
-**現状**: `index.html` をローカルで開いているだけでは、インターネット上のURLにはなりません（一般公開不可）。
-
-**用意したもの**（このリポジトリ内）:
-
-| ファイル | 役割 |
-|---|---|
-| `もぐらぼ/LP/netlify.toml` | Netlify 用（公開ディレクトリ＝LPフォルダ） |
-| `もぐらぼ/LP/deploy.ps1` | PCから1コマンドで本番反映（Netlify CLI） |
-| `.github/workflows/deploy-mogulabo-lp.yml` | **GitHub に push したら自動で Netlify 本番デプロイ** |
-
-### 初回だけ（人間がやること）
-
-1. **GitHub** にこのプロジェクトをリポジトリとして push（まだなら `git init` → リモート作成 → `push`）。  
-2. **Netlify** でアカウント作成 → 空のサイトを1つ作成。  
-3. Netlify の **Personal access token** と **Site ID** を取得。  
-4. GitHub リポジトリの **Settings → Secrets and variables → Actions** に登録:  
-   - `NETLIFY_AUTH_TOKEN`  
-   - `NETLIFY_SITE_ID`  
-
-### 以降（自動）
-
-- `もぐらぼ/LP/` 以下を編集して **`main`（または `master`）に push** すると、GitHub Actions が走り **本番URLに自動反映**されます。  
-- 手元ですぐ出したいときは、`もぐらぼ/LP` で PowerShell から  
-  `.\deploy.ps1`  
-  （初回は同フォルダで `npx netlify login` と `npx netlify link` が必要な場合あり）
-
-**注意**: 独自ドメイン・Basic認証・プレビュー用ブランチなどは Netlify / GitHub の画面側で追加設定してください。
-
-**進捗（2026-04）**: GitHub リポジトリ **`kazuki-815/MOGU-LAB`** へ push 済み。Netlify 連携で **本番デプロイ成功**。ルートがリポジトリ全体の場合は LP は **`/もぐらぼ/LP/`** 配下。トップを LP にしたい場合は Netlify の **Base directory = `もぐらぼ/LP`** を推奨。
+```html
+<div class="deco-cta-wrap">
+  <!-- 四隅にSVGコーナー装飾（ゴールド） -->
+  <div class="deco-cta-frame">
+    <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+    <div class="deco-cta-divider"></div>
+    <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+    <!-- accent-num: オレンジ #e07a20 / 3.4rem -->
+    <p class="deco-cta-title">
+      あなた専用の<br>
+      <span class="underline-em">パーソナルカウンセリング</span>を<br>
+      開催します！
+    </p>
+    <!-- underline-em: ゴールドアンダーライン / ブラウン色 -->
+    <a href="YOUR_LINE_URL" class="btn btn--primary btn--cta-pulse">
+      まずは話を聞いてみる　→
+    </a>
+    <!-- パルス＋バウンスアニメーション / 色: #3ecf74 -->
+  </div>
+</div>
+```
 
 ---
 
-## 9. 会話コンパクトサマリ（LPをまた詰めるとき用）
+## 6. お悩みセクション仕様 ★2026-04-14 リデザイン
 
-新チャットでは例: **`@もぐらぼ/LP/LP-HANDOFF.md と @もぐらぼ/LP/index.html を読んで、LPの続きを詰めて`** で十分。
+**背景**: `.sec--dark`（深みのある暗茶〜黒グラデーション）  
+**右側**: `worry-woman.png` を opacity 18%・グラデーションマスクで透かし配置  
+**文言**（6項目）:
+1. 食べる量を減らしても、なかなか痩せない。
+2. 口が寂しくて、つい甘いものを食べてしまう。
+3. 疲れたときに味が濃いものが欲しくなる。
+4. 痩せると決めたのに、1週間も持たない。
+5. 昔よりも痩せにくくなった。
+6. 体が重く、寝ても疲れが取れない。
 
-### 本体・方針
+**スタイル**: ゴールド左ボーダー＋半透明背景ボックス（`.worry-item-dark`）
 
-- **LP**: `もぐらぼ/LP/index.html`（HTML + インラインCSS 1ファイル）
-- **参考**: タイポ・テンポ [ピラティス参考LP](https://pilates.azure-collaboration.co.jp/lineshortlp-meta/) 系。高級感・CTAの「華やさ」はキャンペーン風カード（`.cta-glam-wrap` / `.cta-glam`）で実装済み
-- **反映**: 編集後 **`git commit` → `git push`（`main`）** で Netlify が自動更新（Git 連携前提）
+---
 
-### 実装済み（覚えておく程度）
+## 7. 情報待ち・未確定事項
 
-- 全体中央寄せ＋リスト等は左寄せ維持、セクション見出しの強調（`.em-big` 等）
-- お悩みイラスト・未来4シーンの一部を **ローカル `images/`** に（`worry-illust.png` 等）
-- CTAブロック: ピンクドット背景・白カード・グラデ見出し＋マーカー・**緑リボン**・ピンクピル・黄色吹き出し＋大きい **0円**・緑ボタン（`pulse-soft` 維持）。CTA④のみ `.cta-glam--type`（タイプ診断応援）
-- デプロイ用: `netlify.toml`、`deploy.ps1`、`.github/workflows/deploy-mogulabo-lp.yml`（Secrets 未設定でも Netlify UI 連携だけなら運用可）
+| 項目 | 状況 |
+|------|------|
+| **LINE URL** | `YOUR_LINE_URL` のまま（全CTAに適用） |
+| **VSL動画** | プレースホルダーのまま（後で差し替え） |
+| **講師名・写真** | 「講師①②のお名前を入れてください」のまま |
+| **プロテイン特典** | 商品名・内容量・受取条件が未確定 |
+| **特徴カード画像** | `feature-counseling.jpg` / `feature-coaching.jpg` 実ファイル未配置 |
+| **想いセクション写真** | `story-team.jpg` / `story-counseling.jpg` 実ファイル未配置 |
 
-### まだ詰めるとよいこと（LP-HANDOFF §5 と重複）
+---
 
-- `YOUR_LINE_URL`、VSL埋め込み、講師①②の実名・写真、特典（プロテイン）確定文案
-- `case01〜06` 高解像度差し替え、必要なら未来・4タイプの日本人写真の最終差し替え
-- Netlify **Base directory = `もぐらぼ/LP`** でルートを LP に統一（任意だが推奨）
+## 8. ローカルプレビュー方法
+
+PowerShell HttpListenerで起動中（port 8081）。  
+新しいチャットで再起動が必要な場合は以下を実行：
+
+```powershell
+# PowerShellで実行（バックグラウンド）
+$listener = [System.Net.HttpListener]::new()
+$listener.Prefixes.Add('http://localhost:8081/')
+$listener.Start()
+Write-Host "Serving at http://localhost:8081/"
+while ($listener.IsListening) {
+  $ctx = $listener.GetContext()
+  $req = $ctx.Request; $res = $ctx.Response
+  $localPath = $req.Url.LocalPath
+  if ($localPath -eq '/') { $localPath = '/index.html' }
+  $filePath = "c:\Users\kazuk\.cursor\tesuto\もぐらぼ\LP" + $localPath.Replace('/', '\')
+  if (Test-Path $filePath) {
+    $bytes = [System.IO.File]::ReadAllBytes($filePath)
+    $ext = [System.IO.Path]::GetExtension($filePath)
+    $mime = switch ($ext) {
+      '.html' { 'text/html; charset=utf-8' }; '.css' { 'text/css' }
+      '.js' { 'application/javascript' }; '.png' { 'image/png' }
+      '.jpg' { 'image/jpeg' }; '.svg' { 'image/svg+xml' }
+      default { 'application/octet-stream' }
+    }
+    $res.ContentType = $mime; $res.ContentLength64 = $bytes.Length
+    $res.OutputStream.Write($bytes, 0, $bytes.Length)
+  } else { $res.StatusCode = 404 }
+  $res.Close()
+}
+```
+
+---
+
+## 9. デプロイ情報
+
+- Git リポジトリ: `kazuki-815/MOGU-LAB`（main ブランチ）
+- Netlify 自動デプロイ: `.github/workflows/deploy-mogulabo-lp.yml`
+- Netlify設定ファイル: `もぐらぼ/LP/netlify.toml`
+- 手動デプロイ: `もぐらぼ/LP/deploy.ps1`
+- 推奨: Netlify の **Base directory = `もぐらぼ/LP`** でルートをLPに統一
+
+---
+
+## 10. 次のチャットで最初にやること
+
+```
+@もぐらぼ/LP/LP-HANDOFF.md と @もぐらぼ/LP/index.html を読んで、LPの続きを詰めてください。
+```
+
+**優先タスク候補**:
+1. LINE URLが決まったら `YOUR_LINE_URL` を全箇所置換
+2. VSL動画URLが決まったら埋め込みコード差し替え
+3. 講師名・写真が揃ったら講師セクション更新
+4. プロテイン特典の詳細が決まったら特典セクション更新
+5. 特徴カード・想いセクションの画像が揃ったら差し替え

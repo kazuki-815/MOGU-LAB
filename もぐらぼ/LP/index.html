@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 17px; scroll-behavior: smooth; }
+    html { font-size: 19px; scroll-behavior: smooth; }
     body {
       font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
       background: #faf8f5;
@@ -616,13 +616,40 @@
       transition: all 0.2s; border: none; font-family: 'Noto Sans JP', sans-serif;
     }
     .btn--primary {
-      background: var(--green); color: var(--white);
+      background: #3ecf74; color: var(--white);
       font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1rem; font-weight: 500; letter-spacing: 0.06em;
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.06em;
       padding: 20px 32px; border-radius: 4px;
-      box-shadow: 0 4px 16px rgba(74,171,109,0.35);
+      box-shadow: 0 4px 20px rgba(62,207,116,0.45);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
     }
-    .btn--primary:hover { background: var(--green-dark); box-shadow: 0 6px 24px rgba(74,171,109,0.4); }
+    .btn--primary:hover {
+      background: #2ebf64;
+      box-shadow: 0 8px 28px rgba(62,207,116,0.55);
+      transform: translateY(-1px);
+    }
+
+    /* CTAパルスアニメーション */
+    @keyframes cta-pulse {
+      0%   { box-shadow: 0 4px 20px rgba(62,207,116,0.45), 0 0 0 0 rgba(62,207,116,0.55); }
+      60%  { box-shadow: 0 4px 20px rgba(62,207,116,0.45), 0 0 0 14px rgba(62,207,116,0); }
+      100% { box-shadow: 0 4px 20px rgba(62,207,116,0.45), 0 0 0 0 rgba(62,207,116,0); }
+    }
+    @keyframes cta-bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-4px); }
+    }
+    .btn--cta-pulse {
+      border-radius: 999px !important;
+      max-width: 340px; margin: 0 auto;
+      font-size: 1.08rem !important;
+      padding: 20px 28px !important;
+      animation: cta-pulse 2s ease-out infinite, cta-bounce 2.4s ease-in-out infinite;
+    }
+    .btn--cta-pulse:hover {
+      animation: none;
+      transform: translateY(-2px);
+    }
     .cb-note {
       font-size: 0.75rem; color: var(--text-light); margin-top: 12px; line-height: 1.7;
     }
@@ -634,41 +661,104 @@
     /* ===== ① ファーストビュー ===== */
     .fv { padding-top: 80px; background: var(--white); }
     .fv-hero {
-      background: linear-gradient(180deg, var(--beige) 0%, var(--pink-soft) 100%);
-      padding: 60px 24px 48px; text-align: center;
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; text-align: center;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 30%, rgba(255,248,225,0.9) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 45% at 75% 65%, rgba(255,228,180,0.7) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 60% 10%, rgba(255,255,230,0.6) 0%, transparent 60%),
+        linear-gradient(150deg, #f8edda 0%, #f2e3c4 55%, #ead8b0 100%);
+      padding: 64px 24px 60px;
     }
-    .fv-hero .deco-circle-1 {
-      position: absolute; top: -40px; right: -40px; width: 180px; height: 180px;
-      border-radius: 50%; background: rgba(201,169,110,0.08);
+    /* ボケ光彩 */
+    .fv-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle 90px at 8% 15%, rgba(255,255,255,0.7) 0%, transparent 70%),
+        radial-gradient(circle 70px at 92% 80%, rgba(255,235,190,0.65) 0%, transparent 70%),
+        radial-gradient(circle 110px at 50% 95%, rgba(255,215,160,0.35) 0%, transparent 70%),
+        radial-gradient(circle 55px at 20% 75%, rgba(255,255,255,0.45) 0%, transparent 70%),
+        radial-gradient(circle 75px at 78% 12%, rgba(255,255,255,0.55) 0%, transparent 70%),
+        radial-gradient(circle 45px at 55% 50%, rgba(255,255,255,0.3) 0%, transparent 70%);
     }
-    .fv-hero .deco-circle-2 {
-      position: absolute; bottom: -20px; left: -30px; width: 120px; height: 120px;
-      border-radius: 50%; background: rgba(232,196,184,0.15);
+    .fv-hero-inner {
+      position: relative; z-index: 1;
+      max-width: 600px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
     }
-    .fv-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.78rem; letter-spacing: 0.3em; color: var(--gold);
-      text-transform: uppercase; margin-bottom: 16px; position: relative;
+    /* ロゴブロック（アイコン上・テキスト下） */
+    .fv-logo-block {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px; margin-bottom: 28px;
     }
+    .fv-bowl-icon {
+      width: 130px; height: 130px;
+      background: rgba(255,255,255,0.65);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(140,90,20,0.18), inset 0 1px 0 rgba(255,255,255,0.9);
+      overflow: hidden; padding: 16px;
+    }
+    .fv-bowl-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .fv-logo-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.5rem; font-weight: 600; letter-spacing: 0.28em;
+      color: #7a5a2a;
+      line-height: 1.2; text-align: center;
+    }
+    .fv-logo-text span {
+      display: block;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.2em;
+      color: #9a7a3a;
+    }
+    /* サブコピー */
+    .fv-lead-small {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.95rem; font-weight: 400; color: rgba(74,52,37,0.78);
+      letter-spacing: 0.04em; line-height: 2;
+      margin-bottom: 16px;
+    }
+    /* メインタイトル：タイプ別痩せ方メソッド */
+    .fv-main-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2.8rem, 11vw, 4.2rem);
+      font-weight: 700; color: #2e1e0a;
+      letter-spacing: 0.07em; line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 2px 2px 0 rgba(255,255,255,0.55), 0 4px 16px rgba(120,80,20,0.14);
+    }
+    /* 特別公開バッジ */
+    .fv-release-badge {
+      display: inline-block;
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.15rem, 4vw, 1.5rem);
+      font-weight: 700; color: #fff; letter-spacing: 0.12em;
+      background: linear-gradient(135deg, #b8894a 0%, #e0b96a 45%, #c9973e 100%);
+      padding: 11px 36px;
+      border: 2px solid rgba(255,255,255,0.55);
+      box-shadow: 0 4px 18px rgba(140,90,20,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    /* スクリプト装飾 */
+    .fv-script {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.3rem; font-style: italic; font-weight: 400;
+      color: rgba(180,130,50,0.42); letter-spacing: 0.06em;
+      margin-top: 10px; display: block;
+    }
+
     .fv-headline {
       font-family: 'Noto Serif JP', serif;
-      font-size: 1.5rem; font-weight: 500; line-height: 1.65; color: var(--text-mid);
-      margin-bottom: 20px; letter-spacing: 0.06em; position: relative;
+      font-size: 1.5rem; font-weight: 700; line-height: 1.45; color: var(--text);
+      margin-bottom: 10px; letter-spacing: 0.04em; position: relative;
     }
     .fv-headline em {
       font-style: normal; display: block;
-      font-size: 2.6rem; font-weight: 700; color: var(--brown);
-      letter-spacing: 0.1em; line-height: 1.35; margin: 8px 0;
+      font-size: 0.9rem; font-weight: 500; color: var(--text-light);
+      letter-spacing: 0.03em; line-height: 1.8; margin-bottom: 6px;
     }
-    .fv-sub {
-      font-size: 0.88rem; color: var(--text-light); line-height: 1.9;
-      max-width: 480px; margin: 0 auto 28px; position: relative;
-    }
-    .fv-sub strong { color: var(--brown); font-weight: 700; font-size: 1rem; }
-    .fv-points {
-      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
-    }
+    .fv-sub { font-size: 0.82rem; color: var(--text-light); line-height: 1.9; margin-top: 10px; }
+    .fv-sub strong { color: var(--brown); font-weight: 700; font-size: 0.9rem; }
+    .fv-points { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
     .fv-point {
       background: var(--white); border: 1px solid var(--beige-mid);
       font-family: 'Noto Sans JP', sans-serif;
@@ -678,6 +768,71 @@
     .fv-point .num {
       font-family: 'Cormorant Garamond', serif; font-weight: 600;
       color: var(--gold); margin-right: 6px; font-size: 0.9rem;
+    }
+
+    /* ===== 装飾フレームCTA ===== */
+    .deco-cta-wrap {
+      position: relative;
+      margin: 36px 0 44px;
+      max-width: 520px;
+      margin-left: auto; margin-right: auto;
+    }
+    .deco-cta-frame {
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 36px 28px 32px;
+      background: linear-gradient(180deg, #fffef9 0%, #fdfaf2 100%);
+      position: relative;
+      text-align: center;
+    }
+    .deco-cta-frame::before,
+    .deco-cta-frame::after {
+      content: '';
+      position: absolute;
+      border: 1px solid var(--gold-light);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .deco-cta-frame::before { top: 6px; left: 6px; right: 6px; bottom: 6px; }
+    .deco-cta-corner {
+      position: absolute; width: 48px; height: 48px; pointer-events: none;
+    }
+    .deco-cta-corner--tl { top: -4px; left: -4px; }
+    .deco-cta-corner--tr { top: -4px; right: -4px; transform: scaleX(-1); }
+    .deco-cta-corner--bl { bottom: -4px; left: -4px; transform: scaleY(-1); }
+    .deco-cta-corner--br { bottom: -4px; right: -4px; transform: scale(-1); }
+    .deco-cta-sub {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem; font-weight: 500; color: var(--text-light);
+      letter-spacing: 0.08em; margin-bottom: 10px;
+    }
+    .deco-cta-divider {
+      width: 60px; height: 1px; background: var(--gold);
+      margin: 0 auto 14px;
+    }
+    .deco-cta-days {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2.8rem; font-weight: 700; color: var(--brown);
+      letter-spacing: 0.05em; line-height: 1.2; margin-bottom: 8px;
+    }
+    .deco-cta-days .accent-num {
+      color: #e07a20;
+      font-size: 3.4rem;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: baseline;
+    }
+    .deco-cta-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--text);
+      line-height: 1.75; margin-bottom: 24px;
+    }
+    .deco-cta-title .underline-em {
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 4px;
+      text-decoration-thickness: 2px;
+      color: var(--brown);
     }
     .vsl-wrap {
       background: #1a1510; aspect-ratio: 16/9;
@@ -701,46 +856,74 @@
       width: 14px; height: 1px; background: var(--gold);
     }
 
-    /* ===== お悩みセクション（吹き出しスタイル） ===== */
-    .worry-wrap {
-      position: relative; padding-bottom: 20px;
+    /* ===== お悩みセクション（ダークスタイル） ===== */
+    .sec--dark {
+      background: linear-gradient(160deg, #1e1a16 0%, #2a2118 50%, #1a1610 100%);
+      position: relative; overflow: hidden;
     }
-    .worry-bubbles {
-      display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;
-    }
-    .worry-bubble {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 18px 22px;
-      font-size: 0.92rem;
-      color: var(--text-mid);
-      line-height: 1.7;
-      position: relative;
-      box-shadow: 0 2px 12px rgba(90,66,50,0.06);
-    }
-    .worry-bubble::before {
-      content: '☑';
+    /* 女性の背景画像（右側・透かし） */
+    .sec--dark::after {
+      content: '';
       position: absolute;
-      left: -6px; top: 50%; transform: translateY(-50%);
-      color: var(--accent);
-      font-size: 0.75rem;
-      background: var(--accent-pale);
-      width: 22px; height: 22px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      border: 1px solid var(--accent-light);
+      top: 0; right: 0; bottom: 0;
+      width: 55%;
+      background: url('images/worry-woman.png') center top / cover no-repeat;
+      opacity: 0.18;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+      pointer-events: none;
     }
-    .worry-bubble strong { color: var(--brown); font-weight: 600; }
-    .worry-illust {
-      display: flex; justify-content: center; margin: 8px 0 20px;
+    .sec--dark::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 60%, rgba(100,70,30,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 15% 30%, rgba(80,50,20,0.15) 0%, transparent 60%);
     }
-    .worry-illust svg { width: 140px; height: auto; }
-    .worry-lead {
-      text-align: center; margin-top: 20px; font-size: 0.92rem; color: var(--text-mid); line-height: 1.8;
+    .sec--dark .container { position: relative; z-index: 2; }
+    .worry-title-dark {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      font-weight: 700; color: #fff;
+      text-align: center; letter-spacing: 0.06em; line-height: 1.4;
+      margin-bottom: 36px; position: relative;
     }
-    .worry-lead strong {
-      display: block; font-size: 1.1rem; font-weight: 700; color: var(--brown);
-      margin-top: 10px;
+    .worry-title-dark::after {
+      content: '';
+      display: block; width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 16px auto 0;
+    }
+    .worry-list-dark {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 40px; position: relative;
+    }
+    .worry-item-dark {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 16px 20px;
+      backdrop-filter: blur(4px);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.97rem; font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+      transition: background 0.2s;
+    }
+    .worry-item-dark::before {
+      content: '・';
+      color: var(--gold); font-size: 1.3rem; flex-shrink: 0; line-height: 1;
+    }
+    .worry-lead-dark {
+      text-align: center; position: relative;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.9;
+    }
+    .worry-lead-dark strong {
+      display: block; font-size: 1.2rem; font-weight: 700;
+      color: #fff; margin-top: 10px;
     }
 
     /* ===== 3つの特徴（大きなビジュアルカード） ===== */
@@ -1420,6 +1603,195 @@
       .luxury-banner .lb-main em { font-size: 2.8rem; }
       .luxury-banner .lb-script { font-size: 2.5rem; }
     }
+
+    /* ===== 敵を特定するセクション ===== */
+    .type-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .type-preview-item {
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: 14px;
+      padding: 22px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(74,52,37,0.06);
+    }
+    .type-preview-icon { font-size: 2rem; line-height: 1; }
+    .type-preview-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .enemy-conclusion {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--beige) 100%);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 14px 14px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+      text-align: left;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--text);
+    }
+
+    /* ===== 4タイプ チラ見せカード ===== */
+    .type-check-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .type-check-card {
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: left;
+      box-shadow: 0 2px 12px rgba(74,52,37,0.07);
+    }
+    .type-check-header {
+      background: linear-gradient(135deg, var(--beige) 0%, var(--beige-mid) 100%);
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid var(--beige-mid);
+    }
+    .type-check-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .type-check-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .type-check-sub {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    .type-check-list {
+      padding: 14px 22px;
+      list-style: none;
+    }
+    .type-check-list li {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      padding: 7px 0 7px 22px;
+      position: relative;
+      border-bottom: 1px solid var(--beige);
+      line-height: 1.6;
+    }
+    .type-check-list li:last-child { border-bottom: none; }
+    .type-check-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .type-check-solution {
+      background: var(--accent-pale);
+      border-top: 1px solid var(--accent-light);
+      padding: 13px 22px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      text-align: center;
+      line-height: 1.6;
+    }
+    .type-check-solution::before {
+      content: '💡 ';
+    }
+
+    /* ===== オファー価値比較 ===== */
+    .offer-value-box {
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: 16px;
+      padding: 36px 24px;
+      text-align: center;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(74,52,37,0.08);
+    }
+    .offer-value-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
+    }
+    .offer-value-label {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      letter-spacing: 0.08em;
+    }
+    .offer-value-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      margin-bottom: 10px;
+    }
+    .offer-value-arrow {
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin: 6px 0;
+    }
+    .offer-value-free {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .offer-free-badge {
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+    }
+    .offer-free-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+    }
+    .offer-value-reason {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+    }
   </style>
 </head>
 <body>
@@ -1445,22 +1817,26 @@
 <!-- ═══════════════════════════════════ -->
 <section class="fv">
   <div class="fv-hero">
-    <div class="deco-circle-1"></div>
-    <div class="deco-circle-2"></div>
-    <p class="fv-eyebrow">MOGU LAB × Consulting Community</p>
-    <h1 class="fv-headline">
-      ダイエット業界が教えてくれない
-      <em>タイプ別・痩せ方メソッド</em>
-    </h1>
-    <div class="fv-points">
-      <span class="fv-point"><span class="num">01</span>タイプ診断</span>
-      <span class="fv-point"><span class="num">02</span>食べ痩せ習慣</span>
-      <span class="fv-point"><span class="num">03</span>徹底伴走</span>
+    <div class="fv-hero-inner">
+      <!-- ロゴブロック：アイコン上・テキスト下 -->
+      <div class="fv-logo-block">
+        <div class="fv-bowl-icon">
+          <img src="images/mogulab-icon.png" alt="もぐラボ アイコン">
+        </div>
+        <div class="fv-logo-text">
+          MOGU LAB
+          <span>もぐラボ</span>
+        </div>
+      </div>
+      <!-- サブコピー（小さく） -->
+      <p class="fv-lead-small">運動や糖質カットを試しても痩せなかったあなたに<br>3食たべて無理なく痩せる</p>
+      <!-- メインタイトル（大きく） -->
+      <h1 class="fv-main-title">タイプ別<br>痩せ方メソッド</h1>
+      <!-- 特別公開バッジ -->
+      <span class="fv-release-badge">特別公開</span>
+      <!-- スクリプト装飾 -->
+      <span class="fv-script">Type-based Method</span>
     </div>
-    <p class="fv-sub">
-      何度挑戦しても、リバウンド。<br>
-      <strong>原因は「あなたに合った方法」を<br>知らなかっただけ。</strong>
-    </p>
   </div>
 
   <div class="vsl-wrap">
@@ -1469,41 +1845,20 @@
       VSL 動画をここに埋め込み
     </div>
   </div>
-  <div class="vsl-bullets">
-    <ul>
-      <li>なぜ今まで何をやっても続かなかったのか、その本当の理由</li>
-      <li>あなたに合った「4つの痩せ方タイプ」の見つけ方</li>
-      <li>無理な食事制限なしで変化が出る仕組み</li>
-    </ul>
-  </div>
-
   <!-- CTA① -->
   <div class="container">
-    <div class="cta-glam-wrap">
-      <div class="price-impact cta-glam">
-        <div class="cta-glam-title-block">
-          <span class="cta-glam-title-mark"><span class="cta-glam-title-grad">カウンセリング応援</span></span>
-          <span class="cta-glam-title-plain">特別無料キャンペーン</span>
-        </div>
-        <div class="cta-glam-ribbon-wrap">
-          <span class="cta-glam-spark" aria-hidden="true">✦</span>
-          <div class="cta-glam-ribbon">先着15名様限定</div>
-          <span class="cta-glam-spark cta-glam-spark--r" aria-hidden="true">✦</span>
-        </div>
-        <p class="cta-glam-pill">パーソナルカウンセリング ＋ タイプ診断</p>
-        <p class="cta-glam-catch">今なら<em>無料！</em></p>
-        <div class="cta-glam-hero">
-          <div class="cta-glam-bubble">通常価格<span class="cta-glam-bubble-price">3,000円</span>が</div>
-          <div class="cta-glam-price-big">
-            <span class="pi-price-new">0</span><span class="cta-glam-yen">円</span>
-          </div>
-        </div>
-        <div class="pi-extras">
-          <span class="pi-tag">Zoom で約60分</span>
-          <span class="pi-tag">プロテイン特典あり</span>
-        </div>
-        <a href="#cta-final" class="btn btn--primary">まずは話を聞いてみる　→</a>
-        <p class="cta-glam-foot">※枠が埋まり次第終了 ／ 無理な勧誘は一切ありません</p>
+    <div class="deco-cta-wrap">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
     </div>
   </div>
@@ -1521,44 +1876,31 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- お悩みセクション（吹き出しスタイル） -->
+<!-- お悩みセクション（ダークスタイル）   -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--cream" style="padding-top:32px;">
-  <div class="deco-dots" style="top:40px; right:20px;"></div>
-  <div class="deco-dots" style="bottom:60px; left:10px; transform:rotate(30deg);"></div>
+<section class="sec--dark" style="padding: 72px 0;">
   <div class="container">
-    <span class="en-label text-center">Your Worries</span>
-    <h2 class="section-title text-center">こんなお悩みは<br>ありませんか？</h2>
-    <div class="rule"></div>
+    <h2 class="worry-title-dark">こんなお悩み<br>ありませんか？</h2>
 
-    <div class="worry-wrap">
-      <div class="worry-bubbles">
-        <div class="worry-bubble"><strong>何をやってもリバウンド</strong>してしまう</div>
-        <div class="worry-bubble">もう<strong>意志力じゃ無理</strong>だと感じている</div>
-        <div class="worry-bubble">情報が多すぎて<strong>正解がわからない</strong></div>
-        <div class="worry-bubble"><strong>我慢のダイエット</strong>はもう限界</div>
-        <div class="worry-bubble">相談したいけど<strong>売り込みが怖い</strong></div>
-        <div class="worry-bubble"><strong>忙しくて時間がない</strong></div>
-      </div>
-
-      <!-- 悩んでいる女性イラスト -->
-      <div class="worry-illust">
-        <img src="images/worry-illust.png" alt="ダイエットに悩む女性" style="width:200px; height:auto; margin:0 auto;">
-      </div>
+    <div class="worry-list-dark">
+      <div class="worry-item-dark">食べる量を減らしても、なかなか痩せない。</div>
+      <div class="worry-item-dark">口が寂しくて、つい甘いものを食べてしまう。</div>
+      <div class="worry-item-dark">疲れたときに味が濃いものが欲しくなる。</div>
+      <div class="worry-item-dark">痩せると決めたのに、1週間も持たない。</div>
+      <div class="worry-item-dark">昔よりも痩せにくくなった。</div>
+      <div class="worry-item-dark">体が重く、寝ても疲れが取れない。</div>
     </div>
 
-    <p class="worry-lead">
+    <p class="worry-lead-dark">
       そんなあなたに——
-      <strong>もぐラボのコンサルコミュニティがおすすめです</strong>
+      <strong>もぐラボのパーソナルカウンセリングがおすすめです</strong>
     </p>
   </div>
 </section>
 
 
-<!-- ═══════════════════════════════════ -->
-<!-- ウェーブ区切り                       -->
-<!-- ═══════════════════════════════════ -->
-<div class="wave-divider">
+<!-- ウェーブ区切り（ダーク→ベージュ） -->
+<div class="wave-divider" style="background:#1a1610;">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,10 1440,30 L1440,80 L0,80 Z" class="wave-beige"/>
   </svg>
@@ -1653,27 +1995,18 @@
 <!-- CTA② -->
 <section class="sec--white" style="padding:40px 0;">
   <div class="container">
-    <div class="cta-glam-wrap">
-      <div class="price-impact cta-glam">
-        <div class="cta-glam-title-block">
-          <span class="cta-glam-title-mark"><span class="cta-glam-title-grad">カウンセリング応援</span></span>
-          <span class="cta-glam-title-plain">特別無料キャンペーン</span>
-        </div>
-        <div class="cta-glam-ribbon-wrap">
-          <span class="cta-glam-spark" aria-hidden="true">✦</span>
-          <div class="cta-glam-ribbon">先着15名様限定</div>
-          <span class="cta-glam-spark cta-glam-spark--r" aria-hidden="true">✦</span>
-        </div>
-        <p class="cta-glam-pill">パーソナルカウンセリング ＋ タイプ診断</p>
-        <p class="cta-glam-catch">今なら<em>無料！</em></p>
-        <div class="cta-glam-hero">
-          <div class="cta-glam-bubble">通常価格<span class="cta-glam-bubble-price">3,000円</span>が</div>
-          <div class="cta-glam-price-big">
-            <span class="pi-price-new">0</span><span class="cta-glam-yen">円</span>
-          </div>
-        </div>
-        <a href="#cta-final" class="btn btn--primary">無料カウンセリング＆特典を受け取る　→</a>
-        <p class="cta-glam-foot">Zoom（オンライン）約60分 ／ 無理な勧誘は一切ありません ／ ※枠が埋まり次第終了</p>
+    <div class="deco-cta-wrap">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
     </div>
   </div>
@@ -1902,28 +2235,18 @@
     </div>
 
     <!-- CTA③ -->
-    <div class="cta-glam-wrap">
-      <div class="price-impact cta-glam">
-        <div class="cta-glam-title-block">
-          <span class="cta-glam-title-mark"><span class="cta-glam-title-grad">カウンセリング応援</span></span>
-          <span class="cta-glam-title-plain">特別無料キャンペーン</span>
-        </div>
-        <div class="cta-glam-ribbon-wrap">
-          <span class="cta-glam-spark" aria-hidden="true">✦</span>
-          <div class="cta-glam-ribbon">先着15名様限定</div>
-          <span class="cta-glam-spark cta-glam-spark--r" aria-hidden="true">✦</span>
-        </div>
-        <p class="cta-glam-pill">パーソナルカウンセリング ＋ タイプ診断</p>
-        <p class="cta-glam-lead">自分のタイプを知って変わりたい方へ</p>
-        <p class="cta-glam-catch">今なら<em>無料！</em></p>
-        <div class="cta-glam-hero">
-          <div class="cta-glam-bubble">通常価格<span class="cta-glam-bubble-price">3,000円</span>が</div>
-          <div class="cta-glam-price-big">
-            <span class="pi-price-new">0</span><span class="cta-glam-yen">円</span>
-          </div>
-        </div>
-        <a href="#cta-final" class="btn btn--primary">無料カウンセリングの日程を確認　→</a>
-        <p class="cta-glam-foot">※枠が埋まり次第終了 ／ 無理な勧誘は一切ありません</p>
+    <div class="deco-cta-wrap">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
     </div>
   </div>
@@ -2031,27 +2354,18 @@
     </div>
 
     <!-- CTA④ -->
-    <div class="cta-glam-wrap">
-      <div class="price-impact cta-glam cta-glam--type">
-        <div class="cta-glam-title-block">
-          <span class="cta-glam-title-mark"><span class="cta-glam-title-grad">タイプ診断応援</span></span>
-          <span class="cta-glam-title-plain">特別無料キャンペーン</span>
-        </div>
-        <div class="cta-glam-ribbon-wrap">
-          <span class="cta-glam-spark" aria-hidden="true">✦</span>
-          <div class="cta-glam-ribbon">先着15名様限定</div>
-          <span class="cta-glam-spark cta-glam-spark--r" aria-hidden="true">✦</span>
-        </div>
-        <p class="cta-glam-pill">パーソナルカウンセリング ＋ タイプ診断</p>
-        <p class="cta-glam-catch">今なら<em>無料！</em></p>
-        <div class="cta-glam-hero">
-          <div class="cta-glam-bubble">通常価格<span class="cta-glam-bubble-price">3,000円</span>が</div>
-          <div class="cta-glam-price-big">
-            <span class="pi-price-new">0</span><span class="cta-glam-yen">円</span>
-          </div>
-        </div>
-        <a href="#cta-final" class="btn btn--primary">カウンセリングでタイプ診断を受ける　→</a>
-        <p class="cta-glam-foot">※枠が埋まり次第終了</p>
+    <div class="deco-cta-wrap">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
     </div>
   </div>
@@ -2143,32 +2457,18 @@
     <div class="rule--left"></div>
 
     <!-- 価格比較ビジュアル -->
-    <div class="cta-glam-wrap" style="margin-top:24px;">
-      <div class="price-impact cta-glam">
-        <div class="cta-glam-title-block">
-          <span class="cta-glam-title-mark"><span class="cta-glam-title-grad">カウンセリング応援</span></span>
-          <span class="cta-glam-title-plain">特別無料キャンペーン</span>
-        </div>
-        <div class="cta-glam-ribbon-wrap">
-          <span class="cta-glam-spark" aria-hidden="true">✦</span>
-          <div class="cta-glam-ribbon">先着15名様限定</div>
-          <span class="cta-glam-spark cta-glam-spark--r" aria-hidden="true">✦</span>
-        </div>
-        <p class="cta-glam-pill">パーソナルカウンセリング ＋ タイプ診断</p>
-        <p class="cta-glam-catch">今なら<em>無料！</em></p>
-        <div class="cta-glam-hero">
-          <div class="cta-glam-bubble">通常価格<span class="cta-glam-bubble-price">3,000円</span>が</div>
-          <div class="cta-glam-price-big">
-            <span class="pi-price-new">0</span><span class="cta-glam-yen">円</span>
-          </div>
-        </div>
-        <div class="pi-extras">
-          <span class="pi-tag">Zoom で約60分</span>
-          <span class="pi-tag">プロテイン特典あり</span>
-          <span class="pi-tag">勧誘なし</span>
-        </div>
-        <a href="#cta-final" class="btn btn--primary">無料カウンセリングの日程を確認する　→</a>
-        <p class="cta-glam-foot">※枠が埋まり次第、受付を終了いたします ／ 無理な勧誘は一切ありません</p>
+    <div class="deco-cta-wrap" style="margin-top:24px;">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
     </div>
 
@@ -2388,32 +2688,18 @@
     </p>
 
     <!-- CTA⑥ 最終 -->
-    <div class="cta-glam-wrap">
-      <div class="price-impact cta-glam">
-        <div class="cta-glam-title-block">
-          <span class="cta-glam-title-mark"><span class="cta-glam-title-grad">カウンセリング応援</span></span>
-          <span class="cta-glam-title-plain">特別無料キャンペーン</span>
-        </div>
-        <div class="cta-glam-ribbon-wrap">
-          <span class="cta-glam-spark" aria-hidden="true">✦</span>
-          <div class="cta-glam-ribbon">先着15名様限定</div>
-          <span class="cta-glam-spark cta-glam-spark--r" aria-hidden="true">✦</span>
-        </div>
-        <p class="cta-glam-pill">パーソナルカウンセリング ＋ タイプ診断</p>
-        <p class="cta-glam-catch">今なら<em>無料！</em></p>
-        <div class="cta-glam-hero">
-          <div class="cta-glam-bubble">通常価格<span class="cta-glam-bubble-price">3,000円</span>が</div>
-          <div class="cta-glam-price-big">
-            <span class="pi-price-new">0</span><span class="cta-glam-yen">円</span>
-          </div>
-        </div>
-        <div class="pi-extras">
-          <span class="pi-tag">Zoom で約60分</span>
-          <span class="pi-tag">プロテイン特典あり</span>
-          <span class="pi-tag">勧誘なし</span>
-        </div>
-        <a href="YOUR_LINE_URL" class="btn btn--primary" style="font-size:1.12rem; padding:20px 28px;">まずは話を聞いてみる　→</a>
-        <p class="cta-glam-foot">無理な勧誘は一切ありません ／ ※枠が埋まり次第終了</p>
+    <div class="deco-cta-wrap">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="YOUR_LINE_URL" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
     </div>
   </div>
