@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -1826,6 +1826,54 @@
       color: var(--text-mid);
       line-height: 1.9;
     }
+
+    /* ===== ブリッジセクション ===== */
+    .bridge-statement { text-align: center; padding: 8px 0; }
+    .bridge-q { font-family: 'Noto Serif JP', serif; font-size: 1rem; color: var(--text-light); margin-bottom: 14px; }
+    .bridge-h { font-family: 'Noto Serif JP', serif; font-size: 1.7rem; font-weight: 700; line-height: 1.65; color: var(--text); letter-spacing: 0.05em; margin-bottom: 20px; }
+    .bridge-h em { font-style: normal; color: var(--green); background: linear-gradient(transparent 60%, rgba(74,171,109,0.18) 60%); padding: 0 2px; }
+    .bridge-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--gold), var(--accent)); margin: 18px auto; }
+    .bridge-ans { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; color: var(--brown); font-weight: 600; letter-spacing: 0.06em; }
+
+    /* ===== 理由カード ===== */
+    .reason-cards { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+    .reason-card { display: flex; gap: 16px; align-items: flex-start; text-align: left; background: var(--white); border: 1px solid var(--beige-mid); border-radius: 14px; padding: 20px 18px; box-shadow: 0 2px 10px rgba(74,52,37,0.06); }
+    .reason-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--gold); line-height: 1; flex-shrink: 0; width: 36px; padding-top: 2px; }
+    .reason-card h3 { font-size: 0.98rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .reason-card p { font-size: 0.86rem; color: var(--text-mid); line-height: 1.75; }
+    .reason-tag { display: inline-block; background: var(--gold-light); color: var(--brown); font-family: 'Noto Sans JP', sans-serif; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 6px; letter-spacing: 0.05em; }
+
+    /* ===== ループ＆悪化シナリオ ===== */
+    .loop-box { background: linear-gradient(135deg, #2a1e14 0%, #1e1610 100%); border-radius: 16px; padding: 28px 22px; margin: 32px 0; text-align: left; }
+    .loop-box-title { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 700; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 16px; text-align: center; }
+    .loop-box ul { display: flex; flex-direction: column; gap: 10px; }
+    .loop-box li { font-size: 0.88rem; color: rgba(250,248,245,0.88); line-height: 1.65; padding-left: 22px; position: relative; }
+    .loop-box li::before { content: '\26A0'; position: absolute; left: 0; font-size: 0.78rem; color: var(--gold); }
+    .loop-conclusion { background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; padding: 20px 22px; margin: 24px 0; font-size: 0.93rem; line-height: 1.9; color: var(--text); text-align: left; }
+    .loop-conclusion strong { color: var(--brown); font-weight: 700; }
+
+    /* ===== もぐラボの想い + サービス ===== */
+    .mission-statement { text-align: center; margin-bottom: 32px; }
+    .mission-lead { font-size: 0.9rem; color: var(--text-mid); line-height: 2; margin-bottom: 18px; }
+    .mission-headline { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 700; color: var(--brown); line-height: 1.75; letter-spacing: 0.05em; }
+    .service-cards { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+    .service-card { background: var(--white); border-radius: 14px; padding: 20px 18px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 2px 12px rgba(74,52,37,0.07); text-align: left; }
+    .service-icon { font-size: 1.9rem; line-height: 1; flex-shrink: 0; }
+    .service-card h3 { font-family: 'Noto Serif JP', serif; font-size: 0.98rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .service-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.75; }
+    .result-state { background: linear-gradient(135deg, var(--green-light) 0%, var(--beige) 100%); border-radius: 16px; padding: 28px 22px; margin: 28px 0; text-align: center; border: 1px solid rgba(74,171,109,0.25); }
+    .result-state-title { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; color: var(--brown); line-height: 1.7; margin-bottom: 10px; }
+    .result-state-body { font-size: 0.87rem; color: var(--text-mid); line-height: 1.85; }
+
+    /* ===== ビジョン（大義名分）===== */
+    .vision-pull { background: linear-gradient(135deg, var(--beige) 0%, var(--cream) 100%); border-left: 4px solid var(--gold); border-radius: 0 14px 14px 0; padding: 22px 26px; margin: 28px 0; text-align: left; font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 600; line-height: 1.9; color: var(--text); }
+    .vision-body { font-size: 0.92rem; line-height: 2; color: var(--text-mid); text-align: left; }
+    .vision-body p + p { margin-top: 14px; }
+    .vision-points { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+    .vision-point { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border-radius: 12px; padding: 16px 14px; box-shadow: 0 2px 8px rgba(74,52,37,0.05); text-align: left; }
+    .vision-point-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .vision-point-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
+    .vision-point-text strong { color: var(--text); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -1942,53 +1990,22 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 2: 敵を特定する            -->
+<!-- ブリッジ                           -->
 <!-- ═══════════════════════════════════ -->
 <section class="sec--cream" style="padding: 72px 0;">
   <div class="container">
-    <span class="en-label">The Real Reason</span>
-    <h2 class="section-title">頑張ってきたのに<br class="sp-br"><span class="em-big">結果が出なかった理由。</span></h2>
-    <div class="rule--left"></div>
-    <div class="affirm-box">
-      あなたの意志が弱いのではありません。<br>
-      <strong>あなたのタイプに合っていない方法を<br>選んでいただけです。</strong>
-    </div>
-
-    <p class="section-sub" style="margin: 28px 0 16px;">
-      痩せられない原因は、大きく<strong style="color:var(--brown);">4つのタイプ</strong>に分かれます。<br>
-      タイプが違えば、いくら頑張っても結果は出ません。
-    </p>
-
-    <div class="type-preview-grid">
-      <div class="type-preview-item">
-        <span class="type-preview-icon">🍽️</span>
-        <span class="type-preview-name">食欲の<br>問題</span>
-      </div>
-      <div class="type-preview-item">
-        <span class="type-preview-icon">🔥</span>
-        <span class="type-preview-name">代謝の<br>問題</span>
-      </div>
-      <div class="type-preview-item">
-        <span class="type-preview-icon">💊</span>
-        <span class="type-preview-name">栄養の<br>問題</span>
-      </div>
-      <div class="type-preview-item">
-        <span class="type-preview-icon">🌙</span>
-        <span class="type-preview-name">生活リズムの<br>問題</span>
-      </div>
-    </div>
-
-    <div class="enemy-conclusion">
-      あなたがこれまで<strong>諦めなかった</strong>こと、<br>
-      それ自体はまったく正しい。<br>
-      <strong style="color:var(--brown); font-size:1.05em;">あとは「自分に合った方法」を見つけるだけです。</strong>
+    <div class="bridge-statement">
+      <p class="bridge-q">もし——</p>
+      <h2 class="bridge-h">そのお悩みが<em>全て解消されて</em><br>リバウンドしない体が<br class="sp-br">手に入るとしたら？</h2>
+      <div class="bridge-rule"></div>
+      <p class="bridge-ans">あなたの毎日は、どう変わりますか？</p>
     </div>
   </div>
 </section>
 
 
 <!-- ウェーブ区切り（クリーム→ホワイト） -->
-<div class="wave-divider">
+<div class="wave-divider" style="background:var(--cream);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,30 C360,70 720,0 1080,50 C1260,65 1380,20 1440,30 L1440,80 L0,80 Z" class="wave-white"/>
   </svg>
@@ -1996,51 +2013,73 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 3: 理想の未来              -->
+<!-- 理由・教育                          -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--white" style="padding-top:32px;">
-  <div class="deco-dots" style="top:20px; right:10px;"></div>
+<section class="sec--white" style="padding: 72px 0;">
   <div class="container">
-    <span class="en-label">Your Future</span>
-    <h2 class="section-title">あなたの<span class="em-big" style="color:var(--gold);">3ヶ月後</span>を想像してみてください</h2>
+    <span class="en-label">The Real Reason</span>
+    <h2 class="section-title">今まで頑張ってきたのに<span class="em-big">結果が出なかったのは<br class="sp-br">あなたのせいじゃない。</span></h2>
     <div class="rule--left"></div>
+    <p class="section-sub" style="margin-bottom: 28px;">
+      ダイエットに何度も挑戦してきた。でも続かない、リバウンドしてしまう。<br class="sp-br">
+      それには、ちゃんとした「理由」があります。
+    </p>
+    <p style="font-size:0.9rem; color:var(--text-mid); line-height:2; text-align:left; margin-bottom:24px;">多くの方が試してきた方法——それ自体が、実は体に「逆効果」をもたらしていることがあります。</p>
 
-    <!-- 4つのシーンイメージ -->
-    <div class="future-scenes">
-      <div class="future-scene">
-        <img src="images/future-mirror.png" alt="鏡の前でスタイルをチェックする女性">
-        <div class="future-scene-label">鏡の前に立つのが楽しくなる</div>
+    <div class="reason-cards">
+      <div class="reason-card">
+        <span class="reason-num">01</span>
+        <div>
+          <span class="reason-tag">食欲の乱れ</span>
+          <h3>過度な食事制限</h3>
+          <p>食べる量を極端に減らすと、体は「飢餓状態」と判断し、食欲ホルモンが乱れます。結果、意志の力では止められない「過食」が起きやすくなります。</p>
+        </div>
       </div>
-      <div class="future-scene">
-        <img src="images/future-fashion.png" alt="好きな服を着こなす女性">
-        <div class="future-scene-label">好きな服が着られるように</div>
+      <div class="reason-card">
+        <span class="reason-num">02</span>
+        <div>
+          <span class="reason-tag">代謝の低下</span>
+          <h3>運動をやめたタイミングでのリバウンド</h3>
+          <p>運動で一時的に痩せても、やめた瞬間にリバウンドするのは、筋肉量の低下で基礎代謝が落ちているから。体が元の体重に戻ろうとする仕組みが働いています。</p>
+        </div>
       </div>
-      <div class="future-scene">
-        <img src="images/future-meal.png" alt="日本人女性が楽しそうに食事をしている様子">
-        <div class="future-scene-label">食事を楽しめる毎日</div>
+      <div class="reason-card">
+        <span class="reason-num">03</span>
+        <div>
+          <span class="reason-tag">栄養不足</span>
+          <h3>過度な糖質カット・ファスティング</h3>
+          <p>糖質を極端に制限したり断食を繰り返すと、体に必要な栄養素が不足します。肌荒れや疲れやすさが出るだけでなく、代謝サイクルそのものが乱れていきます。</p>
+        </div>
       </div>
-      <div class="future-scene">
-        <img src="https://images.pexels.com/photos/6669928/pexels-photo-6669928.jpeg?auto=compress&cs=tinysrgb&w=600" alt="友人と楽しそうに話す日本人女性">
-        <div class="future-scene-label">「キレイになったね」と言われる</div>
+      <div class="reason-card">
+        <span class="reason-num">04</span>
+        <div>
+          <span class="reason-tag">生活リズムの乱れ</span>
+          <h3>睡眠不足・不規則な食事タイミング</h3>
+          <p>睡眠不足は食欲を増進させるホルモンを増やし、食事のタイミングのズレは体内時計を狂わせます。どれだけ食事に気をつけても、生活習慣が土台にないと効果が出にくくなります。</p>
+        </div>
       </div>
     </div>
 
-    <div class="future-body">
-      <p><span class="scene-icon">🪞</span><span class="highlight-line">フェイスラインがシャープに。</span></p>
-      <p><span class="scene-icon">👗</span>しまっていたスカートの<span class="highlight-line">ファスナーがするっと上がる。</span></p>
-      <p><span class="scene-icon">🍽️</span><span class="highlight-line">「何を食べよう？」とワクワクできる毎日。</span></p>
-      <p><span class="scene-icon">💬</span>ママ友に<span class="highlight-line">「キレイになったね」</span>と言われる。</p>
-      <div class="future-pull">
-        <span style="font-size:1.3rem; font-weight:700; color:var(--brown);">自分を、前より好きになれる。</span><br>
-        <strong style="font-size:1.1rem;">——3ヶ月後、手の届くところに。</strong>
-      </div>
+    <div class="loop-box">
+      <p class="loop-box-title">⚠ これらが積み重なると……</p>
+      <ul>
+        <li>肌が荒れる・ニキビができる（栄養バランスの崩れ）</li>
+        <li>自分に自信が持てなくなる（自己嫌悪感のループ）</li>
+        <li>「また失敗した」を繰り返す万年ダイエッターになってしまう</li>
+      </ul>
+    </div>
+
+    <div class="loop-conclusion">
+      結局、どんなに頑張って痩せたとしても、<strong>正しい知識と習慣がなければ、このループをずっと繰り返してしまいます。</strong><br>
+      <span style="font-size:0.86rem; color:var(--text-light);">あなたに足りなかったのは、意志力ではなく「仕組み」と「知識」です。</span>
     </div>
   </div>
 </section>
 
 
 <!-- ウェーブ区切り（ホワイト→ベージュ） -->
-<div class="wave-divider">
+<div class="wave-divider" style="background:var(--white);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,40 C320,80 480,0 720,40 C960,80 1120,0 1440,40 L1440,80 L0,80 Z" class="wave-beige"/>
   </svg>
@@ -2048,60 +2087,72 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 4: 権威性の確立（講師紹介） -->
+<!-- もぐラボの想い + サービス          -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--beige" style="padding-top:32px;">
+<section class="sec--beige" style="padding: 72px 0;">
   <div class="container">
-    <span class="en-label">Instructors</span>
-    <h2 class="section-title">もぐラボの講師陣</h2>
+    <span class="en-label">Our Mission</span>
+    <h2 class="section-title">私たちは、このループを<span class="em-big">断ち切るために<br class="sp-br">もぐラボをつくりました。</span></h2>
     <div class="rule--left"></div>
-    <p class="section-sub" style="margin-bottom:28px;">これまで<strong>累計500名以上</strong>をサポートしてきた、実績ある2名の専門家があなたを担当します。</p>
-    <div class="lecturer-card">
-      <div class="lecturer-top">
-        <div class="lecturer-photo">[ 講師①の写真 ]</div>
-        <div class="lecturer-info">
-          <h3>講師① ［お名前を入れてください］</h3>
-          <p class="lecturer-role">食べ痩せダイエット指導</p>
+
+    <div class="mission-statement">
+      <p class="mission-lead">
+        ダイエットで消耗するのをやめてほしい。<br class="sp-br">
+        食べることを楽しみながら、気づいたら体が変わっていた——<br class="sp-br">
+        そんな体験を、あなたにも届けたい。<br>
+        それが、もぐラボを立ち上げた理由です。
+      </p>
+      <p class="mission-headline">「人生最後のダイエット」を、<br class="sp-br">私たちと一緒に。</p>
+    </div>
+
+    <div class="service-cards">
+      <div class="service-card">
+        <span class="service-icon">🍽️</span>
+        <div>
+          <h3>プロによる食事添削</h3>
+          <p>毎日の食事内容をプロが確認・フィードバック。「何をどう食べれば痩せるか」が具体的にわかります。知識がなくても安心してスタートできます。</p>
         </div>
       </div>
-      <ul>
-        <li>食べ痩せダイエット指導：<strong>100名以上</strong>の成功実績</li>
-        <li>受講生の中には <strong>−11kg</strong> を達成した方も</li>
-        <li>地上波テレビ出演（食べ痩せダイエット）</li>
-        <li>Instagram「丹羽家ごはん」フォロワー <strong>30万人</strong></li>
-        <li>レシピ本『おうち天才ごはん』出版（KADOKAWA）</li>
-      </ul>
-    </div>
-    <div class="lecturer-card">
-      <div class="lecturer-top">
-        <div class="lecturer-photo">[ 講師②の写真 ]</div>
-        <div class="lecturer-info">
-          <h3>講師② ［お名前を入れてください］</h3>
-          <p class="lecturer-role">ダイエット卒業サポート</p>
+      <div class="service-card">
+        <span class="service-icon">📖</span>
+        <div>
+          <h3>栄養管理士監修のレシピ</h3>
+          <p>制限ではなく「食べて痩せる」ためのレシピを毎月更新。簡単・おいしい・痩せる、の三拍子がそろったメニューで食事を楽しみながら続けられます。</p>
         </div>
       </div>
-      <ul>
-        <li>食べ痩せダイエット指導：<strong>累計400名以上</strong>をサポート</li>
-        <li>Instagram フォロワー <strong>4.7万人</strong></li>
-        <li>個別サポートで <strong>4ヶ月で−12kg</strong> を達成した方も</li>
-        <li>食事改善 × 習慣化に特化した「ダイエット卒業」サポート</li>
-      </ul>
+      <div class="service-card">
+        <span class="service-icon">🤝</span>
+        <div>
+          <h3>同じ目標を持つ仲間のコミュニティ</h3>
+          <p>「1人で頑張らなくていい」。同じ悩みを持ち、同じ目標に向かう仲間と繋がれる場所があります。継続できる環境が、結果を大きく変えます。</p>
+        </div>
+      </div>
     </div>
-    <p style="font-size:0.85rem; color:var(--text-light); text-align:center; margin-top:4px; line-height:1.8;">実績ある講師が、あなたの状況に合わせて一対一でお話しします。</p>
+
+    <div class="result-state">
+      <p class="result-state-title">
+        3ヶ月後——<strong>「頑張って痩せた」ではなく、</strong><br>
+        <span style="font-size:1.2rem; color:var(--green); font-weight:700;">「気づいたら痩せていた」</span>という体験を。
+      </p>
+      <p class="result-state-body">
+        頑張ることに疲れたあなたに。<br>
+        食べることを楽しみながら変われる、その方法がここにあります。
+      </p>
+    </div>
   </div>
 </section>
 
 
-<!-- 高級感バナー -->
-<div class="luxury-banner">
-  <p class="lb-sub">＼ 食べながら、変わる ／</p>
-  <p class="lb-main">あなた専用の<em>痩せ方メソッド</em></p>
-  <p class="lb-script">Personalized Diet Method</p>
+<!-- ウェーブ区切り（ベージュ→クリーム） -->
+<div class="wave-divider" style="background:var(--beige);">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,10 1440,30 L1440,80 L0,80 Z" class="wave-cream"/>
+  </svg>
 </div>
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 5: 卒業生の声              -->
+<!-- 実績者の声                          -->
 <!-- ═══════════════════════════════════ -->
 <section class="sec--cream" style="padding-top:32px;">
   <div class="deco-dots" style="top:20px; left:15px;"></div>
@@ -2162,7 +2213,7 @@
       </div>
     </div>
 
-    <!-- CTA③ -->
+    <!-- 実績後CTA -->
     <div class="deco-cta-wrap">
       <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
@@ -2181,10 +2232,8 @@
 </section>
 
 
-<!-- ═══════════════════════════════════ -->
-<!-- ウェーブ区切り                       -->
-<!-- ═══════════════════════════════════ -->
-<div class="wave-divider">
+<!-- ウェーブ区切り（クリーム→ホワイト） -->
+<div class="wave-divider" style="background:var(--cream);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,30 C360,70 720,0 1080,50 C1260,65 1380,20 1440,30 L1440,80 L0,80 Z" class="wave-white"/>
   </svg>
@@ -2192,174 +2241,48 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 6: 4タイプ診断（チラ見せ） -->
+<!-- ビジョン（大義名分）               -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--white" style="padding-top:32px;">
-  <div class="container">
-    <span class="en-label">Method</span>
-    <h2 class="section-title">あなたはどのタイプ？<span class="em-big">4つの痩せられない原因</span></h2>
-    <div class="rule--left"></div>
-    <p class="section-sub" style="margin-bottom:32px;">当てはまる項目が多いほど、そのタイプである可能性が高いです。</p>
-
-    <div class="type-check-cards">
-      <div class="type-check-card">
-        <div class="type-check-header">
-          <span class="type-check-num">01</span>
-          <h3 class="type-check-title">食欲過剰タイプ</h3>
-          <p class="type-check-sub">お腹が空いていないのに食べてしまう</p>
-        </div>
-        <ul class="type-check-list">
-          <li>口が寂しくて何か食べたくなる</li>
-          <li>一度食べ始めると止まらない</li>
-          <li>イライラすると気づいたらコンビニに寄っている</li>
-        </ul>
-        <div class="type-check-solution">血糖値を安定させる「食べ方」に変えるだけで解決できます</div>
-      </div>
-      <div class="type-check-card">
-        <div class="type-check-header">
-          <span class="type-check-num">02</span>
-          <h3 class="type-check-title">低代謝タイプ</h3>
-          <p class="type-check-sub">食べていないのに体重が減らない</p>
-        </div>
-        <ul class="type-check-list">
-          <li>手足が常に冷たく、平熱が低い</li>
-          <li>過去に極端な食事制限を繰り返した</li>
-          <li>夕方になると足がパンパンにむくむ</li>
-        </ul>
-        <div class="type-check-solution">「まず食べて体を安心させる」ことが、代謝回復の第一歩</div>
-      </div>
-      <div class="type-check-card">
-        <div class="type-check-header">
-          <span class="type-check-num">03</span>
-          <h3 class="type-check-title">栄養不足タイプ</h3>
-          <p class="type-check-sub">食べているのに体がだるい・疲れやすい</p>
-        </div>
-        <ul class="type-check-list">
-          <li>食事がパンや麺など「茶色い炭水化物」に偏りがち</li>
-          <li>甘いものへの欲求が異常に強い</li>
-          <li>肌がカサつく、髪がパサつく、爪が割れやすい</li>
-        </ul>
-        <div class="type-check-solution">足りない栄養を「足す」ことで、燃焼サイクルが回り始めます</div>
-      </div>
-      <div class="type-check-card">
-        <div class="type-check-header">
-          <span class="type-check-num">04</span>
-          <h3 class="type-check-title">生活乱れタイプ</h3>
-          <p class="type-check-sub">睡眠・食事タイミングが整っていない</p>
-        </div>
-        <ul class="type-check-list">
-          <li>寝る直前まで食べている、またはスマホを見ている</li>
-          <li>睡眠時間が6時間未満で、疲れが取れない</li>
-          <li>朝食を抜くことが多い</li>
-        </ul>
-        <div class="type-check-solution">睡眠の質と食事タイミングを整えるだけで、燃焼力が戻ります</div>
-      </div>
-    </div>
-
-    <div class="type-summary-box">
-      <strong>自分がどのタイプか、正確には<br>カウンセリングで一緒に確認しましょう。</strong><br>
-      <span style="font-size:0.88rem; color:var(--text-light);">複数のタイプが重なっている方も多く、個別に整理することが大切です。</span>
-    </div>
-
-    <!-- CTA③ -->
-    <div class="deco-cta-wrap">
-      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <div class="deco-cta-frame">
-        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
-        <div class="deco-cta-divider"></div>
-        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
-        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
-        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
-        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ウェーブ区切り（ホワイト→ベージュ） -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,40 C320,80 480,0 720,40 C960,80 1120,0 1440,40 L1440,80 L0,80 Z" class="wave-beige"/>
-  </svg>
-</div>
-
-
-<!-- ═══════════════════════════════════ -->
-<!-- Section 7: オファー                -->
-<!-- ═══════════════════════════════════ -->
-<section class="sec--beige" style="padding-top:32px;">
-  <div class="container">
-    <span class="en-label">Offer</span>
-    <h2 class="section-title">パーソナルカウンセリングの<br>ご案内</h2>
-    <div class="rule--left"></div>
-
-    <div class="offer-value-box">
-      <div class="offer-value-label">通常価格</div>
-      <div class="offer-value-price">¥3,000</div>
-      <div class="offer-value-arrow">↓</div>
-      <div class="offer-value-free">
-        <span class="offer-free-badge">今回限り</span>
-        <span class="offer-free-num">無料</span>
-      </div>
-      <p class="offer-value-reason">「まず一歩のハードルをゼロに」という想いから、<br>無料枠をご用意しました。</p>
-    </div>
-
-    <div class="deco-cta-wrap" style="margin-top:24px;">
-      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <div class="deco-cta-frame">
-        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
-        <div class="deco-cta-divider"></div>
-        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
-        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
-        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
-        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ウェーブ区切り（ベージュ→ホワイト） -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,10 1440,30 L1440,80 L0,80 Z" class="wave-white"/>
-  </svg>
-</div>
-
-
-<!-- ═══════════════════════════════════ -->
-<!-- Section 8a: 信念                  -->
-<!-- ═══════════════════════════════════ -->
-<section class="sec--white" style="padding-top:32px;">
+<section class="sec--white" style="padding: 72px 0;">
   <div class="deco-dots" style="top:40px; right:15px; transform:rotate(20deg);"></div>
   <div class="container">
-    <span class="en-label">Our Belief</span>
-    <h2 class="section-title">私たちが大切にしていること</h2>
+    <span class="en-label">Our Vision</span>
+    <h2 class="section-title">私たちにしか<span class="em-big">叶えられない未来が<br class="sp-br">あると思っています。</span></h2>
     <div class="rule--left"></div>
 
-    <div class="belief-body" style="margin-top:24px;">
-      <div class="belief-pull">
-        <strong>ダイエット ≠ 我慢。</strong><br>
-        もぐラボが目指すのは、<br><strong>一生続けられる「食べ痩せ」の習慣づくり。</strong>
-      </div>
-      <p>食べることを楽しみながら、体が変わる。<br>
-      カウンセリングでは売り込みは一切なし。<br>
-      <strong style="color:var(--brown);">あなたに合った方法を、一緒に考える時間です。</strong></p>
+    <div class="vision-pull">
+      「ダイエットをがんばる」という概念を、<strong>この世の中からなくしたい。</strong>
     </div>
-    <p class="belief-closing" style="font-size:1.15rem;">「話を聞いてみようかな」<br>——その気持ちだけで十分です。</p>
+
+    <div class="vision-body">
+      <p>食欲の乱れ、代謝の低下、栄養不足、生活リズムの崩れ——これらは全て、正しい知識と環境があれば解決できることです。</p>
+      <p>でも一人でそれを実践するのは難しい。だからこそ、<strong style="color:var(--brown);">「仲間」の力が必要だと私たちは考えています。</strong></p>
+    </div>
+
+    <div class="vision-points">
+      <div class="vision-point">
+        <span class="vision-point-icon">🌱</span>
+        <p class="vision-point-text"><strong>食べることを楽しみながら変われる人を増やしたい。</strong><br>無理な制限ではなく、食事を豊かにすることで体が変わることを証明し続けたい。</p>
+      </div>
+      <div class="vision-point">
+        <span class="vision-point-icon">💪</span>
+        <p class="vision-point-text"><strong>ダイエットに消耗する人を、ゼロにしたい。</strong><br>「どうせ自分には無理」という諦めを、実績と仲間の存在で変えていきたい。</p>
+      </div>
+      <div class="vision-point">
+        <span class="vision-point-icon">🤝</span>
+        <p class="vision-point-text"><strong>だからこそ、コミュニティに意味がある。</strong><br>同じ目標を持つ仲間と繋がることで、一人では続かなかったことが、自然と続いていく。</p>
+      </div>
+    </div>
+
+    <blockquote class="story-quote">
+      「人生最後のダイエット」を経験した人の<br>笑顔を、もっと増やしたい。
+    </blockquote>
   </div>
 </section>
 
 
 <!-- ウェーブ区切り（ホワイト→クリーム） -->
-<div class="wave-divider">
+<div class="wave-divider" style="background:var(--white);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,10 1440,30 L1440,80 L0,80 Z" class="wave-cream"/>
   </svg>
@@ -2367,12 +2290,12 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 8b: ターゲット選別        -->
+<!-- おすすめの方・おすすめでない方     -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--cream">
+<section class="sec--cream" style="padding: 72px 0;">
   <div class="container">
     <span class="en-label">For You</span>
-    <h2 class="section-title">こんな方におすすめです</h2>
+    <h2 class="section-title">こんな方に<span class="em-big">おすすめです</span></h2>
     <div class="rule--left"></div>
     <div class="target-grid">
       <div class="target-box yes">
@@ -2382,10 +2305,10 @@
         </div>
         <ul>
           <li>リバウンドを繰り返している</li>
-          <li>自分に合った方法がわからない</li>
+          <li>食事制限や運動で消耗してきた</li>
           <li>「我慢のダイエット」はもう限界</li>
           <li>一人で頑張るのに限界を感じている</li>
-          <li>相談したいけど売り込みが怖い</li>
+          <li>食べることを楽しみながら変わりたい</li>
           <li>仕事・家事・育児と両立したい</li>
           <li>今度こそ「最後のダイエット」にしたい</li>
         </ul>
@@ -2407,68 +2330,54 @@
 </section>
 
 
-<!-- ウェーブ区切り（クリーム→ホワイト） -->
-<div class="wave-divider">
+<!-- ウェーブ区切り（クリーム→ベージュ） -->
+<div class="wave-divider" style="background:var(--cream);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,30 C360,70 720,0 1080,50 C1260,65 1380,20 1440,30 L1440,80 L0,80 Z" class="wave-white"/>
+    <path d="M0,40 C320,80 480,0 720,40 C960,80 1120,0 1440,40 L1440,80 L0,80 Z" class="wave-beige"/>
   </svg>
 </div>
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- Section 9: 想い（Our Story）       -->
+<!-- CTA（中間）                        -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--white">
-  <div class="deco-dots" style="bottom:40px; right:10px;"></div>
+<section class="sec--beige" style="padding: 56px 0;">
   <div class="container">
-    <span class="en-label">Our Story</span>
-    <h2 class="section-title">もぐラボが<br>生まれた理由</h2>
-    <div class="rule--left"></div>
-
-    <!-- 丸型2枚写真 -->
-    <div class="story-visual">
-      <div class="story-photo-circle">
-        <img src="images/story-team.jpg" alt="もぐラボチーム" style="width:100%;height:100%;object-fit:cover;">
+    <div class="deco-cta-wrap">
+      <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="deco-cta-frame">
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <div class="deco-cta-divider"></div>
+        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+        <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
-      <div class="story-photo-circle">
-        <img src="images/story-counseling.jpg" alt="カウンセリング風景" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-    </div>
-
-    <blockquote class="story-quote">
-      「食べたいものを我慢して、<br>それでも結果が出ない——」
-    </blockquote>
-    <div class="story-body">
-      <p>そんな方を、たくさん見てきました。<br>
-      「自分に合った方法」を教えてくれる場所がない。<br>
-      だから、もぐラボをつくりました。</p>
-      <p><strong style="color:var(--brown);">「食べることは、本来楽しいもの。」</strong><br>
-      その気持ちを取り戻しながら変われる喜びを、あなたにも。</p>
     </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════════════════════ -->
-<!-- ウェーブ区切り                       -->
-<!-- ═══════════════════════════════════ -->
-<div class="wave-divider">
+<!-- ウェーブ区切り（ベージュ→ホワイト） -->
+<div class="wave-divider" style="background:var(--beige);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,40 C320,80 480,0 720,40 C960,80 1120,0 1440,40 L1440,80 L0,80 Z" class="wave-cream"/>
+    <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,10 1440,30 L1440,80 L0,80 Z" class="wave-white"/>
   </svg>
 </div>
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- ⑬ STEP + FAQ                        -->
+<!-- カウンセリングの流れ                -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--cream" style="padding-top:32px;">
+<section class="sec--white" style="padding: 72px 0;">
   <div class="container">
     <span class="en-label">How It Works</span>
     <h2 class="section-title">カウンセリングの流れ</h2>
     <div class="rule--left"></div>
 
-    <!-- ステップフロービジュアル -->
     <div class="step-illust">
       <div class="step-flow-visual">
         <div class="step-flow-item">
@@ -2512,45 +2421,59 @@
       </div>
     </div>
     <div class="step-note">※ 無理な勧誘は一切ありません。「まず話を聞いてみたい」だけでも大歓迎です。</div>
-
-    <div style="margin-top:48px;">
-      <p class="faq-subtitle">FAQ — よくあるご質問</p>
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">パーソナルカウンセリングは本当に無料ですか？</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">はい、今回は特別に無料でご案内しています。通常は3,000円で開催しているカウンセリングですが、「まず気軽に相談できる場を」という想いから、無料枠をご用意しました。追加費用が発生することもありません。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">何度もダイエットに失敗しているのですが、大丈夫ですか？</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">むしろ、そういう方にこそ受けていただきたいカウンセリングです。今までうまくいかなかったのは、自分に合った方法に出会えていなかっただけかもしれません。一緒にその原因を整理するところから始めましょう。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">カウンセリングで高額な契約を勧められませんか？</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">一切ありません。カウンセリングの目的は、あなたの現状を整理して、合った方向性を見つけることです。「売り込みが怖い」と感じる方にこそ、安心して受けていただきたいと思っています。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">仕事や育児が忙しくても続けられますか？</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">忙しい毎日の中でも取り入れられる方法をお伝えするのがもぐラボの特徴です。カウンセリングでは、あなたの生活リズムに合わせた無理のない提案をします。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
-      </div>
-    </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════════════════════ -->
-<!-- ウェーブ区切り                       -->
-<!-- ═══════════════════════════════════ -->
-<div class="wave-divider">
+<!-- ウェーブ区切り（ホワイト→クリーム） -->
+<div class="wave-divider" style="background:var(--white);">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,30 C360,70 720,0 1080,50 C1260,65 1380,20 1440,30 L1440,80 L0,80 Z" class="wave-beige"/>
+    <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,10 1440,30 L1440,80 L0,80 Z" class="wave-cream"/>
   </svg>
 </div>
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- ⑭ 最終CTA                          -->
+<!-- FAQ                                -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--beige" id="cta-final" style="padding-top:32px;">
+<section class="sec--cream" style="padding: 72px 0;">
+  <div class="container">
+    <span class="en-label">FAQ</span>
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="rule--left"></div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">パーソナルカウンセリングは本当に無料ですか？</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">はい、今回は特別に無料でご案内しています。通常は3,000円で開催しているカウンセリングですが、「まず気軽に相談できる場を」という想いから、無料枠をご用意しました。追加費用が発生することもありません。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">何度もダイエットに失敗しているのですが、大丈夫ですか？</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">むしろ、そういう方にこそ受けていただきたいカウンセリングです。今までうまくいかなかったのは、自分に合った方法に出会えていなかっただけかもしれません。一緒にその原因を整理するところから始めましょう。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">カウンセリングで高額な契約を勧められませんか？</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">一切ありません。カウンセリングの目的は、あなたの現状を整理して、合った方向性を見つけることです。「売り込みが怖い」と感じる方にこそ、安心して受けていただきたいと思っています。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-num">Q.</span><span class="faq-q-text">仕事や育児が忙しくても続けられますか？</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">忙しい毎日の中でも取り入れられる方法をお伝えするのがもぐラボの特徴です。カウンセリングでは、あなたの生活リズムに合わせた無理のない提案をします。<br><a href="#cta-final" class="faq-line-link">LINEで詳しく見る →</a></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ウェーブ区切り（クリーム→ベージュ） -->
+<div class="wave-divider" style="background:var(--cream);">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C320,80 480,0 720,40 C960,80 1120,0 1440,40 L1440,80 L0,80 Z" class="wave-beige"/>
+  </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════ -->
+<!-- 最終CTA（この時間で得られること）  -->
+<!-- ═══════════════════════════════════ -->
+<section class="sec--beige" id="cta-final" style="padding: 72px 0;">
   <div class="container">
     <span class="en-label text-center">Last Step</span>
     <h2 class="section-title text-center">この60分で手に入る<span class="em-big" style="font-size:2.8rem;">3つのこと</span></h2>
@@ -2565,7 +2488,6 @@
       <strong>「話を聞いてみたいな」——その気持ちだけで大丈夫。</strong>
     </p>
 
-    <!-- CTA⑥ 最終 -->
     <div class="deco-cta-wrap">
       <svg class="deco-cta-corner deco-cta-corner--tl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <svg class="deco-cta-corner deco-cta-corner--tr" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
@@ -2582,6 +2504,7 @@
     </div>
   </div>
 </section>
+
 
 
 <footer>
