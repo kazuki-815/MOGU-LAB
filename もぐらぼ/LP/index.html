@@ -1593,6 +1593,40 @@
       font-size: 1rem;
     }
 
+    /* ===== スマホ最適化（〜559px） ===== */
+    @media (max-width: 559px) {
+      html { font-size: 15px; }
+      .container { padding: 0 16px; }
+
+      /* 見出しサイズをスマホ幅に合わせて縮小 */
+      .section-title { font-size: 1.5rem; }
+      .section-title .em-big {
+        font-size: 1.8rem;
+        letter-spacing: 0.03em;
+      }
+      .section-title--lg { font-size: 1.7rem; }
+
+      /* CTAフレーム内の大きな数字・タイトル */
+      .deco-cta-days { font-size: 2rem; }
+      .deco-cta-days .accent-num { font-size: 2.5rem; }
+      .deco-cta-frame { padding: 28px 16px 24px; }
+
+      /* 高級感バナー */
+      .luxury-banner .lb-main { font-size: 1.45rem; }
+      .luxury-banner .lb-main em { font-size: 1.75rem; }
+      .luxury-banner .lb-script { font-size: 1.5rem; }
+
+      /* オファー価格 */
+      .offer-free-num { font-size: 3.2rem; }
+      .offer-value-price { font-size: 2rem; }
+
+      /* インパクト価格 */
+      .pi-price-new { font-size: 3.8rem; }
+
+      /* PC向け改行（長文の途中に入っているもの）をスマホでは非表示にする */
+      .sp-br { display: none; }
+    }
+
     @media (min-width: 560px) {
       .fv-headline { font-size: 1.7rem; }
       .fv-headline em { font-size: 3.2rem; }
@@ -1829,7 +1863,7 @@
         </div>
       </div>
       <!-- サブコピー（小さく） -->
-      <p class="fv-lead-small">運動や糖質カットを試しても痩せなかったあなたに<br>3食たべて無理なく痩せる</p>
+      <p class="fv-lead-small">運動や糖質カットを試しても痩せなかったあなたに<br class="sp-br">3食たべて無理なく痩せる</p>
       <!-- メインタイトル（大きく） -->
       <h1 class="fv-main-title">タイプ別<br>痩せ方メソッド</h1>
       <!-- 特別公開バッジ -->
@@ -1913,7 +1947,7 @@
 <section class="sec--cream" style="padding: 72px 0;">
   <div class="container">
     <span class="en-label">The Real Reason</span>
-    <h2 class="section-title">頑張ってきたのに<br><span class="em-big">結果が出なかった理由。</span></h2>
+    <h2 class="section-title">頑張ってきたのに<br class="sp-br"><span class="em-big">結果が出なかった理由。</span></h2>
     <div class="rule--left"></div>
     <div class="affirm-box">
       あなたの意志が弱いのではありません。<br>
