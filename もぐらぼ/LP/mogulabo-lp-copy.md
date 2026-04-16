@@ -1,7 +1,7 @@
 ---
 title: モグラボLP台本（テキスト原稿）
 description: 14セクション構成に基づくLP全文コピー。個別相談CV最大化を目的とした台本。
-based_on: mogulabo-lp-structure.md
+based_on: LP-14セクション設計.md
 last_updated: 2026-04-07
 status: 初稿
 ---

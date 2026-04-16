@@ -534,11 +534,7 @@
 
     /* ===== 固定ヘッダー ===== */
     .site-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(250,248,245,0.92); backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--beige-mid);
-      padding: 14px 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: none;
     }
     .site-logo {
       font-family: 'Cormorant Garamond', serif;
@@ -659,7 +655,7 @@
     }
 
     /* ===== ① ファーストビュー ===== */
-    .fv { padding-top: 80px; background: var(--white); }
+    .fv { padding-top: 0; background: var(--white); }
     .fv-hero {
       position: relative; overflow: hidden; text-align: center;
       background:
@@ -668,6 +664,17 @@
         radial-gradient(ellipse 40% 40% at 60% 10%, rgba(255,255,230,0.6) 0%, transparent 60%),
         linear-gradient(150deg, #f8edda 0%, #f2e3c4 55%, #ead8b0 100%);
       padding: 64px 24px 60px;
+    }
+    .fv-hero--image {
+      padding: 0;
+      background: none;
+      width: 100%;
+    }
+    .fv-hero--image::before { display: none; }
+    .fv-hero--image img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
     /* ボケ光彩 */
     .fv-hero::before {
@@ -1753,7 +1760,7 @@
       line-height: 1.6;
     }
     .type-check-solution::before {
-      content: '💡 ';
+      content: '';
     }
 
     /* ===== オファー価値比較 ===== */
@@ -1871,9 +1878,352 @@
     .vision-body p + p { margin-top: 14px; }
     .vision-points { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
     .vision-point { display: flex; align-items: flex-start; gap: 12px; background: var(--white); border-radius: 12px; padding: 16px 14px; box-shadow: 0 2px 8px rgba(74,52,37,0.05); text-align: left; }
-    .vision-point-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .vision-point-icon { display: none; }
     .vision-point-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
     .vision-point-text strong { color: var(--text); font-weight: 700; }
+
+    /* ===== リーズンカード v2（POINT スタイル） ===== */
+    .reason-cards-v2 { display: flex; flex-direction: column; gap: 16px; margin: 32px 0; }
+    .reason-card-v2 {
+      display: flex; align-items: center; gap: 20px;
+      background: var(--white); border: 1px solid var(--beige-mid);
+      border-radius: 14px; padding: 20px 22px; text-align: left;
+      box-shadow: 0 2px 10px rgba(74,52,37,0.06);
+    }
+    .rcv2-badge {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 68px; height: 68px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #fffdf5 0%, var(--gold-light) 100%);
+      border: 2px solid var(--gold);
+      box-shadow: 0 2px 8px rgba(201,169,110,0.25);
+    }
+    .rcv2-method {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.48rem; letter-spacing: 0.2em; color: var(--gold);
+      text-transform: uppercase; line-height: 1; margin-bottom: 3px;
+    }
+    .rcv2-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600; color: var(--brown); line-height: 1;
+    }
+    .rcv2-body { flex: 1; }
+    .rcv2-body h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.95rem; font-weight: 500; color: var(--text); line-height: 1.65; margin: 0;
+    }
+    .rcv2-em {
+      font-style: normal; color: var(--brown); font-weight: 700;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    /* ===== ループボックス v2 ===== */
+    .loop-box-v2 { margin: 28px 0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(74,52,37,0.12); }
+    .loop-box-v2-header {
+      background: var(--brown); color: var(--white);
+      padding: 24px 24px 44px;
+      font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 500;
+      line-height: 1.8; text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), 50% 100%, 0 calc(100% - 22px));
+    }
+    .loop-box-v2-body { background: var(--beige); padding: 24px 22px 16px; }
+    .loop-item-v2 { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px dotted var(--beige-dark); }
+    .loop-item-v2:last-child { border-bottom: none; }
+    .loop-item-v2-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--brown); flex-shrink: 0; margin-top: 6px;
+    }
+    .loop-item-v2-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; flex: 1; }
+    .loop-item-v2-text strong { color: var(--brown); }
+    .loop-box-v2-footer {
+      background: linear-gradient(135deg, #3a2516 0%, #261810 100%);
+      color: var(--white); padding: 36px 24px 24px;
+      font-family: 'Noto Serif JP', serif; font-size: 0.92rem; line-height: 1.9;
+      text-align: center;
+      clip-path: polygon(0 22px, 50% 0, 100% 22px, 100% 100%, 0 100%);
+    }
+    .loop-box-v2-footer strong { color: var(--gold-light); }
+
+    /* ===== ミッションステートメント v2 ===== */
+    .mission-stmt { text-align: center; margin: 48px 0 32px; }
+    .mission-stmt-label {
+      display: inline-block; background: var(--brown); color: var(--white);
+      font-family: 'Noto Serif JP', serif; font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.2em; padding: 10px 40px; margin-bottom: 24px;
+      clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
+    }
+    .mission-stmt-pre {
+      font-family: 'Noto Serif JP', serif; font-size: 0.95rem;
+      color: var(--text-light); line-height: 1.8; margin-bottom: 8px;
+    }
+    .mission-stmt-main {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 700;
+      line-height: 1.45; color: var(--text); margin-bottom: 8px;
+    }
+    .mission-stmt-main strong {
+      color: var(--brown); font-style: normal;
+      border-bottom: 3px solid var(--gold); padding-bottom: 2px;
+    }
+    .mission-stmt-post {
+      font-family: 'Noto Serif JP', serif; font-size: 1rem;
+      color: var(--text-mid); line-height: 1.7;
+    }
+
+    /* ===== 講師カード（权威性強化版） ===== */
+    .lecturer-cards-wrap { display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px; }
+    .lecturer-card {
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-top: 3px solid var(--gold);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 16px rgba(74,52,37,0.08);
+      margin-bottom: 0;
+    }
+    .lecturer-top { display: flex; align-items: center; gap: 18px; padding: 20px 22px 16px; }
+    .lecturer-photo {
+      width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
+      flex-shrink: 0; border: 2px solid var(--gold-light);
+      background: linear-gradient(135deg, var(--beige), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; color: var(--beige-dark); font-family: 'Noto Sans JP', sans-serif;
+    }
+    .lecturer-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lecturer-info {}
+    .lecturer-role-badge {
+      display: inline-block;
+      background: var(--brown);
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      padding: 5px 14px;
+      border-radius: 3px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 6px rgba(74,52,37,0.25);
+    }
+    .lecturer-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.3;
+    }
+    .instructor-track-list { border-top: 1px solid var(--beige); padding: 14px 22px; list-style: none; }
+    .instructor-track-list li {
+      font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem;
+      color: var(--text-mid); padding: 9px 0 9px 18px;
+      position: relative; border-bottom: 1px solid var(--beige); line-height: 1.6;
+    }
+    .instructor-track-list li:last-child { border-bottom: none; }
+    .instructor-track-list li::before {
+      content: ''; position: absolute; left: 0; top: 16px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    }
+
+    /* ===== ビジョン画像 ===== */
+    .vision-img-wrap {
+      border-radius: 14px; overflow: hidden; margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(74,52,37,0.12);
+    }
+    .vision-img-wrap img { width: 100%; height: 240px; object-fit: cover; object-position: center 20%; display: block; }
+
+    /* ===== ビジョン v2（整える×鍛えるスタイル） ===== */
+    .vision-v2-kv {
+      text-align: center;
+      padding: 16px 0 32px;
+      position: relative;
+    }
+    .vision-v2-kv::before {
+      content: 'VISION';
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 22vw, 10rem);
+      font-weight: 600;
+      color: rgba(74,52,37,0.04);
+      letter-spacing: 0.15em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      line-height: 1;
+      z-index: 0;
+    }
+    .vision-v2-kv-inner { position: relative; z-index: 1; }
+    .vision-v2-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--beige-dark);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .vision-v2-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .vision-v2-title em {
+      font-style: normal;
+      color: var(--brown);
+    }
+    .vision-v2-hr {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .vision-v2-hr-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--beige-mid));
+    }
+    .vision-v2-hr-line:last-child {
+      background: linear-gradient(90deg, var(--beige-mid), transparent);
+    }
+    .vision-v2-hr-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--beige-dark);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .vision-v2-lead {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brown);
+      text-align: center;
+      line-height: 1.9;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+    .vision-v2-body {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 2;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .vision-v2-body p + p { margin-top: 10px; }
+    .vision-v2-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .vision-v2-point {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--beige);
+      font-family: 'Noto Serif JP', serif;
+    }
+    .vision-v2-point:first-child { border-top: 1px solid var(--beige); }
+    .vision-v2-point strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 4px;
+      letter-spacing: 0.03em;
+    }
+    .vision-v2-point small {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ===== リザルトビジュアル ===== */
+    .result-visual-wrap {
+      border-radius: 14px; overflow: hidden; margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(74,52,37,0.1);
+      position: relative;
+    }
+    .result-visual-wrap img { width: 100%; height: 220px; object-fit: cover; object-position: center top; display: block; }
+    .result-visual-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(230,245,236,0.8) 100%);
+    }
+
+    /* ===== サービスカード アイコンなし版 ===== */
+    .service-icon { display: none; }
+    .service-card { padding-left: 14px; border-left: 3px solid var(--gold-light); border-radius: 0 14px 14px 0; }
+
+    /* ===== ターゲットヘッダーアイコン非表示 ===== */
+    .target-header-icon { display: none; }
+
+    /* ===== ターゲットセクション v2（画像1枚目スタイル） ===== */
+    .target-v2 {
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--beige-mid);
+      box-shadow: 0 3px 16px rgba(74,52,37,0.08);
+    }
+    .target-v2-header {
+      padding: 16px 24px;
+      text-align: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.08em;
+    }
+    .target-v2-header.not-rec {
+      background: #4a3020;
+      color: rgba(255,255,255,0.9);
+    }
+    .target-v2-header.rec {
+      background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 100%);
+      color: var(--white);
+    }
+    .target-v2-list {
+      padding: 8px 20px 12px;
+      list-style: none;
+    }
+    .target-v2-list.not-rec-bg { background: #faf8f6; }
+    .target-v2-list.rec-bg { background: var(--accent-pale); }
+    .target-v2-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(74,52,37,0.08);
+      font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;
+      text-align: left;
+    }
+    .target-v2-list li:last-child { border-bottom: none; }
+    .target-v2-check {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      font-size: 0.75rem; font-weight: 700; line-height: 1;
+    }
+    .target-v2-check.chk-no  { border-color: var(--beige-dark); color: var(--beige-dark); }
+    .target-v2-check.chk-yes { border-color: var(--accent-dark); color: var(--accent-dark); }
+    .target-v2-note {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.72rem; color: var(--text-light);
+      padding: 8px 20px 14px; text-align: center;
+      background: #faf8f6;
+    }
+
+    /* ===== リーズンカード 中央揃え版 ===== */
+    .reason-card-v2 {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 12px !important;
+      text-align: center !important;
+      padding: 24px 20px !important;
+    }
+    .rcv2-body h3 { text-align: center; }
+
+    /* ===== ステップアイコン非表示 ===== */
+    .step-flow-icon { display: none; }
+    .step-icon { display: none; }
   </style>
 </head>
 <body>
@@ -1887,8 +2237,8 @@
 <!-- ===== スマホ固定CTA ===== -->
 <div class="floating-cta">
   <div class="fc-text">
-    <strong>通常3,000円 → 無料</strong>
-    先着15名様限定
+    <strong>動画を受け取った方限定</strong>
+    無料パーソナルカウンセリング
   </div>
   <a href="#cta-final" class="fc-btn">無料で予約する →</a>
 </div>
@@ -1898,27 +2248,8 @@
 <!-- ① ファーストビュー                  -->
 <!-- ═══════════════════════════════════ -->
 <section class="fv">
-  <div class="fv-hero">
-    <div class="fv-hero-inner">
-      <!-- ロゴブロック：アイコン上・テキスト下 -->
-      <div class="fv-logo-block">
-        <div class="fv-bowl-icon">
-          <img src="images/mogulab-icon.png" alt="もぐラボ アイコン">
-        </div>
-        <div class="fv-logo-text">
-          MOGU LAB
-          <span>もぐラボ</span>
-        </div>
-      </div>
-      <!-- サブコピー（小さく） -->
-      <p class="fv-lead-small">運動や糖質カットを試しても痩せなかったあなたに<br class="sp-br">3食たべて無理なく痩せる</p>
-      <!-- メインタイトル（大きく） -->
-      <h1 class="fv-main-title">タイプ別<br>痩せ方メソッド</h1>
-      <!-- 特別公開バッジ -->
-      <span class="fv-release-badge">特別公開</span>
-      <!-- スクリプト装飾 -->
-      <span class="fv-script">Type-based Method</span>
-    </div>
+  <div class="fv-hero fv-hero--image">
+    <img src="images/fv-hero.png" alt="きつい運動・食事制限なし　3食しっかり食べるのに　健康的な理想のカラダへ　タイプ別痩せ方メソッド　特別公開">
   </div>
 
   <div class="vsl-wrap">
@@ -1935,10 +2266,10 @@
       <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <div class="deco-cta-frame">
-        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定</p>
         <div class="deco-cta-divider"></div>
-        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
-        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <p style="font-family:'Noto Serif JP',serif; font-size:0.92rem; color:var(--text-mid); line-height:1.75; margin-bottom:12px;">自分に合った方法で健康的に痩せる</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>。</p>
         <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
         <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
@@ -1973,10 +2304,6 @@
       <div class="worry-item-dark">体が重く、寝ても疲れが取れない。</div>
     </div>
 
-    <p class="worry-lead-dark">
-      そんなあなたに——
-      <strong>もぐラボのパーソナルカウンセリングがおすすめです</strong>
-    </p>
   </div>
 </section>
 
@@ -2018,61 +2345,58 @@
 <section class="sec--white" style="padding: 72px 0;">
   <div class="container">
     <span class="en-label">The Real Reason</span>
-    <h2 class="section-title">今まで頑張ってきたのに<span class="em-big">結果が出なかったのは<br class="sp-br">あなたのせいじゃない。</span></h2>
+    <h2 class="section-title">
+      <span style="font-size:0.78rem; font-weight:400; color:var(--text-light); display:block; margin-bottom:10px; letter-spacing:0.04em; line-height:1.9;">今までたくさんの方法を試して、<br>痩せることができなかったのであれば</span>
+      <span style="display:block; font-size:clamp(1.5rem,6vw,2.2rem); font-weight:700; color:var(--brown); letter-spacing:0.06em; line-height:1.35;">そこには<br class="sp-br"><em style="font-style:normal; color:var(--brown);">明確な理由</em>があります。</span>
+    </h2>
     <div class="rule--left"></div>
-    <p class="section-sub" style="margin-bottom: 28px;">
-      ダイエットに何度も挑戦してきた。でも続かない、リバウンドしてしまう。<br class="sp-br">
-      それには、ちゃんとした「理由」があります。
-    </p>
-    <p style="font-size:0.9rem; color:var(--text-mid); line-height:2; text-align:left; margin-bottom:24px;">多くの方が試してきた方法——それ自体が、実は体に「逆効果」をもたらしていることがあります。</p>
 
-    <div class="reason-cards">
-      <div class="reason-card">
-        <span class="reason-num">01</span>
-        <div>
-          <span class="reason-tag">食欲の乱れ</span>
-          <h3>過度な食事制限</h3>
-          <p>食べる量を極端に減らすと、体は「飢餓状態」と判断し、食欲ホルモンが乱れます。結果、意志の力では止められない「過食」が起きやすくなります。</p>
+    <div class="reason-cards-v2">
+      <div class="reason-card-v2">
+        <div class="rcv2-badge">
+          <span class="rcv2-method">Point</span>
+          <span class="rcv2-num">01</span>
+        </div>
+        <div class="rcv2-body">
+          <h3><em class="rcv2-em">糖質カット</em>を意識して<br>ご飯を抜いた食生活</h3>
         </div>
       </div>
-      <div class="reason-card">
-        <span class="reason-num">02</span>
-        <div>
-          <span class="reason-tag">代謝の低下</span>
-          <h3>運動をやめたタイミングでのリバウンド</h3>
-          <p>運動で一時的に痩せても、やめた瞬間にリバウンドするのは、筋肉量の低下で基礎代謝が落ちているから。体が元の体重に戻ろうとする仕組みが働いています。</p>
+      <div class="reason-card-v2">
+        <div class="rcv2-badge">
+          <span class="rcv2-method">Point</span>
+          <span class="rcv2-num">02</span>
+        </div>
+        <div class="rcv2-body">
+          <h3><em class="rcv2-em">運動</em>による<br>代謝の向上</h3>
         </div>
       </div>
-      <div class="reason-card">
-        <span class="reason-num">03</span>
-        <div>
-          <span class="reason-tag">栄養不足</span>
-          <h3>過度な糖質カット・ファスティング</h3>
-          <p>糖質を極端に制限したり断食を繰り返すと、体に必要な栄養素が不足します。肌荒れや疲れやすさが出るだけでなく、代謝サイクルそのものが乱れていきます。</p>
+      <div class="reason-card-v2">
+        <div class="rcv2-badge">
+          <span class="rcv2-method">Point</span>
+          <span class="rcv2-num">03</span>
+        </div>
+        <div class="rcv2-body">
+          <h3><em class="rcv2-em">カロリー制限</em>に<br>基づいた食事管理</h3>
         </div>
       </div>
-      <div class="reason-card">
-        <span class="reason-num">04</span>
-        <div>
-          <span class="reason-tag">生活リズムの乱れ</span>
-          <h3>睡眠不足・不規則な食事タイミング</h3>
-          <p>睡眠不足は食欲を増進させるホルモンを増やし、食事のタイミングのズレは体内時計を狂わせます。どれだけ食事に気をつけても、生活習慣が土台にないと効果が出にくくなります。</p>
+      <div class="reason-card-v2">
+        <div class="rcv2-badge">
+          <span class="rcv2-method">Point</span>
+          <span class="rcv2-num">04</span>
+        </div>
+        <div class="rcv2-body">
+          <h3>16時間<em class="rcv2-em">ファスティング</em>など<br>間欠的断食</h3>
         </div>
       </div>
     </div>
 
-    <div class="loop-box">
-      <p class="loop-box-title">⚠ これらが積み重なると……</p>
-      <ul>
-        <li>肌が荒れる・ニキビができる（栄養バランスの崩れ）</li>
-        <li>自分に自信が持てなくなる（自己嫌悪感のループ）</li>
-        <li>「また失敗した」を繰り返す万年ダイエッターになってしまう</li>
-      </ul>
+    <div style="margin-top: 28px; margin-bottom: 32px; text-align: center; line-height: 1.85;">
+      <p style="font-family:'Noto Sans JP',sans-serif; font-size: 0.88rem; color: var(--text-light); margin-bottom: 14px;">一度は耳にする方法ですが、</p>
+      <p style="font-family:'Noto Serif JP',serif; font-size: clamp(1.25rem,5.5vw,1.72rem); font-weight: 700; color: var(--brown); letter-spacing: 0.04em; line-height: 1.55; display: inline-block; background: linear-gradient(transparent 68%, rgba(178,132,68,0.38) 68%); padding-bottom: 2px;">あなたに最適な方法を<br>自信を持って答えられますか？</p>
     </div>
 
-    <div class="loop-conclusion">
-      結局、どんなに頑張って痩せたとしても、<strong>正しい知識と習慣がなければ、このループをずっと繰り返してしまいます。</strong><br>
-      <span style="font-size:0.86rem; color:var(--text-light);">あなたに足りなかったのは、意志力ではなく「仕組み」と「知識」です。</span>
+    <div style="margin: 0 auto; max-width: 640px;">
+      <img src="images/loop-woman.png" alt="自分に合わない方法を続けてしまうと…" style="width: 100%; height: auto; display: block; border-radius: 10px;">
     </div>
   </div>
 </section>
@@ -2091,52 +2415,122 @@
 <!-- ═══════════════════════════════════ -->
 <section class="sec--beige" style="padding: 72px 0;">
   <div class="container">
-    <span class="en-label">Our Mission</span>
-    <h2 class="section-title">私たちは、このループを<span class="em-big">断ち切るために<br class="sp-br">もぐラボをつくりました。</span></h2>
-    <div class="rule--left"></div>
+    <div class="mission-stmt">
+      <div class="mission-stmt-label">私たちは</div>
+      <p class="mission-stmt-pre">このループを断ち切ってほしくて、</p>
+      <p class="mission-stmt-main"><strong>パーソナルカウンセリング</strong></p>
+      <p class="mission-stmt-post">をご用意しました。</p>
+    </div>
 
-    <div class="mission-statement">
-      <p class="mission-lead">
-        ダイエットで消耗するのをやめてほしい。<br class="sp-br">
-        食べることを楽しみながら、気づいたら体が変わっていた——<br class="sp-br">
-        そんな体験を、あなたにも届けたい。<br>
-        それが、もぐラボを立ち上げた理由です。
-      </p>
-      <p class="mission-headline">「人生最後のダイエット」を、<br class="sp-br">私たちと一緒に。</p>
+    <span class="en-label">Our Instructors</span>
+    <h3 style="font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--text); margin-bottom:24px; letter-spacing:0.05em;">実績ある講師たち</h3>
+
+    <div class="lecturer-cards-wrap">
+      <div class="lecturer-card">
+        <div class="lecturer-top">
+          <div class="lecturer-photo">
+            <img src="images/instructor-sarina2.png" alt="さりな">
+          </div>
+          <div class="lecturer-info">
+            <span class="lecturer-role-badge">管理栄養士</span>
+            <h3>さりな</h3>
+          </div>
+        </div>
+        <ul class="instructor-track-list">
+          <li>食べ痩せダイエット指導、100名以上の成功実績</li>
+          <li>−11kgを達成した生徒さんも</li>
+          <li>無理なく一生継続できる「食べ痩せメソッド」を提供</li>
+          <li>食べ痩せダイエットで地上波テレビ出演</li>
+        </ul>
+      </div>
+      <div class="lecturer-card">
+        <div class="lecturer-top">
+          <div class="lecturer-photo">
+            <img src="images/instructor-marina.png" alt="まりな">
+          </div>
+          <div class="lecturer-info">
+            <span class="lecturer-role-badge">栄養士</span>
+            <h3>まりな</h3>
+          </div>
+        </div>
+        <ul class="instructor-track-list">
+          <li>現役プロサッカー選手（Jリーグ250試合出場）の夫を10年間サポート</li>
+          <li>Instagram「丹羽家ごはん」フォロワー30万人</li>
+          <li>レシピ本「おうち天才ごはん」出版（KADOKAWA）</li>
+          <li>オレンジページ / ar レシピ掲載</li>
+        </ul>
+      </div>
+      <div class="lecturer-card">
+        <div class="lecturer-top">
+          <div class="lecturer-photo">
+            <img src="images/instructor-tuki.png" alt="つき">
+          </div>
+          <div class="lecturer-info">
+            <span class="lecturer-role-badge">栄養コンシェルジュ</span>
+            <h3>つき</h3>
+          </div>
+        </div>
+        <ul class="instructor-track-list">
+          <li>栄養コンシェルジュ2つ星を取得</li>
+          <li>3食 炭水化物を食べて痩せるダイエットを発信</li>
+          <li>自社商品を通して、食事改善を中心としたダイエットサポートに携わる</li>
+        </ul>
+      </div>
+      <div class="lecturer-card">
+        <div class="lecturer-top">
+          <div class="lecturer-photo">
+            <img src="images/instructor-hinata.png" alt="ひなた">
+          </div>
+          <div class="lecturer-info">
+            <span class="lecturer-role-badge">薬剤師</span>
+            <h3>ひなた</h3>
+          </div>
+        </div>
+        <ul class="instructor-track-list">
+          <li>食べ痩せダイエット指導、100名以上の成功実績</li>
+          <li>−11kgを達成した生徒さんも</li>
+          <li>無理なく一生継続できる「食べ痩せメソッド」を提供</li>
+          <li>食べ痩せダイエットで地上波テレビ出演</li>
+        </ul>
+      </div>
     </div>
 
     <div class="service-cards">
       <div class="service-card">
-        <span class="service-icon">🍽️</span>
+        <span class="service-icon"></span>
         <div>
-          <h3>プロによる食事添削</h3>
-          <p>毎日の食事内容をプロが確認・フィードバック。「何をどう食べれば痩せるか」が具体的にわかります。知識がなくても安心してスタートできます。</p>
+          <h3>あなたのことを、一対一でしっかり聞かせてください</h3>
+          <p>今まで試してきたこと、うまくいかなかった理由、今の悩み——全てをじっくり伺います。「あなたにとって本当にやるべきこと」を一緒に整理するための時間です。知識がなくても、何から始めればいいかわからなくても大丈夫。</p>
         </div>
       </div>
       <div class="service-card">
-        <span class="service-icon">📖</span>
+        <span class="service-icon"></span>
         <div>
-          <h3>栄養管理士監修のレシピ</h3>
-          <p>制限ではなく「食べて痩せる」ためのレシピを毎月更新。簡単・おいしい・痩せる、の三拍子がそろったメニューで食事を楽しみながら続けられます。</p>
+          <h3>明日から何をすべきか、が明確になる</h3>
+          <p>カウンセリング後には、あなた専用の「はじめの一歩」がわかります。「何から手をつければいいかわからない」状態から抜け出し、迷わず動き出せる状態になって終わります。</p>
         </div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🤝</span>
+        <span class="service-icon"></span>
         <div>
-          <h3>同じ目標を持つ仲間のコミュニティ</h3>
-          <p>「1人で頑張らなくていい」。同じ悩みを持ち、同じ目標に向かう仲間と繋がれる場所があります。継続できる環境が、結果を大きく変えます。</p>
+          <h3>体重・食事・運動のプレッシャーから、解放されていく</h3>
+          <p>過度に気にしてしまっていた体重の数字、食べることへの罪悪感、続けられない自己嫌悪——カウンセリングを通じて「なぜそうなっているか」が腑に落ちると、その重さが少しずつ消えていきます。</p>
         </div>
       </div>
     </div>
 
     <div class="result-state">
+      <div class="result-visual-wrap">
+        <img src="images/result-woman.png" alt="">
+      </div>
       <p class="result-state-title">
         3ヶ月後——<strong>「頑張って痩せた」ではなく、</strong><br>
         <span style="font-size:1.2rem; color:var(--green); font-weight:700;">「気づいたら痩せていた」</span>という体験を。
       </p>
       <p class="result-state-body">
-        頑張ることに疲れたあなたに。<br>
-        食べることを楽しみながら変われる、その方法がここにあります。
+        情報に疲れたあなたに。<br>
+        食べることが楽しみになる。<br>
+        そんな時間をプレゼントします。
       </p>
     </div>
   </div>
@@ -2158,7 +2552,7 @@
   <div class="deco-dots" style="top:20px; left:15px;"></div>
   <div class="container">
     <span class="en-label">Testimonials</span>
-    <h2 class="section-title">もぐラボで変わった<span class="em-big">みなさんの声</span></h2>
+    <h2 class="section-title">食べることが楽しみに変わった<span class="em-big">方々の声をお届けします</span></h2>
     <div class="rule--left"></div>
     <p class="disclaimer" style="margin-bottom:20px;">※ 効果には個人差があり、結果を保証するものではありません。</p>
 
@@ -2220,10 +2614,10 @@
       <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <div class="deco-cta-frame">
-        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定</p>
         <div class="deco-cta-divider"></div>
-        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
-        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <p style="font-family:'Noto Serif JP',serif; font-size:0.92rem; color:var(--text-mid); line-height:1.75; margin-bottom:12px;">自分に合った方法で健康的に痩せる</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>。</p>
         <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
         <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
@@ -2243,40 +2637,70 @@
 <!-- ═══════════════════════════════════ -->
 <!-- ビジョン（大義名分）               -->
 <!-- ═══════════════════════════════════ -->
-<section class="sec--white" style="padding: 72px 0;">
-  <div class="deco-dots" style="top:40px; right:15px; transform:rotate(20deg);"></div>
+<section class="sec--white" style="padding: 80px 0 72px;">
   <div class="container">
-    <span class="en-label">Our Vision</span>
-    <h2 class="section-title">私たちにしか<span class="em-big">叶えられない未来が<br class="sp-br">あると思っています。</span></h2>
-    <div class="rule--left"></div>
 
-    <div class="vision-pull">
-      「ダイエットをがんばる」という概念を、<strong>この世の中からなくしたい。</strong>
+    <!-- KV：大見出し -->
+    <div class="vision-v2-kv">
+      <div class="vision-v2-kv-inner">
+        <span class="vision-v2-en">Our Vision</span>
+        <h2 class="vision-v2-title">
+          私たちにしか<br>
+          <em>叶えられない未来</em>が<br>
+          あると思っています。
+        </h2>
+      </div>
     </div>
 
-    <div class="vision-body">
-      <p>食欲の乱れ、代謝の低下、栄養不足、生活リズムの崩れ——これらは全て、正しい知識と環境があれば解決できることです。</p>
-      <p>でも一人でそれを実践するのは難しい。だからこそ、<strong style="color:var(--brown);">「仲間」の力が必要だと私たちは考えています。</strong></p>
+    <!-- 区切り -->
+    <div class="vision-v2-hr">
+      <div class="vision-v2-hr-line"></div>
+      <span class="vision-v2-hr-label">Mogu Labo Concept</span>
+      <div class="vision-v2-hr-line"></div>
     </div>
 
-    <div class="vision-points">
-      <div class="vision-point">
-        <span class="vision-point-icon">🌱</span>
-        <p class="vision-point-text"><strong>食べることを楽しみながら変われる人を増やしたい。</strong><br>無理な制限ではなく、食事を豊かにすることで体が変わることを証明し続けたい。</p>
+    <!-- 画像 -->
+    <div class="vision-img-wrap">
+      <img src="images/vision-woman.png" alt="">
+    </div>
+
+    <!-- リードコピー -->
+    <p class="vision-v2-lead">
+      体から自信を取り戻し、<br>
+      もっと自分らしく輝く女性を増やしたい。
+    </p>
+
+    <!-- ボディ -->
+    <div class="vision-v2-body">
+      <p>情報が増えたこの時代に、自分に合った方法に出会い、<br class="sp-br">それを一人で実践するのは難しい。</p>
+      <p>だからこそ、<strong style="color:var(--brown);">「誰か」の力が必要だと私たちは考えています。</strong></p>
+    </div>
+
+    <!-- ビジョン3点 -->
+    <div class="vision-v2-points">
+      <div class="vision-v2-point">
+        <strong>食べることに罪悪感を持たないで欲しい。</strong>
+        <small>無理な食事制限をしなくても、あなたに合った食事で体は変わります。</small>
       </div>
-      <div class="vision-point">
-        <span class="vision-point-icon">💪</span>
-        <p class="vision-point-text"><strong>ダイエットに消耗する人を、ゼロにしたい。</strong><br>「どうせ自分には無理」という諦めを、実績と仲間の存在で変えていきたい。</p>
+      <div class="vision-v2-point">
+        <strong>ダイエットに諦める人を減らしたい。</strong>
+        <small>「どうせ自分には無理」という諦めを、仲間の存在で変えていきたい。</small>
       </div>
-      <div class="vision-point">
-        <span class="vision-point-icon">🤝</span>
-        <p class="vision-point-text"><strong>だからこそ、コミュニティに意味がある。</strong><br>同じ目標を持つ仲間と繋がることで、一人では続かなかったことが、自然と続いていく。</p>
+      <div class="vision-v2-point">
+        <strong>自分を好きになる人を増やしたい。</strong>
+        <small>仲間とともに達成感を感じ、自分を認めてあげられる人を増やしたい。</small>
       </div>
     </div>
 
     <blockquote class="story-quote">
-      「人生最後のダイエット」を経験した人の<br>笑顔を、もっと増やしたい。
+      このパーソナルカウンセリングをきっかけに<br>
+      「人生最後のダイエット」にして<br>
+      笑顔でいられる女性を、もっと増やしたい。
     </blockquote>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
+    </div>
   </div>
 </section>
 
@@ -2297,34 +2721,26 @@
     <span class="en-label">For You</span>
     <h2 class="section-title">こんな方に<span class="em-big">おすすめです</span></h2>
     <div class="rule--left"></div>
-    <div class="target-grid">
-      <div class="target-box yes">
-        <div class="target-header">
-          <span class="target-header-icon">🙆‍♀️</span>
-          <h3>RECOMMENDED ○</h3>
-        </div>
-        <ul>
-          <li>リバウンドを繰り返している</li>
-          <li>食事制限や運動で消耗してきた</li>
-          <li>「我慢のダイエット」はもう限界</li>
-          <li>一人で頑張るのに限界を感じている</li>
-          <li>食べることを楽しみながら変わりたい</li>
-          <li>仕事・家事・育児と両立したい</li>
-          <li>今度こそ「最後のダイエット」にしたい</li>
-        </ul>
-      </div>
-      <div class="target-box no">
-        <div class="target-header">
-          <span class="target-header-icon">🙅‍♀️</span>
-          <h3>NOT RECOMMENDED ×</h3>
-        </div>
-        <ul>
-          <li>「1週間で−5kg」のような極端な結果を求める方</li>
-          <li>食事や生活習慣を変えるつもりがない方</li>
-          <li>アドバイスを聞くだけで実践する意思がない方</li>
-        </ul>
-        <p class="target-note">※ 本気で変わりたい方のお時間を大切にするため、ご理解をお願いいたします。</p>
-      </div>
+    <div class="target-v2">
+      <!-- おすすめの方 -->
+      <div class="target-v2-header rec">こんな方におすすめです</div>
+      <ul class="target-v2-list rec-bg">
+        <li><span class="target-v2-check chk-yes">✓</span>リバウンドを繰り返している</li>
+        <li><span class="target-v2-check chk-yes">✓</span>食事制限や運動で消耗してきた</li>
+        <li><span class="target-v2-check chk-yes">✓</span>「我慢のダイエット」はもう限界</li>
+        <li><span class="target-v2-check chk-yes">✓</span>一人で頑張るのに限界を感じている</li>
+        <li><span class="target-v2-check chk-yes">✓</span>食べることを楽しみながら変わりたい</li>
+        <li><span class="target-v2-check chk-yes">✓</span>仕事・家事・育児と両立したい</li>
+        <li><span class="target-v2-check chk-yes">✓</span>今度こそ「最後のダイエット」にしたい</li>
+      </ul>
+      <!-- おすすめでない方 -->
+      <div class="target-v2-header not-rec">こんな方にはおすすめしません</div>
+      <ul class="target-v2-list not-rec-bg">
+        <li><span class="target-v2-check chk-no">×</span>「1週間で−5kg」のような極端な結果を求める方</li>
+        <li><span class="target-v2-check chk-no">×</span>食事や生活習慣を変えるつもりがない方</li>
+        <li><span class="target-v2-check chk-no">×</span>アドバイスを聞くだけで実践する意思がない方</li>
+      </ul>
+      <p class="target-v2-note">※ 本気で変わりたい方のお時間を大切にするため、ご理解をお願いいたします。</p>
     </div>
   </div>
 </section>
@@ -2349,10 +2765,10 @@
       <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <div class="deco-cta-frame">
-        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定</p>
         <div class="deco-cta-divider"></div>
-        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
-        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <p style="font-family:'Noto Serif JP',serif; font-size:0.92rem; color:var(--text-mid); line-height:1.75; margin-bottom:12px;">自分に合った方法で健康的に痩せる</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>。</p>
         <a href="#cta-final" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
         <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
@@ -2381,22 +2797,18 @@
     <div class="step-illust">
       <div class="step-flow-visual">
         <div class="step-flow-item">
-          <span class="step-flow-icon">📱</span>
           <span class="step-flow-label">LINE予約</span>
         </div>
         <span class="step-flow-arrow">→</span>
         <div class="step-flow-item">
-          <span class="step-flow-icon">🎧</span>
           <span class="step-flow-label">ヒアリング</span>
         </div>
         <span class="step-flow-arrow">→</span>
         <div class="step-flow-item">
-          <span class="step-flow-icon">🔍</span>
           <span class="step-flow-label">原因分析</span>
         </div>
         <span class="step-flow-arrow">→</span>
         <div class="step-flow-item">
-          <span class="step-flow-icon">💡</span>
           <span class="step-flow-label">ご提案</span>
         </div>
       </div>
@@ -2405,19 +2817,19 @@
     <div class="step-list">
       <div class="step-item">
         <div class="step-dot">1</div>
-        <div class="step-content"><h4><span class="step-icon">📱</span>予約</h4><p>LINEからご希望の日程を選ぶだけ。30秒で完了します。</p></div>
+        <div class="step-content"><h4>予約</h4><p>LINEからご希望の日程を選ぶだけ。30秒で完了します。</p></div>
       </div>
       <div class="step-item">
         <div class="step-dot">2</div>
-        <div class="step-content"><h4><span class="step-icon">🎧</span>当日ヒアリング</h4><p>今の生活リズム、食事内容、これまで試してきたダイエットについてお聞きします。事前準備は不要です。</p></div>
+        <div class="step-content"><h4>当日ヒアリング</h4><p>今の生活リズム、食事内容、これまで試してきたダイエットについてお聞きします。事前準備は不要です。</p></div>
       </div>
       <div class="step-item">
         <div class="step-dot">3</div>
-        <div class="step-content"><h4><span class="step-icon">🔍</span>原因の整理</h4><p>4つのタイプのうち、あなたがどこに当てはまるかを一緒に見つけていきます。</p></div>
+        <div class="step-content"><h4>原因の整理</h4><p>4つのタイプのうち、あなたがどこに当てはまるかを一緒に見つけていきます。</p></div>
       </div>
       <div class="step-item">
         <div class="step-dot">4</div>
-        <div class="step-content"><h4><span class="step-icon">💡</span>方向性のご提案</h4><p>あなたに合った「最初の一歩」を具体的にお伝えします。カウンセリングだけでも「何をすればいいか」が明確になります。</p></div>
+        <div class="step-content"><h4>方向性のご提案</h4><p>あなたに合った「最初の一歩」を具体的にお伝えします。カウンセリングだけでも「何をすればいいか」が明確になります。</p></div>
       </div>
     </div>
     <div class="step-note">※ 無理な勧誘は一切ありません。「まず話を聞いてみたい」だけでも大歓迎です。</div>
@@ -2494,10 +2906,10 @@
       <svg class="deco-cta-corner deco-cta-corner--bl" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <svg class="deco-cta-corner deco-cta-corner--br" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 44 L4 4 L44 4" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/></svg>
       <div class="deco-cta-frame">
-        <p class="deco-cta-sub">動画を受け取ってくださった方限定のご案内</p>
+        <p class="deco-cta-sub">動画を受け取ってくださった方限定</p>
         <div class="deco-cta-divider"></div>
-        <p class="deco-cta-days">先着<span class="accent-num">15名</span>限定</p>
-        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>を<br>開催します！</p>
+        <p style="font-family:'Noto Serif JP',serif; font-size:0.92rem; color:var(--text-mid); line-height:1.75; margin-bottom:12px;">自分に合った方法で健康的に痩せる</p>
+        <p class="deco-cta-title">あなた専用の<br><span class="underline-em">パーソナルカウンセリング</span>。</p>
         <a href="YOUR_LINE_URL" class="btn btn--primary btn--cta-pulse">まずは話を聞いてみる　→</a>
         <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
       </div>
