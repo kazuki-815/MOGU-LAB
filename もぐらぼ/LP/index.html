@@ -17,7 +17,7 @@
       color: #2e2118;
       line-height: 1.85;
       font-weight: 400;
-      padding-bottom: 72px;
+      padding-top: 52px;
       letter-spacing: 0.04em;
     }
     img { max-width: 100%; height: auto; display: block; }
@@ -534,41 +534,24 @@
 
     /* ===== 固定ヘッダー ===== */
     .site-header {
-      display: none;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(250,248,245,0.92); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--beige-mid);
+      padding: 10px 20px;
+      height: 52px;
     }
     .site-logo {
+      display: flex; align-items: center; gap: 8px;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem; font-weight: 600; letter-spacing: 0.15em; color: var(--brown);
     }
-    .header-cta {
-      background: var(--green); color: var(--white);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
-      padding: 9px 18px; border-radius: 2px; white-space: nowrap; transition: background 0.2s;
+    .site-logo img {
+      width: 28px; height: 28px; object-fit: contain;
     }
-    .header-cta:hover { background: var(--green-dark); }
 
-    /* ===== スマホ固定CTA ===== */
-    .floating-cta {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-      background: var(--white); border-top: 1px solid var(--beige-mid);
-      padding: 10px 16px; display: flex; gap: 10px; align-items: center;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-    }
-    .floating-cta .fc-text {
-      flex: 1; font-size: 0.72rem; color: var(--text-light); line-height: 1.5;
-    }
-    .floating-cta .fc-text strong {
-      display: block; font-size: 0.82rem; color: var(--brown); font-weight: 700;
-    }
-    .floating-cta .fc-btn {
-      background: var(--green); color: var(--white);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 0.82rem; font-weight: 700; padding: 14px 20px;
-      border-radius: 2px; white-space: nowrap; flex-shrink: 0; transition: background 0.2s;
-    }
-    .floating-cta .fc-btn:hover { background: var(--green-dark); }
-    @media (min-width: 769px) { .floating-cta { display: none; } body { padding-bottom: 0; } }
+    /* ===== スマホ固定CTA（非表示） ===== */
+    .floating-cta { display: none; }
 
     /* ===== キャンペーン帯 ===== */
     .campaign-bar {
@@ -2230,18 +2213,11 @@
 
 <!-- ===== 固定ヘッダー ===== -->
 <header class="site-header">
-  <div class="site-logo">もぐラボ</div>
-  <a href="#cta-final" class="header-cta">無料カウンセリングを予約する</a>
-</header>
-
-<!-- ===== スマホ固定CTA ===== -->
-<div class="floating-cta">
-  <div class="fc-text">
-    <strong>動画を受け取った方限定</strong>
-    無料パーソナルカウンセリング
+  <div class="site-logo">
+    <img src="images/mogulab-icon.png" alt="もぐラボ">
+    もぐラボ
   </div>
-  <a href="#cta-final" class="fc-btn">無料で予約する →</a>
-</div>
+</header>
 
 
 <!-- ═══════════════════════════════════ -->
