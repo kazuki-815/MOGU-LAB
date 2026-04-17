@@ -1,8 +1,23 @@
+# もぐラボ LP をサイトルートとして公開（ビルド不要の静的配信）
 [build]
   publish = "もぐらぼ/LP"
-  command  = "echo Static LP"
+  command = "echo Static LP"
 
+# HTML は更新反映しやすく短キャッシュ
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# 画像・CSS 内蔵のため主に画像向け
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, immutable"
+
+# 公開サイト向けの最低限のセキュリティヘッダー（Vimeo / Lステップはそのまま利用可能）
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

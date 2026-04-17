@@ -1,0 +1,13 @@
+もぐラボ LP を公開する手順（Netlify）
+
+■ Git 連携（推奨）
+1. https://app.netlify.com にログイン → Add new site → Import an existing project
+2. このリポジトリ（tesuto）を選択
+3. リポジトリ直下の netlify.toml により、公開ディレクトリは「もぐらぼ/LP」、ビルドは echo のみで静的配信されます
+4. Deploy site → 付与された *.netlify.app のURLで index.html が開けばOK
+
+■ ドラッグ＆ドロップのみの場合
+1. この「LP」フォルダの中身（index.html / images / robots.txt など）だけを ZIP のルートにして圧縮
+2. Netlify の Sites → Add new site → Deploy manually に ZIP をドロップ
+
+※ 独自ドメインは Netlify の Domain settings から CNAME を設定してください。
