@@ -12,7 +12,11 @@
   <meta property="og:title" content="タイプ別・痩せ方メソッド | もぐラボ コンサルコミュニティ">
   <meta property="og:description" content="糖質制限・置き換え・ファスティング——何度やってもリバウンド。原因は意志力じゃなく「自分のタイプに合っていない方法」を選んでいたからです。">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="index.html">
+  <meta property="og:url" content="https://delicate-klepon-d85b0d.netlify.app/">
+  <meta property="og:image" content="https://delicate-klepon-d85b0d.netlify.app/images/cta-banner-3days-special.png">
+  <meta property="og:image:alt" content="もぐラボ パーソナルカウンセリングのご案内">
+  <meta name="twitter:image" content="https://delicate-klepon-d85b0d.netlify.app/images/cta-banner-3days-special.png">
+  <link rel="canonical" href="https://delicate-klepon-d85b0d.netlify.app/">
   <link rel="icon" href="images/mogu-lab-bowl-circle-icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +31,7 @@
       line-height: 1.85;
       font-weight: 400;
       padding-top: 52px;
+      padding-bottom: calc(124px + env(safe-area-inset-bottom, 0px));
       letter-spacing: 0.04em;
     }
     img { max-width: 100%; height: auto; display: block; }
@@ -541,19 +546,161 @@
     .wave-white { fill: var(--white); }
     .wave-accent { fill: var(--accent-pale); }
 
-    /* ===== 講師陣（単一PNG：コンテナ内に収め、画像の縦横比は維持） ===== */
-    .instructors-section-wrap {
+    /* ===== 講師陣（カード型：参照デザイン／顔写真のみラスタ） ===== */
+    .instructors-sec-cards {
       max-width: 720px;
       margin: 0 auto;
-      padding: 0 clamp(16px, 4vw, 24px);
-      overflow-x: hidden;
+      padding: 56px clamp(16px, 4vw, 28px) 64px;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255, 252, 245, 0.95) 0%, transparent 58%),
+        radial-gradient(ellipse 85% 50% at 50% 100%, rgba(242, 236, 227, 0.9) 0%, transparent 55%),
+        linear-gradient(180deg, #faf6ef 0%, #faf8f5 45%, #f4ece0 100%);
     }
-    .instructors-section-img {
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      height: auto;
+    .instructors-sec-cards .ins-head {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .instructors-sec-cards .ins-en {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: #9a7a52;
+      text-transform: uppercase;
       display: block;
+      margin-bottom: 12px;
+    }
+    .instructors-sec-cards .ins-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: 0.06em;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+    .instructors-sec-cards .ins-lead {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      line-height: 1.9;
+      max-width: 34em;
+      margin: 0 auto;
+    }
+    .instructors-sec-cards .ins-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .ins-card {
+      display: flex;
+      align-items: stretch;
+      gap: clamp(16px, 3.5vw, 26px);
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: 12px;
+      padding: clamp(16px, 3.2vw, 22px) clamp(14px, 3vw, 22px);
+      box-shadow: 0 6px 22px rgba(74, 52, 37, 0.07);
+    }
+    .ins-card-left {
+      flex: 0 0 clamp(118px, 30%, 168px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .ins-role {
+      display: inline-block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: linear-gradient(180deg, #c9a882 0%, #a88962 100%);
+      padding: 5px 10px 4px;
+      border-radius: 3px;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+    .ins-photo-ring {
+      width: clamp(108px, 26vw, 148px);
+      height: clamp(108px, 26vw, 148px);
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 10px;
+      flex-shrink: 0;
+      border: 3px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 24px rgba(74, 52, 37, 0.12);
+      background: linear-gradient(145deg, #efe6da, #e0d2c2);
+    }
+    .ins-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .ins-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+    }
+    .ins-card-right {
+      flex: 1;
+      min-width: 0;
+      padding-top: 2px;
+    }
+    .ins-card-points {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ins-card-points li {
+      position: relative;
+      padding-left: 1.15em;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      line-height: 1.75;
+      text-align: left;
+    }
+    .ins-card-points li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      top: 0.32em;
+      font-size: 0.5rem;
+      color: #c4874a;
+      line-height: 1;
+    }
+    .ins-accent {
+      font-weight: 800;
+      color: #b86a32;
+    }
+    @media (max-width: 640px) {
+      .ins-card {
+        flex-direction: column;
+        align-items: center;
+      }
+      .ins-card-left {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+      .ins-card-right {
+        width: 100%;
+        max-width: 420px;
+      }
     }
 
     /* ===== 固定ヘッダー ===== */
@@ -590,8 +737,54 @@
       display: block;
     }
 
-    /* ===== スマホ固定CTA（非表示） ===== */
-    .floating-cta { display: none; }
+    /* ===== 画面下部固定CTA ===== */
+    .sticky-bottom-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 200;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(180deg, rgba(250,248,245,0.96) 0%, #faf8f5 55%, #f5f0e8 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--beige-mid);
+      box-shadow: 0 -8px 28px rgba(74,52,37,0.1);
+    }
+    .sticky-bottom-cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .sticky-bottom-cta-lead {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--brown);
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    .sticky-bottom-cta-was {
+      display: inline-block;
+      color: var(--text-light);
+      font-weight: 600;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgba(74, 52, 37, 0.55);
+    }
+    .sticky-bottom-cta-free {
+      color: #c62828;
+      font-weight: 800;
+      font-size: 1.12em;
+      letter-spacing: 0.04em;
+    }
+    .sticky-bottom-cta .sticky-bottom-cta-btn {
+      max-width: 100%;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
 
     /* ===== キャンペーン帯 ===== */
     .campaign-bar {
@@ -2487,6 +2680,11 @@
   <!-- コードFV（新ファーストビュー） -->
   <div class="fv-hero">
     <div class="fv-hero-inner">
+      <div class="fv-logo-block">
+        <div class="fv-brand-logo-wrap" role="img" aria-label="もぐラボ">
+          <img src="images/mogu-lab-bowl-circle-icon.png" alt="" class="bowl-matte-icon" width="128" height="128" decoding="async" loading="eager">
+        </div>
+      </div>
       <p class="fv-lead-small">運動や糖質カットを試しても痩せなかったあなたに<br>3食たべて無理なく痩せる</p>
       <h1 class="fv-main-title">タイプ別<br>痩せ方メソッド</h1>
       <span class="fv-release-badge">特別公開</span>
@@ -2496,8 +2694,9 @@
 
   <div class="vsl-wrap">
     <div class="vsl-vimeo-frame">
-      <iframe src="https://player.vimeo.com/video/1184294535?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="もぐラボ_タイプ別・食べ痩せメソッド"></iframe>
+      <iframe src="https://player.vimeo.com/video/1184294535?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="もぐラボ_タイプ別・食べ痩せメソッド"></iframe>
     </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
   </div>
   <!-- CTA①（VSL直下：3日間強調バナー） -->
   <div class="container">
@@ -2511,11 +2710,69 @@
 
 
 <!-- ═══════════════════════════════════ -->
-<!-- 講師陣実績                           -->
+<!-- 講師陣（カード型：顔は images/instructor-*.png。画質は原寸・srcset 推奨） -->
 <!-- ═══════════════════════════════════ -->
-<section style="padding: 0; background: transparent; position: relative;">
-  <div class="instructors-section-wrap">
-    <img src="images/instructors-our-team.png" alt="もぐラボを支える専門家チーム。食べ痩せダイエットのプロたちが、一人ひとりに合ったアプローチで伴走します。" class="instructors-section-img" decoding="async">
+<section class="instructors-sec-cards" aria-labelledby="instructors-heading">
+  <header class="ins-head">
+    <span class="ins-en">Our Instructors</span>
+    <h2 class="ins-title" id="instructors-heading">もぐラボを支える<br>専門家チーム</h2>
+    <p class="ins-lead">食べ痩せダイエットのプロたちが、<br class="sp-br">一人ひとりに合ったアプローチで伴走します。</p>
+  </header>
+
+  <div class="ins-list">
+    <article class="ins-card" aria-labelledby="ins-name-sarina">
+      <div class="ins-card-left">
+        <span class="ins-role">管理栄養士</span>
+        <div class="ins-photo-ring">
+          <img src="images/instructor-sarina.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+        </div>
+        <p class="ins-name" id="ins-name-sarina">さりな</p>
+      </div>
+      <div class="ins-card-right">
+        <ul class="ins-card-points">
+          <li>食べ痩せダイエット指導、<span class="ins-accent">100名以上</span>の成功実績</li>
+          <li><span class="ins-accent">−11kg</span>を達成した生徒さんも</li>
+          <li>無理なく一生継続できる 食べ痩せメソッド を提供</li>
+          <li>食べ痩せダイエットで地上波テレビ出演</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="ins-card" aria-labelledby="ins-name-marina">
+      <div class="ins-card-left">
+        <span class="ins-role">栄養士</span>
+        <div class="ins-photo-ring">
+          <img src="images/instructor-marina.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+        </div>
+        <p class="ins-name" id="ins-name-marina">まりな</p>
+      </div>
+      <div class="ins-card-right">
+        <ul class="ins-card-points">
+          <li>現役プロサッカー選手（Jリーグ250試合出場）<br>の夫を10年間サポート</li>
+          <li>Instagram「丹羽家ごはん」フォロワー<span class="ins-accent">30万人</span></li>
+          <li>レシピ本「おうち天才ごはん」出版（KADOKAWA）</li>
+          <li>オレンジページ/ar レシピ掲載</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="ins-card" aria-labelledby="ins-name-hana">
+      <div class="ins-card-left">
+        <span class="ins-role">大人の体型リセット専門家</span>
+        <div class="ins-photo-ring">
+          <img src="images/instructor-hana.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+        </div>
+        <p class="ins-name" id="ins-name-hana">はな</p>
+      </div>
+      <div class="ins-card-right">
+        <ul class="ins-card-points">
+          <li>ボディメイクの大会に初出場で初優勝</li>
+          <li>Instagramフォロワー<span class="ins-accent">7.3万人</span></li>
+          <li>体型を根本から整える現役パーソナルトレーナー</li>
+          <li>一生リバウンドしない食事メソッドを提供</li>
+        </ul>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -2982,7 +3239,13 @@
   <p style="margin-top:12px;">© 2026 もぐラボ. All rights reserved.</p>
 </footer>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
+<div class="sticky-bottom-cta" role="region" aria-label="パーソナルカウンセリングのお申し込み">
+  <div class="sticky-bottom-cta-inner">
+    <p class="sticky-bottom-cta-lead"><span class="sticky-bottom-cta-was">通常3,000円</span>が今だけ<span class="sticky-bottom-cta-free">無料</span></p>
+    <a href="https://lstep.app/tZRKvgQ" class="btn btn--primary btn--cta-pulse btn--cta-free-long sticky-bottom-cta-btn">パーソナルカウンセリングに申し込む</a>
+  </div>
+</div>
+
 <script>
   document.querySelectorAll('.faq-q').forEach(function(q) {
     q.addEventListener('click', function() {

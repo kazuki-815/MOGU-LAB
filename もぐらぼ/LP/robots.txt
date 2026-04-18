@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://delicate-klepon-d85b0d.netlify.app/sitemap.xml

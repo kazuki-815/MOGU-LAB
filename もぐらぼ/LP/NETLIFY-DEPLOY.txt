@@ -1,6 +1,51 @@
 もぐラボ LP を公開する手順（Netlify）
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ このリポジトリで共有する「本番URL」（固定）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+一般公開リンク（LINE / Instagram などに貼る用）:
+  https://delicate-klepon-d85b0d.netlify.app/
+
+■ 一般公開（誰でも開ける・共有される）のチェック
+・上記 URL はそのまま共有できます。
+・Netlify: Site configuration → Access control で「パスワード保護」が ON だと一般公開になりません。公開する場合は OFF にしてください。
+・LP 側: robots（index,follow）、robots.txt、sitemap.xml、og:image（絶対URL）を用意済みです。変更を Netlify にデプロイすると有効になります。
+
+ローカルで index.html を直したあと、この URL でも同じ内容を見せたいとき（＝Netlify に再アップロード）:
+1. PowerShell で「もぐらぼ/LP」に移動する
+2. まだの場合は一度だけ: npx netlify-cli login → npx netlify-cli link
+   （一覧から delicate-klepon-d85b0d のサイトを選び、紐付け）
+3. 本番反映: .\deploy.ps1
+   （または: npx netlify-cli deploy --prod --dir="."）
+4. 数十秒後に https://delicate-klepon-d85b0d.netlify.app/ を開き直すと最新になります。
+
+※ 別のランダム名の Netlify サイトを Drop だけで作っている場合は、そちらとは別物です。
+   上の URL に載せるには、link でこのサイト（delicate-klepon-d85b0d）を選ぶ必要があります。
+
+プレビュー: 「もぐらぼ/LP/preview.bat」は public-site-url.txt の URL を開きます（同じ本番URL）。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 0. 一般公開できる HTTPS リンクを「今すぐ」欲しい（Node.js 不要・おすすめ）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+※ インターネット上で誰でも開ける URL は Netlify がデプロイ後に発行します（file:/// では共有できません）。
+
+【よくある取り違え：URL が2種類ある】
+・「管理画面・デプロイ用」… https://app.netlify.com/ から始まるページ（Drop やダッシュボード）。
+  → これは「サイトを置く工場の住所」。この URL を共有しても、LP の画面にはなりません。
+・「一般公開リンク（LP本体）」… https://（英数字やハイフン）.netlify.app/ で終わる URL。
+  → これが LINE や Instagram に貼る「みんなが見る LP」。ホスト名は必ず *.netlify.app です（昔の *.netlify.com ではありません）。
+
+【手っ取り早い：Netlify Drop（フォルダをドロップするだけ）】
+公式ドキュメント上、ドラッグ＆ドロップは次のどちらからでも行えます。
+1. ブラウザで次を開く: https://app.netlify.com/drop
+   または、ログイン後の「チームの Projects 一覧」ページを一番下までスクロールし、ページ下部のドロップゾーンを使う。
+2. Netlify にログイン（無料アカウントで可）
+3. エクスプローラーでこのリポジトリ内の「もぐらぼ/LP」フォルダを、そのままドロップ欄にドラッグ＆ドロップ
+4. 数十秒待つと、画面に表示される「https://xxxxxxxx.netlify.app」のような URL が「一般公開リンク」です。LINE やメールに貼るのはこちらだけでOKです。
+5. CLI のドラフトやプレビューでは「https://ランダム--サイト名.netlify.app」のように長い URL が出ることがあります。本番の短い URL（https://サイト名.netlify.app）と別物なので、共有先に合わせて選んでください。
+6. 同じフォルダを Drop だけで何度も新規にすると、別サブドメインになることがあります。固定の本番 URL にしたいときは ■C の「Git と連携」か、下の ■A / ■B を使ってください。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ■ A. スマホで見る「公開用リンク」をすぐ欲しい（この PC に Node.js がある場合）
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. 一度だけ: コマンドプロンプトまたは PowerShell で

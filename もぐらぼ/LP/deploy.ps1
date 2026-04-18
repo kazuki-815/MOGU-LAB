@@ -9,6 +9,16 @@ $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 Set-Location $root
 
+$pubUrlFile = Join-Path $root 'public-site-url.txt'
+if (Test-Path -LiteralPath $pubUrlFile) {
+    $pubLine = Get-Content -LiteralPath $pubUrlFile -Encoding UTF8 |
+        Where-Object { $_ -match '^\s*https?://' } |
+        Select-Object -First 1
+    if ($pubLine) {
+        Write-Host ">>> 本番URL（--prod 後にここが更新されます）: $($pubLine.Trim())" -ForegroundColor DarkGray
+    }
+}
+
 if (-not (Get-Command npx -ErrorAction SilentlyContinue)) {
   Write-Error "Node.js（npx）が見つかりません。https://nodejs.org/ から LTS を入れてから再実行してください。"
 }
