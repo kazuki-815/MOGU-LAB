@@ -1,6 +1,36 @@
 もぐラボ LP を公開する手順（Netlify）
 
-■ Git 連携（推奨）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ A. スマホで見る「公開用リンク」をすぐ欲しい（この PC に Node.js がある場合）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 一度だけ: コマンドプロンプトまたは PowerShell で
+     cd このLPフォルダ
+     npx netlify login
+     npx netlify link   （Netlify のサイトを選択して紐付け）
+2. ドラフト URL（共有用・本番 URL も表示される）を出す:
+     PowerShell:  .\deploy.ps1 -Draft
+     または:       npx netlify-cli deploy --dir="."
+3. ターミナルに表示された「Website Draft URL」または「Website URL」をスマホのブラウザにコピーして開く
+
+本番に更新したいとき:  .\deploy.ps1   （-Draft なし = --prod）
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ B. GitHub から自動で公開（推奨・Cursor 外でも URL が取れる）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Netlify: User settings → Applications → Personal access tokens でトークン発行
+2. Netlify: Site settings → Site details → Site information の「Site ID」（API ID）をコピー
+3. GitHub: リポジトリ → Settings → Secrets and variables → Actions → New repository secret
+     NETLIFY_AUTH_TOKEN … 1 のトークン
+     NETLIFY_SITE_ID    … 2 の Site ID
+4. GitHub: Actions タブ → 「Deploy Mogulabo LP (Netlify)」を開き、「Run workflow」で手動実行
+   または main ブランチへ push（もぐらぼ/LP 配下の変更で自動実行）
+5. ワークフロー完了後、Summary に本番 URL が表示されます（*.netlify.app または独自ドメイン）
+
+プレビュー専用: 「Preview Mogulabo LP (Netlify draft)」を手動実行 → Summary に Draft URL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ C. Netlify と Git を初めてつなぐ場合
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. https://app.netlify.com にログイン → Add new site → Import an existing project
 2. このリポジトリ（tesuto）を選択
 3. リポジトリ直下の netlify.toml により、公開ディレクトリは「もぐらぼ/LP」、ビルドは echo のみで静的配信されます

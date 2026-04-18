@@ -1,0 +1,49 @@
+# もぐラボ LP を Netlify にデプロイし、スマホから閲覧できる URL を発行します。
+# 使い方: GitHub リポジトリの Settings → Secrets and variables → Actions に次を登録
+#   NETLIFY_AUTH_TOKEN … Netlify User settings → Applications → Personal access tokens
+#   NETLIFY_SITE_ID    … Site settings → Site details → Site information → API ID
+# その後、main へ push するか、Actions タブから本ワークフローを手動実行してください。
+name: Deploy Mogulabo LP (Netlify)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "もぐらぼ/LP/**"
+      - "netlify.toml"
+      - ".github/workflows/deploy-mogulabo-lp-netlify.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Deploy to Netlify (production)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set -e
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN または NETLIFY_SITE_ID が未設定です。Repository secrets を設定してください。"
+            exit 1
+          fi
+          npx --yes netlify-cli deploy --prod --dir="もぐらぼ/LP" --json > deploy-out.json
+
+      - name: Summary (公開 URL)
+        run: |
+          echo "## もぐラボ LP — Netlify 本番デプロイ" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          URL=$(jq -r '.deploy_ssl_url // .ssl_url // .url // empty' deploy-out.json)
+          echo "**本番 URL（スマホで開けます）:** $URL" >> "$GITHUB_STEP_SUMMARY"

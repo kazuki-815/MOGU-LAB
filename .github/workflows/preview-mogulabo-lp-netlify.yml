@@ -1,0 +1,37 @@
+# 本番ではなく「ドラフト（プレビュー）URL」だけ発行したいとき用（--prod なし）
+# Secrets は deploy-mogulabo-lp-netlify.yml と同じ NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID を使用
+name: Preview Mogulabo LP (Netlify draft)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Deploy draft
+        id: netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set -e
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN または NETLIFY_SITE_ID が未設定です。"
+            exit 1
+          fi
+          npx --yes netlify-cli deploy --dir="もぐらぼ/LP" --json > deploy-out.json
+
+      - name: Summary (ドラフト URL)
+        run: |
+          DRAFT="$(jq -r '.deploy_ssl_url // .ssl_url // empty' deploy-out.json)"
+          echo "## ドラフト URL（共有用）" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Draft:** \`$DRAFT\`" >> "$GITHUB_STEP_SUMMARY"
