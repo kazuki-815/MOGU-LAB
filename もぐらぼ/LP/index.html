@@ -604,6 +604,7 @@
       border-radius: 12px;
       padding: clamp(16px, 3.2vw, 22px) clamp(14px, 3vw, 22px);
       box-shadow: 0 6px 22px rgba(74, 52, 37, 0.07);
+      text-align: start;
     }
     .ins-card-left {
       flex: 0 0 clamp(118px, 30%, 168px);
@@ -656,6 +657,7 @@
       flex: 1;
       min-width: 0;
       padding-top: 2px;
+      text-align: start;
     }
     .ins-card-points {
       list-style: none;
@@ -664,23 +666,32 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      text-align: start;
     }
+    /*
+      講師カードの箇条書き：li を flex にすると、テキストノードと span が別フレックス項目になり
+      横並び＋折り返しで「読めない空白・単語の真ん中改行」が起きるため、ブロック＋絶対配置の◇にする。
+    */
     .ins-card-points li {
       position: relative;
-      padding-left: 1.15em;
+      display: block;
+      padding-left: 1.05em;
       font-family: 'Noto Sans JP', sans-serif;
       font-size: 0.86rem;
       font-weight: 500;
       color: var(--text-mid);
       line-height: 1.75;
-      text-align: left;
+      text-align: start;
+      word-break: normal;
+      overflow-wrap: normal;
+      line-break: strict;
     }
     .ins-card-points li::before {
       content: '◆';
       position: absolute;
       left: 0;
-      top: 0.32em;
-      font-size: 0.5rem;
+      top: 0.62em;
+      font-size: 0.46rem;
       color: #c4874a;
       line-height: 1;
     }
@@ -693,6 +704,9 @@
         flex-direction: column;
         align-items: center;
       }
+      .ins-card.ins-card--eat-program {
+        align-items: stretch;
+      }
       .ins-card-left {
         flex: 0 0 auto;
         width: 100%;
@@ -701,6 +715,220 @@
         width: 100%;
         max-width: 420px;
       }
+    }
+
+    /* ===== サポート体制（講師カードと同系・もぐラボとは内包） ===== */
+    .support-system-wrap {
+      margin: 0 -4px 28px;
+    }
+    .support-system-sec.instructors-sec-cards {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 32px rgba(74, 52, 37, 0.1);
+      padding-top: 44px;
+      padding-bottom: 48px;
+    }
+    .instructors-sec-cards .ins-photo-ring--num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #fff9f0 0%, #efe6da 45%, #dccbb8 100%);
+    }
+    .instructors-sec-cards .sup-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.1rem, 6.5vw, 2.85rem);
+      font-weight: 600;
+      color: var(--brown);
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== 01 独自の食べ痩せプログラム（全体像ヒーロー＋各章スライド） ===== */
+    .ins-card--eat-program {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+    .eat-program-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-align: left;
+    }
+    .eat-program-card-head--center {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .eat-program-card-head--center .ins-role {
+      margin-bottom: 2px;
+    }
+    .eat-program-card-head .ins-role {
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+    .eat-program-card-head-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .eat-program-card-title {
+      margin: 0 0 6px;
+      text-align: left;
+    }
+    .eat-program-card-head--center .eat-program-card-title {
+      margin: 0;
+      text-align: center;
+    }
+    .eat-program-card-title--hero {
+      font-size: clamp(1.55rem, 5.6vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1.38;
+    }
+    .meal-support-enjoy {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1rem, 3.8vw, 1.14rem);
+      font-weight: 600;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.85;
+      margin: 14px 0 6px;
+      letter-spacing: 0.03em;
+    }
+    .meal-support-enjoy-em {
+      font-style: normal;
+      font-weight: 900;
+      color: var(--brown);
+      font-size: clamp(1.14rem, 4.3vw, 1.38rem);
+      background: linear-gradient(transparent 58%, rgba(255, 243, 184, 0.98) 58%);
+      padding: 0 1px;
+    }
+    /* サポート03：講師実績と同型の ins-card を横スクロール */
+    .ins-card-rail {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 6px 2px 14px;
+      margin: 0 -6px;
+      padding-left: 6px;
+      padding-right: 6px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      width: 100%;
+      text-align: start;
+    }
+    .ins-card-rail .ins-card--rail-slide {
+      flex: 0 0 100%;
+      min-width: 0;
+      max-width: 100%;
+      scroll-snap-align: start;
+      align-self: stretch;
+      box-sizing: border-box;
+    }
+    .ins-card-rail .ins-card--rail-slide .ins-card-left {
+      min-width: 0;
+    }
+    .ins-card-rail .ins-card--rail-slide .ins-card-right {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    .ins-card-rail .ins-card--rail-slide .ins-card-points {
+      gap: 12px;
+    }
+    .ins-card-rail .ins-card--rail-slide .ins-card-points li {
+      line-height: 1.82;
+    }
+    .ins-card-rail .ins-card--rail-slide .ins-role {
+      line-height: 1.35;
+      text-align: center;
+      max-width: 100%;
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+    .eat-program-overview {
+      margin: 0;
+      text-align: center;
+    }
+    .eat-program-overview--hero img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--beige-mid);
+      box-shadow: 0 10px 28px rgba(74, 52, 37, 0.1);
+    }
+    .eat-program-cap {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+    }
+    .eat-program-points {
+      margin-top: 2px;
+    }
+    .eat-program-rail-block {
+      margin-top: 4px;
+      padding-top: 14px;
+      border-top: 1px solid var(--beige-mid);
+    }
+    .eat-program-rail-label {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brown);
+      text-align: left;
+      margin: 0 0 10px;
+      letter-spacing: 0.06em;
+    }
+    .eat-program-rail-hint {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.68rem;
+      color: var(--text-light);
+      text-align: center;
+      margin: 8px 0 0;
+    }
+    .eat-program-rail {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 6px 2px 14px;
+      margin: 0 -6px;
+      padding-left: 6px;
+      padding-right: 6px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .eat-program-slide {
+      flex: 0 0 min(300px, 84vw);
+      scroll-snap-align: start;
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--beige-mid);
+      background: var(--white);
+      box-shadow: 0 8px 22px rgba(74, 52, 37, 0.1);
+    }
+    .eat-program-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* DAY4 / DAY6 / PFC など、画像下の余白が大きいスライドを軽くトリミング */
+    .eat-program-slide--crop-bottom {
+      margin: 0;
+      aspect-ratio: 2 / 1;
+      background: var(--white);
+    }
+    .eat-program-slide--crop-bottom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
 
     /* ===== 固定ヘッダー ===== */
@@ -2748,7 +2976,7 @@
       </div>
       <div class="ins-card-right">
         <ul class="ins-card-points">
-          <li>現役プロサッカー選手（Jリーグ250試合出場）<br>の夫を10年間サポート</li>
+          <li>現役プロサッカー選手（Jリーグ250試合出場）の夫の食事を、10年間サポート</li>
           <li>Instagram「丹羽家ごはん」フォロワー<span class="ins-accent">30万人</span></li>
           <li>レシピ本「おうち天才ごはん」出版（KADOKAWA）</li>
           <li>オレンジページ/ar レシピ掲載</li>
@@ -2815,7 +3043,6 @@
       <p class="bridge-q">もし——</p>
       <h2 class="bridge-h">そのお悩みが<em>全て解消されて</em><br>リバウンドしない体が<br class="sp-br">手に入るとしたら？</h2>
       <div class="bridge-rule"></div>
-      <p class="bridge-ans">どんな毎日を過ごしたいですか？</p>
     </div>
   </div>
 </section>
@@ -2843,8 +3070,206 @@
 
     <p style="font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:500; color:var(--text); line-height:2; text-align:center; margin-bottom:28px;">もぐラボは一生ものの食べ痩せ知識により、<br>正しく健康的に痩せるをテーマとした<br><strong style="color:var(--brown);">ダイエットコンサルコミュニティ</strong></p>
 
-    <div style="margin: 0 -4px 28px;">
-      <img src="images/support-section.png" alt="あなたに合わせて食べて痩せる 本質的なサポートをご提供 01独自の食べ痩せプログラム 02 90日間の食事添削サポート 03 選りすぐりのプロ講師" style="width:100%; height:auto; border-radius:12px; box-shadow: 0 4px 18px rgba(74,52,37,0.08);">
+    <div class="support-system-wrap">
+      <section class="instructors-sec-cards support-system-sec" aria-labelledby="support-system-heading">
+        <header class="ins-head">
+          <span class="ins-en">Support System</span>
+          <h2 class="ins-title" id="support-system-heading">本質的な<br>サポート体制</h2>
+          <p class="ins-lead">あなたに合わせて「食べて痩せる」を続けられるよう、<br class="sp-br">3つの柱で伴走します。</p>
+        </header>
+        <div class="ins-list">
+          <article class="ins-card ins-card--eat-program" aria-labelledby="sup-name-01">
+            <header class="eat-program-card-head eat-program-card-head--center">
+              <span class="ins-role">01</span>
+              <h3 class="ins-name eat-program-card-title eat-program-card-title--hero" id="sup-name-01">独自の<br>食べ痩せプログラム</h3>
+            </header>
+
+            <figure class="eat-program-overview eat-program-overview--hero">
+              <img src="images/curriculum-tabeyase-overview.png" alt="食べ痩せカリキュラムの全体像。第1章から第11章までの学習テーマが一覧になっています。" width="1200" height="675" fetchpriority="high" decoding="async">
+              <figcaption class="eat-program-cap">図：食べ痩せカリキュラム（第1章〜第11章の構成）</figcaption>
+            </figure>
+
+            <ul class="ins-card-points eat-program-points">
+              <li>タイプ別の視点から、<span class="ins-accent">無理のない食事設計</span>をご提案します。</li>
+              <li>糖質カット偏重に寄らず、生活リズムに合わせた続け方へ導きます。</li>
+              <li>「我慢」ではなく、<span class="ins-accent">一生モノの知識</span>として身につくことを重視しています。</li>
+            </ul>
+
+            <div class="eat-program-rail-block">
+              <p class="eat-program-rail-label" id="eat-program-rail-label">各章の学び</p>
+              <div class="eat-program-rail" role="region" aria-labelledby="eat-program-rail-label" tabindex="0">
+                <figure class="eat-program-slide">
+                  <img src="images/program-day01-eat-lose-rebound.png" alt="DAY 1：食べて痩せる、リバウンドしないダイエットの仕組み" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide">
+                  <img src="images/program-day03-weight-not-obsession.png" alt="DAY 3：体重にとらわれない考え方" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide eat-program-slide--crop-bottom">
+                  <img src="images/program-day04-diet-over-exercise.png" alt="DAY 4：痩せるなら食事が運動より重要という整理" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide">
+                  <img src="images/program-day05-short-term-diet-risk.png" alt="DAY 5：短期間ダイエットの危険性" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide eat-program-slide--crop-bottom">
+                  <img src="images/program-day06-goal-declaration.png" alt="DAY 6：ダイエット目標宣言" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide">
+                  <img src="images/program-day07-success-mindset.png" alt="DAY 7：ダイエットに成功する人の思考法" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide">
+                  <img src="images/program-ch1-topic01-meal-method.png" alt="第1章 食べ痩せダイエットの食事法：食べ痩せダイエットの食事方法" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide">
+                  <img src="images/program-ch1-topic02-diet-basics.png" alt="第1章 食べ痩せダイエットの食事法：ダイエットの基礎知識" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+                <figure class="eat-program-slide eat-program-slide--crop-bottom">
+                  <img src="images/program-ch1-topic03-pfc.png" alt="第1章 食べ痩せダイエットの食事法：PFCの摂り方と重要性" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+              </div>
+              <p class="eat-program-rail-hint" aria-hidden="true">横にスクロールしてご覧ください</p>
+            </div>
+          </article>
+          <article class="ins-card ins-card--eat-program ins-card--meal-support" aria-labelledby="sup-name-02">
+            <header class="eat-program-card-head eat-program-card-head--center">
+              <span class="ins-role">02</span>
+              <h3 class="ins-name eat-program-card-title eat-program-card-title--hero" id="sup-name-02">90日間の<br>食事添削サポート</h3>
+            </header>
+
+            <figure class="eat-program-overview eat-program-overview--hero">
+              <img src="images/meal-support-daily-feedback-banner.png" alt="食事添削の例。朝食の評価と改善点、外食後の夕食のアドバイスなど、具体的なフィードバック画面のイメージ。" width="1200" height="640" loading="lazy" decoding="async">
+              <figcaption class="eat-program-cap">図：食事添削フィードバックのイメージ（例）</figcaption>
+            </figure>
+
+            <p class="meal-support-enjoy">毎日の食事フィードバックで、<br>食べることを<em class="meal-support-enjoy-em">楽しみながら痩せられる</em></p>
+
+            <ul class="ins-card-points eat-program-points">
+              <li>実際の食事内容をもとに、<span class="ins-accent">具体的な改善ポイント</span>をお伝えします。</li>
+              <li>忙しい日のコンビニ・外食にも寄り添い、現実的な選択肢を一緒に整理します。</li>
+              <li>90日という期間で、<span class="ins-accent">習慣が定着するまで</span>寄り添い続けます。</li>
+            </ul>
+          </article>
+          <article class="ins-card ins-card--eat-program ins-card--pro-team" aria-labelledby="sup-name-03">
+            <header class="eat-program-card-head eat-program-card-head--center">
+              <span class="ins-role">03</span>
+              <h3 class="ins-name eat-program-card-title eat-program-card-title--hero" id="sup-name-03">選りすぐりの<br>プロ講師</h3>
+            </header>
+
+            <div class="eat-program-rail-block eat-program-rail-block--pro">
+              <p class="eat-program-rail-label" id="pro-team-rail-label">講師プロフィール（横にスワイプ）</p>
+              <div class="ins-card-rail" role="region" aria-labelledby="pro-team-rail-label" tabindex="0">
+                <article class="ins-card ins-card--rail-slide" aria-labelledby="sup-rail-name-sarina">
+                  <div class="ins-card-left">
+                    <span class="ins-role">管理栄養士</span>
+                    <div class="ins-photo-ring">
+                      <img src="images/instructor-sarina.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+                    </div>
+                    <p class="ins-name" id="sup-rail-name-sarina">さりな</p>
+                  </div>
+                  <div class="ins-card-right">
+                    <ul class="ins-card-points">
+                      <li>食べ痩せダイエット指導、<span class="ins-accent">100名以上</span>の成功実績</li>
+                      <li><span class="ins-accent">−11kg</span>を達成した生徒さんも</li>
+                      <li>無理なく一生継続できる 食べ痩せメソッド を提供</li>
+                      <li>食べ痩せダイエットで地上波テレビ出演</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ins-card ins-card--rail-slide" aria-labelledby="sup-rail-name-marina">
+                  <div class="ins-card-left">
+                    <span class="ins-role">栄養士</span>
+                    <div class="ins-photo-ring">
+                      <img src="images/instructor-marina.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+                    </div>
+                    <p class="ins-name" id="sup-rail-name-marina">まりな</p>
+                  </div>
+                  <div class="ins-card-right">
+                    <ul class="ins-card-points">
+                      <li>現役プロサッカー選手（Jリーグ250試合出場）の夫の食事を、10年間サポート</li>
+                      <li>Instagram「丹羽家ごはん」フォロワー<span class="ins-accent">30万人</span></li>
+                      <li>レシピ本「おうち天才ごはん」出版（KADOKAWA）</li>
+                      <li>オレンジページ/ar レシピ掲載</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ins-card ins-card--rail-slide" aria-labelledby="sup-rail-name-hana">
+                  <div class="ins-card-left">
+                    <span class="ins-role">大人の体型リセット専門家</span>
+                    <div class="ins-photo-ring">
+                      <img src="images/instructor-hana.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+                    </div>
+                    <p class="ins-name" id="sup-rail-name-hana">はな</p>
+                  </div>
+                  <div class="ins-card-right">
+                    <ul class="ins-card-points">
+                      <li>ボディメイクの大会に初出場で初優勝</li>
+                      <li>Instagramフォロワー<span class="ins-accent">7.3万人</span></li>
+                      <li>体型を根本から整える現役パーソナルトレーナー</li>
+                      <li>一生リバウンドしない食事メソッドを提供</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ins-card ins-card--rail-slide" aria-labelledby="sup-rail-name-kuriko">
+                  <div class="ins-card-left">
+                    <span class="ins-role">栄養士</span>
+                    <div class="ins-photo-ring">
+                      <img src="images/instructor-kuriko.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+                    </div>
+                    <p class="ins-name" id="sup-rail-name-kuriko">くりこ</p>
+                  </div>
+                  <div class="ins-card-right">
+                    <ul class="ins-card-points">
+                      <li>食の仕事歴<span class="ins-accent">30年</span>、ダイエット本のレシピ・栄養監修多数</li>
+                      <li>現役<span class="ins-accent">フードコーディネーター</span></li>
+                      <li>アスリートフードマイスターを取得し<span class="ins-accent">球児の食事サポート</span></li>
+                      <li>自身も食べ痩せダイエットで<span class="ins-accent">3ヶ月で−7kg</span></li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ins-card ins-card--rail-slide" aria-labelledby="sup-rail-name-teezo">
+                  <div class="ins-card-left">
+                    <span class="ins-role">食べ痩せコーチ</span>
+                    <div class="ins-photo-ring">
+                      <img src="images/instructor-teezo.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+                    </div>
+                    <p class="ins-name" id="sup-rail-name-teezo">てぃーぞー</p>
+                  </div>
+                  <div class="ins-card-right">
+                    <ul class="ins-card-points">
+                      <li>食べ痩せダイエット指導、累計<span class="ins-accent">400名以上</span>サポート</li>
+                      <li>Instagramフォロワー<span class="ins-accent">4.7万人</span></li>
+                      <li>個別サポートでは<span class="ins-accent">4ヶ月−12kg</span>を達成した生徒さんも</li>
+                      <li>食事改善と習慣化に特化し、<span class="ins-accent">ダイエット卒業</span>をサポート</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ins-card ins-card--rail-slide" aria-labelledby="sup-rail-name-tsuki">
+                  <div class="ins-card-left">
+                    <span class="ins-role">栄養コンシェルジュ</span>
+                    <div class="ins-photo-ring">
+                      <img src="images/instructor-tsuki.png" alt="" class="ins-photo" width="400" height="400" sizes="(max-width:640px) 120px, 148px" decoding="async" loading="lazy">
+                    </div>
+                    <p class="ins-name" id="sup-rail-name-tsuki">つき</p>
+                  </div>
+                  <div class="ins-card-right">
+                    <ul class="ins-card-points">
+                      <li>栄養コンシェルジュ<span class="ins-accent">2つ星</span>を取得</li>
+                      <li><span class="ins-accent">3食・炭水化物を食べて痩せる</span>ダイエットを発信</li>
+                      <li>自社商品を通じ、<span class="ins-accent">食事改善</span>を中心にしたダイエットサポートに携わる</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+              <p class="eat-program-rail-hint" aria-hidden="true">横にスクロールしてご覧ください</p>
+            </div>
+
+            <ul class="ins-card-points eat-program-points">
+              <li>管理栄養士・栄養士・体型リセットの専門家が<span class="ins-accent">チームで伴走</span>します。</li>
+              <li>発信・出版・現場指導など、それぞれが培ってきた強みを活かします。</li>
+              <li>一人ひとりに合った<span class="ins-accent">最初の一歩</span>が見つかるようサポートします。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
     </div>
 
     <div style="margin: 0 0 28px; text-align: center; padding: 4px 0;">
@@ -3035,64 +3460,6 @@
     <path d="M0,30 C360,70 720,0 1080,50 C1260,65 1380,20 1440,30 L1440,80 L0,80 Z" class="wave-white"/>
   </svg>
 </div>
-
-
-<!-- ═══════════════════════════════════ -->
-<!-- ビジョン（大義名分）               -->
-<!-- ═══════════════════════════════════ -->
-<section class="sec--cream" style="padding: 80px 0 72px;">
-  <div class="container">
-
-    <!-- KV：大見出し -->
-    <div class="vision-v2-kv">
-      <div class="vision-v2-kv-inner">
-        <span class="vision-v2-en">Our Vision</span>
-        <h2 class="vision-v2-title">
-          私たちにしか<br>
-          <em>叶えられない未来</em>が<br>
-          あると思っています。
-        </h2>
-      </div>
-    </div>
-
-    <!-- 区切り -->
-    <div class="vision-v2-hr">
-      <div class="vision-v2-hr-line"></div>
-      <span class="vision-v2-hr-label">Mogu Labo Concept</span>
-      <div class="vision-v2-hr-line"></div>
-    </div>
-
-    <!-- 画像 -->
-    <div class="vision-img-wrap">
-      <img src="images/vision-woman.png" alt="">
-    </div>
-
-    <!-- リードコピー -->
-    <p class="vision-v2-lead">
-      体から自信を取り戻し、<br>
-      もっと自分らしく輝く女性を増やしたい。
-    </p>
-
-    <!-- ボディ -->
-    <div class="vision-v2-body">
-      <p>情報が増えたこの時代に、自分に合った方法に出会い、<br class="sp-br">それを一人で実践するのは難しい。</p>
-      <p>だからこそ、<strong style="color:var(--brown);">「誰か」の力が必要だと私たちは考えています。</strong></p>
-    </div>
-
-    <blockquote class="story-quote">
-      このパーソナルカウンセリングをきっかけに<br>
-      「人生最後のダイエット」にして<br>
-      笑顔でいられる女性を、もっと増やしたい。
-    </blockquote>
-
-    <div style="max-width: 520px; margin: 40px auto 0; text-align: center;">
-      <img src="images/cta-banner-3days-special.png" alt="オンラインで特別開催 3日間限定 3食たべて健康的に痩せる パーソナルカウンセリングを開催！" style="width:100%; height:auto; display:block; border-radius: 8px; margin-bottom: 16px;">
-      <a href="https://lstep.app/tZRKvgQ" class="btn btn--primary btn--cta-pulse">今すぐ申し込む！</a>
-      <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.68rem; color:var(--text-light); margin-top:14px; line-height:1.65;">※無理な勧誘は一切ありません ／ 枠が埋まり次第終了</p>
-    </div>
-  </div>
-</section>
-
 
 <!-- ウェーブ区切り（クリーム→クリーム：同色のため非表示） -->
 
